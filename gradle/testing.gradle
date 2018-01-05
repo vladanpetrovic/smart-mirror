@@ -1,0 +1,31 @@
+apply plugin: 'org.unbroken-dome.test-sets'
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
+
+testSets {
+    integrationTest { dirName = 'it' }
+    smokeTest
+}
+
+test {
+    afterTest { desc, result ->
+        printTestResult(desc, result)
+    }
+}
+
+integrationTest {
+    afterTest { desc, result ->
+        printTestResult(desc, result)
+    }
+}
+
+smokeTest {
+    afterTest { desc, result ->
+        printTestResult(desc, result)
+    }
+}
+
+def printTestResult(desc, result) {
+    println "Executed test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+}

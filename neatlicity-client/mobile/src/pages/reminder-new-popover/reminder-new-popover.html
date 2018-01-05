@@ -1,0 +1,37 @@
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Reminder</ion-label>
+        <ion-input
+          type="text-area"
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Type</ion-label>
+        <ion-select
+          name="type"
+          [(ngModel)]="type">
+          <ion-option value="meeting">Meeting</ion-option>
+          <ion-option value="birthday">Birthday</ion-option>
+          <ion-option value="dinner">Dinner</ion-option>
+          <ion-option value="drinks">Drinks</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Date & Time</ion-label>
+        <ion-datetime
+          name="dateTime"
+          displayFormat="MMM DD, YYYY HH:mm"
+          pickerFormat="MMM DD, YYYY HH:mm"
+          [(ngModel)]="newDate"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <button
+      ion-button
+      block
+      type="submit"
+      [disabled]="!f.valid">Add
+    </button>
+  </form>
+</ion-content>

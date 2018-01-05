@@ -1,0 +1,6 @@
+<div class="app-widget app-weather">
+  <div class="app-weather-temp" *ngIf="weatherDefined()">
+    <span class="wi weathericon {{ weather.icon }}"></span>
+    {{ weather.temperature + ' ºC'}}
+  </div>
+</div>

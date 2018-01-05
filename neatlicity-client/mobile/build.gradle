@@ -1,0 +1,4 @@
+
+task runMobileApp(dependsOn: npmInstall, type: NpmTask) {
+  args = ['run', 'ionic:serve']
+}

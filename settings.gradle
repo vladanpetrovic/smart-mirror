@@ -1,0 +1,12 @@
+rootProject.name = 'neatlicity'
+
+include ':cloud',
+        ':docker',
+		':neatlicity-client:mobile',
+		':neatlicity-client:device:smart-mirror',
+		':neatlicity-client:shared:api-client',
+		':neatlicity-service:api:user',
+		':neatlicity-service:api:todo',
+        ':neatlicity-service:api:remainder',
+        ':neatlicity-service:api:weather',
+        ':neatlicity-service:api-gateway'

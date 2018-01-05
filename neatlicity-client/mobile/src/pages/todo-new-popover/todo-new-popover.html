@@ -1,0 +1,29 @@
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>To Do</ion-label>
+        <ion-input
+          type="text-area"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Type</ion-label>
+        <ion-select
+          name="type"
+          [(ngModel)]="type">
+          <ion-option value="home">Home</ion-option>
+          <ion-option value="shopping">Shopping</ion-option>
+          <ion-option value="maintenance">Maintenance</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <button
+      ion-button
+      block
+      type="submit"
+      [disabled]="!f.valid">Add
+    </button>
+  </form>
+</ion-content>

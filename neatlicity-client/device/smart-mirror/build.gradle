@@ -1,0 +1,4 @@
+
+task runSmartMirrorApp(dependsOn: npmInstall, type: NpmTask) {
+  args = ['run', 'start:web']
+}

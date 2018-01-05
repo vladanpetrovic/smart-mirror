@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+import {IonicPage, NavController, PopoverController} from 'ionic-angular';
+import {TodoNewPopoverPage} from '../todo-new-popover/todo-new-popover';
+
+@IonicPage()
+@Component({
+  selector: 'page-todos',
+  templateUrl: 'todos.html',
+})
+export class TodosPage {
+
+  constructor(
+    public navCtrl: NavController,
+    public popoverCrtl: PopoverController) {
+  }
+
+  onCreateNew(event: MouseEvent) {
+    const newPopover = this.popoverCrtl.create(TodoNewPopoverPage);
+    newPopover.present({ev: event});
+  }
+}

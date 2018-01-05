@@ -1,0 +1,30 @@
+.app-clock {
+  height:100%;
+
+  div {
+    height: 46px;
+  }
+
+  .app-clock-date {
+    font-size: 36px;
+    color: gray;
+  }
+
+  .app-clock-time {
+
+    .app-clock-time-hour-min {
+      font-size: 62px;
+
+    }
+
+    .app-clock-time-seconds {
+      position: relative;
+      top: 0;
+      left: 0;
+      font-size: 42px;
+      padding: 0;
+      margin: 0;
+      color: gray;
+    }
+  }
+}

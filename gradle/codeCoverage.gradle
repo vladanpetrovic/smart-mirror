@@ -1,0 +1,42 @@
+apply plugin: 'jacoco'
+
+test {
+    jacoco {
+        append = false
+        destinationFile = file("${buildDir}/reports/coverage/jacoco-ut.exec")
+    }
+}
+
+integrationTest {
+    jacoco {
+        append = false
+        destinationFile = file("${buildDir}/reports/coverage/jacoco-it.exec")
+    }
+}
+
+smokeTest {
+    jacoco {
+        enabled = false
+    }
+}
+
+jacocoTestReport {
+    def intTestFile = file("${buildDir}/reports/coverage/jacoco-it.exec")
+    def unitTestFile = file("${buildDir}/reports/coverage/jacoco-ut.exec")
+    def filesToReport = []
+    if (unitTestFile.exists()) {
+        filesToReport.add(unitTestFile)
+    }
+    if (intTestFile.exists()) {
+        filesToReport.add(intTestFile)
+    }
+    executionData = files(filesToReport)
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: ['**/*Application.class',
+                              '**/*Config.class',
+                              '**/*Test.class'])
+        })
+    }
+}

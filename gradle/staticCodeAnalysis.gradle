@@ -1,0 +1,23 @@
+def gradleDir = "${rootProject.rootDir}/gradle"
+
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+
+checkstyle {
+    toolVersion = "8.7"
+    ignoreFailures = false
+    configFile = file("${gradleDir}/static-code-analysis/checkstyle/checkstyle.xml")
+}
+
+findbugs {
+    toolVersion = "3.0.1"
+    ignoreFailures = false
+}
+
+pmd {
+    toolVersion = "6.0.0"
+    ignoreFailures = false
+    ruleSetFiles = files("${gradleDir}/static-code-analysis/pmd/ruleset.xml")
+    rulePriority = 3
+}

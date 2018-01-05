@@ -1,0 +1,52 @@
+# Eclipse
+# > the following should be created by `./gradlew eclipse`
+.classpath
+.project
+# > ignore all eclipse settings by default
+.settings
+*.sublime-workspace
+
+# IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+out
+
+# Gradle
+.gradle
+build
+
+# Node / Angular
+# compiled output
+dist
+tmp
+out-tsc
+# dependencies
+node_modules
+# misc
+.sass-cache
+connect.lock
+coverage
+libpeerconnection.log
+npm-debug.log
+testem.log
+typings
+yarn-error.log
+# e2e
+e2e/*.js
+e2e/*.map
+
+# Ionic
+/neatlicity-client/mobile/.sourcemaps
+/neatlicity-client/mobile/hooks
+/neatlicity-client/mobile/platforms
+/neatlicity-client/mobile/plugins
+/neatlicity-client/mobile/plugins/android.json
+/neatlicity-client/mobile/plugins/ios.json
+/neatlicity-client/mobile/www
+$RECYCLE.BIN
+
+# System Files
+.DS_Store
+Thumbs.db

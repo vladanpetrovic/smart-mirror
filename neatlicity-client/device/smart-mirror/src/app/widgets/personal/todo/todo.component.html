@@ -1,0 +1,12 @@
+<div class="app-user-widget app-todo">
+  <h1>TO DO'S ({{todo.selectedOptions.selected.length}} / {{todos.length}})</h1>
+  <div class="app-todo-list">
+    <mat-selection-list #todo>
+      <mat-list-option
+        checkboxPosition="before"
+        *ngFor="let task of todos">
+        {{task}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>
