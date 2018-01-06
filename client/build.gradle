@@ -1,0 +1,24 @@
+buildscript {
+  repositories {
+    maven { url gradlePluginsRepo }
+  }
+  dependencies {
+    classpath 'com.moowork.gradle:gradle-node-plugin:1.2.0'
+  }
+}
+
+def nodeProjects = [
+  project(':client:device:smart-mirror'),
+  project(':client:mobile'),
+  project(':client:shared:api-client')
+]
+
+configure(nodeProjects) {
+  apply plugin: "com.moowork.node"
+
+  node {
+    version = '9.3.0'
+    npmVersion = '5.6.0'
+    download = true
+  }
+}
