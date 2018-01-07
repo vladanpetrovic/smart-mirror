@@ -1,4 +1,9 @@
 buildscript {
+    ext {
+        springBootVersion = '2.0.0.M7' // '1.5.9.RELEASE'
+        springCloudVersion = 'Finchley.M5' // 'Edgware.RELEASE'
+
+    }
     repositories {
         mavenCentral()
         maven { url gradlePluginsRepo }
@@ -8,22 +13,34 @@ buildscript {
         maven { url 'http://repo.spring.io/plugins-release' }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M7'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
         classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
         classpath 'gradle.plugin.org.unbroken-dome.gradle-plugins:gradle-testsets-plugin:1.3.2'
     }
 }
 
-def springBootProjects = [
+def apiProjects = [
         project(':service:api:user'),
         project(':service:api:todo'),
         project(':service:api:remainder'),
         project(':service:api:weather')
 ]
-def springProjects = springBootProjects + [
+def springBootStarterProjects = [
+        project(':service:api-autoconfigure'),
+        project(':service:api-starter')
+]
+def springCloudProjects = apiProjects + springBootStarterProjects + [
+        project(':service:cloud:auth'),
+        project(':service:cloud:circuit-breaker'),
+        project(':service:cloud:config'),
+        project(':service:cloud:dataflow'),
+        project(':service:cloud:discovery'),
+        project(':service:cloud:tracing'),
         project(':service:api-gateway')
 ]
+def springBootProjects = springCloudProjects - springBootStarterProjects
+def springProjects = springBootProjects
 def javaProjects = springProjects
 
 def vJavaLang = '1.8'
@@ -37,23 +54,20 @@ configure(javaProjects) {
     sourceCompatibility = vJavaLang
 }
 
-configure(springProjects) {
+configure(springCloudProjects) {
     apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
 
     repositories {
         mavenCentral()
         maven { url springReleaseRepo }
         maven { url springSnapshotRepo }
         maven { url springMilestoneRepo }
-    }
-
-    dependencies {
-        compile 'org.projectlombok:lombok'
-        compile 'org.slf4j:slf4j-api'
-        testCompile 'junit:junit'
-        testCompile 'org.hamcrest:hamcrest-library'
-        testCompile 'org.mockito:mockito-core'
-        testCompile 'org.objenesis:objenesis'
     }
 }
 
@@ -66,8 +80,41 @@ configure(springBootProjects) {
         compile 'org.springframework.boot:spring-boot-starter'
         compile 'org.springframework.boot:spring-boot-starter-actuator'
 
-        runtime 'org.springframework.boot:spring-boot-devtools'
+//        runtime 'org.springframework.boot:spring-boot-devtools'
+
         testCompile 'org.springframework.boot:spring-boot-starter-test'
-        testCompile 'io.projectreactor:reactor-test'
     }
+}
+
+configure(springProjects) {
+    group = 'com.neatlicity.service'
+
+    dependencies {
+        compile 'org.projectlombok:lombok'
+        compile 'org.slf4j:slf4j-api'
+        testCompile 'junit:junit'
+        testCompile 'org.hamcrest:hamcrest-library'
+        testCompile 'org.mockito:mockito-core'
+        testCompile 'org.objenesis:objenesis'
+    }
+}
+
+configure(apiProjects) {
+
+    dependencies {
+//        project(':service:api-starter')
+        compile 'org.springframework.cloud:spring-cloud-starter-config'
+        compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+        compile 'org.springframework.cloud:spring-cloud-starter-sleuth'
+        compile 'org.springframework.cloud:spring-cloud-starter-zipkin'
+    }
+}
+
+configure(springBootStarterProjects) {
+    apply plugin: 'java'
+
+    targetCompatibility = vJavaLang
+    sourceCompatibility = vJavaLang
+
+    group = 'com.neatlicity.service'
 }

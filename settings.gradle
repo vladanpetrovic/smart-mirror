@@ -9,4 +9,12 @@ include ':client:device:smart-mirror',
 		':service:api:todo',
 		':service:api:user',
 		':service:api:weather',
-        ':service:api-gateway'
+		':service:api-autoconfigure',
+        ':service:api-gateway',
+		':service:api-starter',
+		':service:cloud:auth',
+		':service:cloud:circuit-breaker',
+		':service:cloud:config',
+		':service:cloud:dataflow',
+		':service:cloud:discovery',
+		':service:cloud:tracing'
