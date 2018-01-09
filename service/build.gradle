@@ -28,8 +28,8 @@ def apiProjects = [
         project(':service:api:weather')
 ]
 def springBootStarterProjects = [
-        project(':service:api-autoconfigure'),
-        project(':service:api-starter')
+        project(':service:api-shared:autoconfigure'),
+        project(':service:api-shared:starter')
 ]
 def springCloudProjects = apiProjects + springBootStarterProjects + [
         project(':service:cloud:auth'),
@@ -103,7 +103,7 @@ configure(springProjects) {
 configure(apiProjects) {
 
     dependencies {
-        compile project(':service:api-starter')
+        compile project(':service:api-shared:starter')
         compile 'org.springframework.cloud:spring-cloud-starter-config'
         compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
         compile 'org.springframework.cloud:spring-cloud-starter-sleuth'

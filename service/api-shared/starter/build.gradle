@@ -2,5 +2,5 @@ version = '0.0.1'
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter'
-    compile project(':service:api-autoconfigure')
+    compile project(':service:api-shared:autoconfigure')
 }
