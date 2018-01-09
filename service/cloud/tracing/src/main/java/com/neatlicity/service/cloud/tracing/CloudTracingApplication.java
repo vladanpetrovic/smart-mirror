@@ -8,9 +8,9 @@ import zipkin.server.EnableZipkinServer;
 @EnableDiscoveryClient
 @EnableZipkinServer
 @SpringBootApplication
-public class TracingApplication {
+public class CloudTracingApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TracingApplication.class, args);
+        SpringApplication.run(CloudTracingApplication.class, args);
     }
 }

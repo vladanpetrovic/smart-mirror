@@ -6,9 +6,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class WeatherApplication {
+public class ApiWeatherApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WeatherApplication.class, args);
+        SpringApplication.run(ApiWeatherApplication.class, args);
     }
 }

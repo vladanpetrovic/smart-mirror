@@ -1,0 +1,15 @@
+
+zuul:
+  routes:
+    api-user:
+      path: /api/user/**
+      serviceId: api-user
+    api-todo:
+      path: /api/todo/**
+      serviceId: api-todo
+    api-remainder:
+      path: /api/remainder/**
+      serviceId: api-remainder
+    api-weather:
+      path: /api/weather/**
+      serviceId: api-weather

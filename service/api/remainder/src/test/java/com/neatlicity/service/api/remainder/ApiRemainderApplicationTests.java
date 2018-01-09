@@ -1,4 +1,4 @@
-package com.neatlicity.service.api.user;
+package com.neatlicity.service.api.remainder;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserApplicationTests {
+public class ApiRemainderApplicationTests {
 
     @Test
     public void contextLoads() {
