@@ -1,2 +1,4 @@
 server:
-  port: 9094
+  port: 9095
+
+spring.boot.admin.url: http://localhost:9999

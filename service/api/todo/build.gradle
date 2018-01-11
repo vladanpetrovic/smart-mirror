@@ -2,6 +2,9 @@ version = '0.0.1'
 
 dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-web'
-//	compile 'org.springframework.boot:spring-boot-starter-webflux'
-//	compile 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+	compile 'org.springframework.boot:spring-boot-starter-data-rest'
+	compile 'org.springframework.data:spring-data-rest-hal-browser'
+	compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 }
+// 2018-01-10T10:00:00.000Z

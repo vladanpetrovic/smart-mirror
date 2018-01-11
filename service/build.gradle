@@ -2,7 +2,7 @@ buildscript {
     ext {
         springBootVersion = '1.5.9.RELEASE' // '2.0.0.M7'
         springCloudVersion = 'Edgware.RELEASE' // 'Finchley.M5'
-
+        springBootAdminVersion = '1.5.6'
     }
     repositories {
         mavenCentral()
@@ -24,7 +24,8 @@ def apiProjects = [
         project(':service:api-gateway'),
         project(':service:api:user'),
         project(':service:api:todo'),
-        project(':service:api:remainder'),
+        project(':service:api:reminder'),
+        project(':service:api:quote'),
         project(':service:api:weather')
 ]
 def springBootStarterProjects = [
@@ -38,7 +39,8 @@ def springCloudProjects = apiProjects + springBootStarterProjects + [
         project(':service:cloud:dataflow'),
         project(':service:cloud:discovery'),
         project(':service:cloud:tracing'),
-        project(':service:api-gateway')
+        project(':service:api-gateway'),
+        project(':service:admin')
 ]
 def springBootProjects = springCloudProjects - springBootStarterProjects
 def springProjects = springBootProjects
@@ -70,6 +72,7 @@ configure(springCloudProjects) {
         maven { url springSnapshotRepo }
         maven { url springMilestoneRepo }
     }
+
 }
 
 configure(springBootProjects) {
@@ -108,6 +111,7 @@ configure(apiProjects) {
         compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
         compile 'org.springframework.cloud:spring-cloud-starter-sleuth'
         compile 'org.springframework.cloud:spring-cloud-starter-zipkin'
+        compile "de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}"
     }
 }
 
