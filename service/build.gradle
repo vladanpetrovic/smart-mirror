@@ -51,7 +51,7 @@ configure(javaProjects) {
     apply plugin: 'java'
     apply from: "${gradleDir}/testing.gradle"
     apply from: "${gradleDir}/codeCoverage.gradle"
-    apply from: "${gradleDir}/staticCodeAnalysis.gradle"
+//    apply from: "${gradleDir}/staticCodeAnalysis.gradle"
 
     targetCompatibility = vJavaLang
     sourceCompatibility = vJavaLang

@@ -1,22 +1,22 @@
 {
   "name": "api-client",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
-  "main": "./dist/main.js",
-  "typings": "./dist/main.d.ts",
+  "main": "./dist/index.js",
   "scripts": {
-    "ng": "ng"
+    "clean": "rm -rf ./aot/* && rm -rf ./dist/* && npm run clean:postbuild",
+    "clean:postbuild": "find ./src/ -type f -iname *.ngsummary.json -delete && find ./src/ -type f -iname *.ngfactory.ts -delete",
+    "build": "npm run clean && ngc -p tsconfig.json && npm run clean:postbuild"
   },
-  "private": true,
+  "dependencies": {},
   "devDependencies": {
-    "@angular/cli": "1.6.3",
     "@angular/common": "^5.0.0",
     "@angular/core": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/compiler-cli": "^5.0.0",
-    "@angular/language-service": "^5.0.0",
     "@angular/platform-browser": "^5.0.0",
-    "@angular/platform-browser-dynamic": "^5.0.0",
+    "@ngrx/effects": "^4.1.1",
+    "@ngrx/store": "^4.1.1",
     "rxjs": "^5.5.2",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2",

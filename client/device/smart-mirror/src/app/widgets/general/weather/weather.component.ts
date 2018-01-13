@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Subscription } from 'rxjs/Subscription';
-
-import { WeatherService } from './weather.service';
-import { Weather } from './weather.model';
+import { ApiWeatherService, Weather } from 'api-client';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-weather',
@@ -12,19 +10,12 @@ import { Weather } from './weather.model';
     '../../../../../node_modules/weathericons/css/weather-icons.css']
 })
 export class WeatherComponent implements OnInit {
-  weather: Weather;
-  subscription: Subscription;
+  weather: Observable<Weather>;
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private apiWeatherService: ApiWeatherService) { }
 
   ngOnInit() {
-    this.subscription = this.weatherService.getWeather().subscribe(weather => {
-      this.weather = weather;
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.weather = this.apiWeatherService.currentWeather();
   }
 
   weatherDefined() {

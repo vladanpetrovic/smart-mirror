@@ -1,0 +1,7 @@
+src/
+node_modules/
+.npmignore
+api-client.iml
+api-client-0.0.1.tgz
+build.gradle
+tsconfig.json
