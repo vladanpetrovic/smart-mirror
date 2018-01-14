@@ -7,7 +7,7 @@ export const TYPES = {
 };
 
 export class SetWeatherStateAction implements Action {
-    readonly type = TYPES.API_GET_WEATHER;
+    readonly type = TYPES.SET_WEATHER_STATE;
 
     constructor(public payload: WeatherState) {}
 }

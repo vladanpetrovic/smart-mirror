@@ -1,17 +1,20 @@
 .app-quote {
-  position:absolute;
-  bottom:0;
-  left:0;
-  text-align: center;
+  margin-top:10px;
+  //position:absolute;
+  //bottom:0;
+  //left:0;
+  //text-align: center;
 
-  h1 {
+
+  .app-quote-text {
     color: white;
     font-style: italic;
-    font-size: 42px;
+    font-size: 36px;
+    line-height: 90%;
   }
 
   .app-quote-author {
-    font-size:36px;
+    font-size:28px;
     color: gray;
   }
 }

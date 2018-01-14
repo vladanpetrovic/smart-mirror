@@ -4,9 +4,8 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "scripts": {
-    "clean": "rm -rf ./aot/* && rm -rf ./dist/* && npm run clean:postbuild",
-    "clean:postbuild": "find ./src/ -type f -iname *.ngsummary.json -delete && find ./src/ -type f -iname *.ngfactory.ts -delete",
-    "build": "npm run clean && ngc -p tsconfig.json && npm run clean:postbuild"
+    "clean": "rm -rf ./dist/*",
+    "build": "npm run clean && ngc -p tsconfig.json"
   },
   "dependencies": {},
   "devDependencies": {

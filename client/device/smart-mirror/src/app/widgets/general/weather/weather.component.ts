@@ -10,15 +10,12 @@ import {Observable} from "rxjs/Observable";
     '../../../../../node_modules/weathericons/css/weather-icons.css']
 })
 export class WeatherComponent implements OnInit {
-  weather: Observable<Weather>;
+  weatherState: Observable<Weather>;
 
   constructor(private apiWeatherService: ApiWeatherService) { }
 
   ngOnInit() {
-    this.weather = this.apiWeatherService.currentWeather();
+      this.weatherState = this.apiWeatherService.currentWeather();
   }
 
-  weatherDefined() {
-    return typeof this.weather !== 'undefined';
-  }
 }

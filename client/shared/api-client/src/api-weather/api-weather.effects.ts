@@ -25,6 +25,8 @@ export class ApiWeatherEffects {
             })
         })
         .map((weatherApiResponse) => {
+            console.log('weatherApiResponse!');
+            console.log(weatherApiResponse);
             const icon = weatherApiResponse.weather[0].icon;
             const weather = new Weather(
                 weatherApiResponse.main.temp,

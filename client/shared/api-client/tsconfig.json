@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
+    "rootDir":"src",
     "outDir": "./dist",
     "sourceMap": true,
     "declaration": false,
@@ -17,5 +17,12 @@
       "es2017",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
 }
