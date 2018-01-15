@@ -1,4 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {ApiReminderService, Reminder} from 'api-client';
 
 @Component({
   selector: 'app-reminder',
@@ -6,13 +8,13 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./reminder.component.scss']
 })
 export class ReminderComponent implements OnInit {
-  events = [
-    'John Doe birthday',
-    'Meeting at 12:00'];
+    reminderState: Observable<Reminder[]>;
 
-  constructor() { }
+    constructor(private apiReminderService: ApiReminderService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.reminderState = this.apiReminderService.getReminders();
+    }
 
 }

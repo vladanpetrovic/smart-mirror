@@ -1,10 +1,13 @@
 import * as fromReminderActions from "./api-reminder.actions";
 import * as fromReminderState from "./api-reminder.state";
 
-export function reminderReducer(state = fromReminderState.initial, action: fromReminderActions.Actions) {
+export function apiReminderReducer(state = fromReminderState.reminderStateInitial, action: fromReminderActions.ReminderActions) {
     switch (action.type) {
-        case fromReminderActions.TYPES.GET_REMINDERS:
-            return state;
+        case fromReminderActions.REMINDER_ACTION_TYPES.SET_REMINDERS_STATE:
+            return {
+                ...state,
+                reminders: (action as fromReminderActions.SetRemindersStateAction).payload
+            };
         default:
             return state;
     }

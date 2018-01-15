@@ -1,11 +1,19 @@
 import {Action} from '@ngrx/store'
+import {ToDoState} from './api-todo.models';
 
-export const TYPES = {
-    GET_TODOS: '[API ToDo] GET_TODOS'
+export const TODO_ACTION_TYPES = {
+    SET_TODOS_STATE: '[API ToDo] SET_TODOS_STATE',
+    API_GET_TODOS: '[API ToDo] API_GET_TODOS'
 };
 
-export class GetToDosAction implements Action {
-    readonly type = TYPES.GET_TODOS;
+export class SetToDosStateAction implements Action {
+    readonly type = TODO_ACTION_TYPES.SET_TODOS_STATE;
+
+    constructor(public payload: ToDoState) {}
 }
 
-export type Actions = GetToDosAction;
+export class ApiGetToDosAction implements Action {
+    readonly type = TODO_ACTION_TYPES.API_GET_TODOS;
+}
+
+export type ToDoActions = SetToDosStateAction | ApiGetToDosAction;

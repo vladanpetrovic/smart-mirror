@@ -18,4 +18,8 @@ public class Author {
     private String firstName;
     private String lastName;
     private List<Quote> quotes;
+
+    public String getFullname() {
+        return String.format("%s %s", firstName, lastName);
+    }
 }

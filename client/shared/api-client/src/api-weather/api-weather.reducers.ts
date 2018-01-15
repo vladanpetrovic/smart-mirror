@@ -1,10 +1,9 @@
 import * as fromWeatherActions from "./api-weather.actions";
 import * as fromWeatherState from "./api-weather.state";
 
-export function apiWeatherReducer(state = fromWeatherState.initial, action: fromWeatherActions.Actions) {
+export function apiWeatherReducer(state = fromWeatherState.weatherStateInitial, action: fromWeatherActions.WeatherActions) {
     switch (action.type) {
-        case fromWeatherActions.TYPES.SET_WEATHER_STATE:
-            console.log('SET_WEATHER_STATE');
+        case fromWeatherActions.WEATHER_ACTION_TYPES.SET_WEATHER_STATE:
             return {
                 ...state,
                 weather: (action as fromWeatherActions.SetWeatherStateAction).payload

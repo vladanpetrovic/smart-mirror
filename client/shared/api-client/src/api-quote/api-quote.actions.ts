@@ -1,14 +1,19 @@
 import {Action} from '@ngrx/store'
-// import {Quote} from "./api-quote.model";
+import {QuoteState} from "./api-quote.models";
 
-export const TYPES = {
-    GET_QUOTE: '[API Quote] GET_QUOTE'
+export const QUOTE_ACTION_TYPES = {
+    SET_QUOTE_STATE: '[API Quote] SET_QUOTE_STATE',
+    API_GET_QUOTE: '[API Quote] API_GET_QUOTE'
 };
 
-export class GetQuoteAction implements Action {
-    readonly type = TYPES.GET_QUOTE;
+export class SetQuoteStateAction implements Action {
+    readonly type = QUOTE_ACTION_TYPES.SET_QUOTE_STATE;
 
-    // constructor(public payload: Quote) {}
+    constructor(public payload: QuoteState) {}
 }
 
-export type Actions = GetQuoteAction;
+export class ApiGetQuoteAction implements Action {
+    readonly type = QUOTE_ACTION_TYPES.API_GET_QUOTE;
+}
+
+export type QuoteActions = SetQuoteStateAction | ApiGetQuoteAction;

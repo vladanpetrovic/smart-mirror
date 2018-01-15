@@ -1,3 +1,4 @@
+export const WEATHER_STORE_NAME = 'weather';
 
 export const WEATHER_ICON_MAP: Map<string, string> = new Map<string, string>(
     [

@@ -3,9 +3,9 @@
   <div class="app-reminder-list">
     <mat-list>
       <mat-list-item
-        *ngFor="let event of events">
+        *ngFor="let event of (reminderState | async).reminders">
         <mat-icon matListIcon>date_range</mat-icon>
-        <h3 matLine> {{event}} </h3>
+        <h3 matLine> {{event.title}} </h3>
       </mat-list-item>
     </mat-list>
   </div>

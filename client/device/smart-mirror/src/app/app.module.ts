@@ -8,7 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {MaterialModule} from './material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {ApiWeatherModule} from 'api-client';
+import {ApiModule} from 'api-client';
 
 import 'hammerjs';
 
@@ -26,8 +26,7 @@ import {QuoteComponent} from './widgets/personal/quote/quote.component';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-// import {ApiWeatherEffects, apiWeatherReducer} from '../../../api-weather';
-// import {ApiWeatherService} from '../../../api-weather/api-weather.service';
+// import {reducers} from './app.state';
 
 @NgModule({
     declarations: [
@@ -48,7 +47,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument(),
-        ApiWeatherModule
+        ApiModule
     ],
     providers: [ElectronService],
     bootstrap: [AppComponent]

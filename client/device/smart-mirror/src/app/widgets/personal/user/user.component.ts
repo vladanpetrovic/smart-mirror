@@ -1,4 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ApiUserService, User} from 'api-client';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-user',
@@ -6,10 +8,13 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+    userState: Observable<User>;
 
-  constructor() { }
+    constructor(private apiUserService: ApiUserService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.userState = this.apiUserService.getUser();
+    }
 
 }

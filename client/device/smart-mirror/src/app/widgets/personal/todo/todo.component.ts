@@ -1,4 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ApiToDoService, ToDo} from 'api-client';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-todo',
@@ -6,14 +8,12 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todos = [
-    '#1 Develop SmartMirror',
-    '#2 Develop Mobile Clients',
-    '#3 Develop Web Services'];
+  todoState: Observable<ToDo[]>;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private apiToDoService: ApiToDoService) {
   }
 
+  ngOnInit() {
+      this.todoState = this.apiToDoService.getToDos();
+  }
 }
