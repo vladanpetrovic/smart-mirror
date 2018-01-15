@@ -8,6 +8,6 @@ export class Quote {
 }
 
 export interface QuoteApiResponse {
-    text: string;
+    text: string,
     author: string
 }

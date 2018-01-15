@@ -7,8 +7,8 @@ export function apiQuoteReducer(state = fromQuoteState.quoteStateInitial, action
             return {
                 ...state,
                 quote: (action as fromQuoteActions.SetQuoteStateAction).payload
-            }
+            };
         default:
-            state;
+            return state;
     }
 }

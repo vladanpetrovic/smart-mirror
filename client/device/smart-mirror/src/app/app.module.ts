@@ -26,7 +26,6 @@ import {QuoteComponent} from './widgets/personal/quote/quote.component';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-// import {reducers} from './app.state';
 
 @NgModule({
     declarations: [
