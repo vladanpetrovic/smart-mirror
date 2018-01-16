@@ -8,7 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {MaterialModule} from './material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {ApiModule} from 'api-client';
+import {ApiModule} from 'neatlicity-api-client';
 
 import 'hammerjs';
 

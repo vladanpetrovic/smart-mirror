@@ -1,7 +1,9 @@
 import * as fromQuoteActions from "./api-quote.actions";
 import * as fromQuoteState from "./api-quote.state";
+import {QuoteState} from './api-quote.models';
 
-export function apiQuoteReducer(state = fromQuoteState.quoteStateInitial, action: fromQuoteActions.QuoteActions) {
+export function apiQuoteReducer(state = fromQuoteState.quoteStateInitial,
+                                action: fromQuoteActions.QuoteActions) {
     switch (action.type) {
         case fromQuoteActions.QUOTE_ACTION_TYPES.SET_QUOTE_STATE:
             return {

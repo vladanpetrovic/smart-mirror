@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Store} from '@ngrx/store';
 
-import {QuoteState} from './api-quote.models';
+import {Quote, QuoteState} from './api-quote.models';
 import {ApiGetQuoteAction} from './api-quote.actions';
 import {QUOTE_STORE_NAME} from './api-quote.consts';
 

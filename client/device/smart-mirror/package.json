@@ -40,10 +40,11 @@
     "@ngrx/store-devtools": "^4.1.1",
     "@ngx-translate/core": "9.0.1",
     "@ngx-translate/http-loader": "2.0.0",
-    "api-client": "file:../../shared/api-client/api-client-0.0.1.tgz",
     "core-js": "2.4.1",
     "enhanced-resolve": "3.3.0",
     "hammerjs": "^2.0.8",
+    "naetlicity-api-client": "file:../../shared/neatlicity-api-client/api-client-0.0.1.tgz",
+    "neatlicity-api-client": "file:../../shared/api-client/neatlicity-api-client-0.0.1.tgz",
     "rxjs": "5.5.2",
     "weathericons": "^2.1.0",
     "zone.js": "0.8.17"

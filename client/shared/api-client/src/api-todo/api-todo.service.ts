@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Store} from "@ngrx/store";
 
-import {ToDoState} from "./api-todo.models";
+import {ToDo, ToDoState} from "./api-todo.models";
 import {ApiGetToDosAction} from './api-todo.actions';
 import {TODO_STORE_NAME} from './api-todo.consts';
 

@@ -1,7 +1,9 @@
 import * as fromToDoActions from "./api-todo.actions";
 import * as fromToDoState from "./api-todo.state";
+import {ToDoState} from './api-todo.models';
 
-export function apiToDoReducer(state = fromToDoState.todoStateInitial, action: fromToDoActions.ToDoActions) {
+export function apiToDoReducer(state = fromToDoState.todoStateInitial,
+                               action: fromToDoActions.ToDoActions) {
     switch (action.type) {
         case fromToDoActions.TODO_ACTION_TYPES.SET_TODOS_STATE:
             return {

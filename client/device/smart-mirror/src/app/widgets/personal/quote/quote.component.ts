@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-
-import {ApiQuoteService, Quote} from 'api-client';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
+import {ApiQuoteService, Quote} from 'neatlicity-api-client';
+
 @Component({
-  selector: 'app-quote',
-  templateUrl: './quote.component.html',
-  styleUrls: ['./quote.component.scss']
+    selector: 'app-quote',
+    templateUrl: './quote.component.html',
+    styleUrls: ['./quote.component.scss']
 })
 export class QuoteComponent implements OnInit {
     quoteState: Observable<Quote>;

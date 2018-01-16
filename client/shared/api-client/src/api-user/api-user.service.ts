@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Store} from "@ngrx/store";
 
-import {UserState} from "./api-user.models";
+import {User, UserState} from "./api-user.models";
 import {ApiGetUserAction} from './api-user.actions';
 import {USER_STORE_NAME} from './api-user.consts';
 

@@ -48,6 +48,8 @@ e2e/*.map
 /client/mobile/www
 $RECYCLE.BIN
 
+/client/shared/api-client/lib/
+
 # System Files
 .DS_Store
 Thumbs.db
