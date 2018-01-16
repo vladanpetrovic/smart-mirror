@@ -1,27 +1,37 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { SignupPage } from '../signup/signup';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {HomePage} from '../home/home';
+import {SignupPage} from '../signup/signup';
+import {Observable} from 'rxjs/Observable';
+import {ApiUserService, User} from 'neatlicity-api-client';
 
 @IonicPage()
 @Component({
-  selector: 'page-signin',
-  templateUrl: 'signin.html',
+    selector: 'page-signin',
+    templateUrl: 'signin.html',
 })
-export class SigninPage {
-  userEmail: string = "test@test.com";
-  userPassword: string = "test1234";
+export class SigninPage implements OnInit {
+    userState: Observable<User>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    userEmail: string = 'test@test.com';
+    userPassword: string = 'test1234';
 
-  onSubmit(form: NgForm) {
-    this.navCtrl.setRoot(HomePage);
-  }
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                private apiUserService: ApiUserService) {
+    }
 
-  onSignup() {
-    this.navCtrl.push(SignupPage);
-  }
+    ngOnInit() {
+        this.userState = this.apiUserService.getUser();
+    }
+    
+    onSubmit(form: NgForm) {
+        this.navCtrl.setRoot(HomePage);
+    }
+
+    onSignup() {
+        this.navCtrl.push(SignupPage);
+    }
 }

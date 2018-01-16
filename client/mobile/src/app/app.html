@@ -1,7 +1,7 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>{{user}}'s</ion-title>
+      <ion-title>{{ (userState | async).user.firstName }}'s</ion-title>
     </ion-toolbar>
   </ion-header>
 

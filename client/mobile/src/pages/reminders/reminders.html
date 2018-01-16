@@ -20,34 +20,10 @@
     <ion-list-header no-lines>
       Today
     </ion-list-header>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let event of (reminderState | async).reminders">
       <ion-item>
-        <ion-label>Meeting at 12h</ion-label>
+        <ion-label>{{event.title}}</ion-label>
         <ion-icon name="people" item-end></ion-icon>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger">
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>John's Doe Birthday</ion-label>
-        <ion-icon name="calendar" item-end></ion-icon>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger">
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Dinner at 19h</ion-label>
-        <ion-icon name="restaurant" item-end></ion-icon>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger">
@@ -62,9 +38,9 @@
     <ion-list-header no-lines>
       Tomorrow
     </ion-list-header>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let event of (reminderState | async).reminders">
       <ion-item>
-        <ion-label>Car Registration</ion-label>
+        <ion-label>{{event.title}}</ion-label>
         <ion-icon name="car" item-end></ion-icon>
       </ion-item>
       <ion-item-options side="right">
@@ -74,18 +50,5 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
-    <ion-item-sliding>
-      <ion-item>
-        <ion-label>Beer with friends</ion-label>
-        <ion-icon name="beer" item-end></ion-icon>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger">
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-
   </ion-list>
 </ion-content>

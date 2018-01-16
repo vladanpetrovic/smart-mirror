@@ -1,17 +1,25 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {NavController} from 'ionic-angular';
+import {ApiReminderService, ApiToDoService, Reminder, ToDo} from 'neatlicity-api-client';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+    selector: 'page-home',
+    templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
+    todoState: Observable<ToDo[]>;
+    reminderState: Observable<Reminder[]>;
 
-  public date: Date = new Date();
+    public date: Date = new Date();
 
-  constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController,
+                private apiToDoService: ApiToDoService,
+                private apiReminderService: ApiReminderService) {
+    }
 
-  }
-
+    ngOnInit() {
+        this.todoState = this.apiToDoService.getToDos();
+        this.reminderState = this.apiReminderService.getReminders();
+    }
 }

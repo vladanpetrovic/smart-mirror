@@ -14,20 +14,10 @@
     <ion-list-header no-lines>
       To Do's
     </ion-list-header>
-    <ion-item>
-      <ion-label>Task #1</ion-label>
+    <ion-item *ngFor="let task of (todoState | async).todos">
+      <ion-label>{{task.title}}</ion-label>
       <ion-checkbox></ion-checkbox>
       <ion-icon name="home" item-end></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>Task #2</ion-label>
-      <ion-checkbox checked disabled></ion-checkbox>
-      <ion-icon name="home" item-end></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>Task #3</ion-label>
-      <ion-checkbox></ion-checkbox>
-      <ion-icon name="basket" item-end></ion-icon>
     </ion-item>
   </ion-list>
 
@@ -35,17 +25,9 @@
     <ion-list-header no-lines>
       Reminders
     </ion-list-header>
-    <ion-item>
-      <ion-label>Meeting at 12h</ion-label>
+    <ion-item *ngFor="let event of (reminderState | async).reminders">
+      <ion-label>{{event.title}}</ion-label>
       <ion-icon name="people" item-end></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>John's Doe Birthday</ion-label>
-      <ion-icon name="calendar" item-end></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-label>Dinner at 19h</ion-label>
-      <ion-icon name="restaurant" item-end></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>
