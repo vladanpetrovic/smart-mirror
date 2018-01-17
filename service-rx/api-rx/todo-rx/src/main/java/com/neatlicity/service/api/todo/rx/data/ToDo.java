@@ -1,4 +1,4 @@
-package com.neatlicity.service.api.todo.data;
+package com.neatlicity.service.api.todo.rx.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection="todos")
+@Document(collection="todos-rxx")
 public class ToDo {
 
     @Id
@@ -24,4 +24,8 @@ public class ToDo {
     private Integer category;
     private boolean done;
     private String userId;
+
+    public ToDo(String title) {
+        this.title = title;
+    }
 }

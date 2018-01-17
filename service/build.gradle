@@ -1,15 +1,13 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.9.RELEASE' // '2.0.0.M7'
-        springCloudVersion = 'Edgware.RELEASE' // 'Finchley.M5'
+        springBootVersion = '1.5.9.RELEASE'
+        springCloudVersion = 'Edgware.RELEASE'
         springBootAdminVersion = '1.5.6'
     }
     repositories {
         mavenCentral()
         maven { url gradlePluginsRepo }
         maven { url springReleaseRepo }
-        maven { url springSnapshotRepo }
-        maven { url springMilestoneRepo }
         maven { url 'http://repo.spring.io/plugins-release' }
     }
     dependencies {
@@ -46,15 +44,14 @@ def springBootProjects = springCloudProjects - springBootStarterProjects
 def springProjects = springBootProjects
 def javaProjects = springProjects
 
-def vJavaLang = '1.8'
 configure(javaProjects) {
     apply plugin: 'java'
     apply from: "${gradleDir}/testing.gradle"
     apply from: "${gradleDir}/codeCoverage.gradle"
 //    apply from: "${gradleDir}/staticCodeAnalysis.gradle"
 
-    targetCompatibility = vJavaLang
-    sourceCompatibility = vJavaLang
+    targetCompatibility = javaLangVersion
+    sourceCompatibility = javaLangVersion
 }
 
 configure(springCloudProjects) {
@@ -69,8 +66,6 @@ configure(springCloudProjects) {
     repositories {
         mavenCentral()
         maven { url springReleaseRepo }
-        maven { url springSnapshotRepo }
-        maven { url springMilestoneRepo }
     }
 
 }
@@ -90,6 +85,18 @@ configure(springBootProjects) {
     }
 }
 
+configure(apiProjects) {
+
+    dependencies {
+        compile project(':service:api-shared:starter')
+        compile 'org.springframework.cloud:spring-cloud-starter-config'
+        compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+        compile 'org.springframework.cloud:spring-cloud-starter-sleuth'
+        compile 'org.springframework.cloud:spring-cloud-starter-zipkin'
+        compile "de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}"
+    }
+}
+
 configure(springProjects) {
     group = 'com.neatlicity.service'
 
@@ -103,23 +110,11 @@ configure(springProjects) {
     }
 }
 
-configure(apiProjects) {
-
-    dependencies {
-        compile project(':service:api-shared:starter')
-        compile 'org.springframework.cloud:spring-cloud-starter-config'
-        compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-        compile 'org.springframework.cloud:spring-cloud-starter-sleuth'
-        compile 'org.springframework.cloud:spring-cloud-starter-zipkin'
-        compile "de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}"
-    }
-}
-
 configure(springBootStarterProjects) {
     apply plugin: 'java'
 
-    targetCompatibility = vJavaLang
-    sourceCompatibility = vJavaLang
+    targetCompatibility = javaLangVersion
+    sourceCompatibility = javaLangVersion
 
     group = 'com.neatlicity.service'
 }

@@ -4,9 +4,11 @@
     <mat-selection-list #todo>
       <mat-list-option
         checkboxPosition="before"
-        *ngFor="let task of (todoState | async).todos">
+        *ngFor="let task of todos">
         {{task.title}}
       </mat-list-option>
     </mat-selection-list>
   </div>
 </div>
+
+<!-- (todoState | async). -->

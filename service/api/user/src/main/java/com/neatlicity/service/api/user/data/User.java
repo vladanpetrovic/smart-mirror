@@ -1,5 +1,7 @@
 package com.neatlicity.service.api.user.data;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
@@ -10,7 +12,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.Size;
 
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Document(collection="users")
 public class User {
 

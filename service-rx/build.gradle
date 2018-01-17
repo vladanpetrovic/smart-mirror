@@ -1,0 +1,54 @@
+buildscript {
+    ext {
+        springBootReactiveVersion = '2.0.0.M7'
+        springCloudReactiveVersion = 'Finchley.M5'
+    }
+    repositories {
+        mavenCentral()
+        maven { url gradlePluginsRepo }
+        maven { url springSnapshotRepo }
+        maven { url springMilestoneRepo }
+        maven { url 'http://repo.spring.io/plugins-release' }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootReactiveVersion}"
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+    }
+}
+
+def apiReactiveProjects = [
+        project(':service-rx:api-gateway-rx'),
+        project(':service-rx:api-rx:todo-rx'),
+        project(':service-rx:api-rx:reminder-rx')
+]
+configure(apiReactiveProjects) {
+
+    repositories {
+        mavenCentral()
+        maven { url springSnapshotRepo }
+        maven { url springMilestoneRepo }
+    }
+
+    apply plugin: 'java'
+
+    targetCompatibility = javaLangVersion
+    sourceCompatibility = javaLangVersion
+
+    group = 'com.neatlicity.service'
+
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudReactiveVersion}"
+        }
+    }
+
+    dependencies {
+        compile 'org.springframework.boot:spring-boot-starter'
+        compile 'org.projectlombok:lombok'
+        compile 'org.slf4j:slf4j-api'
+        testCompile 'junit:junit'
+    }
+}
