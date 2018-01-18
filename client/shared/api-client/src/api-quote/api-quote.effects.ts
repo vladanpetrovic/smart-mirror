@@ -21,9 +21,9 @@ export class ApiQuoteEffects {
         .switchMap((action: fromQuoteActions.ApiGetQuoteAction) => {
             return this.httpClient.get<QuoteApiResponse>(
                 getApiEndpointUrl('/quote/of-the-day'), {
-                observe: 'body',
-                responseType: 'json'
-            })
+                    observe: 'body',
+                    responseType: 'json'
+                });
         })
         .map((quoteApiResponse) => {
             const quote = new Quote(
@@ -32,6 +32,6 @@ export class ApiQuoteEffects {
             return {
                 type: fromQuoteActions.QUOTE_ACTION_TYPES.SET_QUOTE_STATE,
                 payload: quote
-            }
+            };
         });
 }

@@ -1,14 +1,13 @@
 <div class="app-user-widget app-todo">
-  <h1>TO DO'S ({{todo.selectedOptions.selected.length}} / {{(todoState | async).todos.length}})</h1>
-  <div class="app-todo-list">
-    <mat-selection-list #todo>
-      <mat-list-option
-        checkboxPosition="before"
-        *ngFor="let task of todos">
-        {{task.title}}
-      </mat-list-option>
-    </mat-selection-list>
-  </div>
+    <h1>TO DO'S ({{todo.selectedOptions.selected.length}} / {{(todoState | async).todos.length}})</h1>
+    <div class="app-todo-list">
+        <mat-selection-list #todo>
+            <mat-list-option
+                    checkboxPosition="before"
+                    *ngFor="let task of (todoState | async).todos"
+                    [selected]="task.done">
+                {{task.title}}
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
 </div>
-
-<!-- (todoState | async). -->

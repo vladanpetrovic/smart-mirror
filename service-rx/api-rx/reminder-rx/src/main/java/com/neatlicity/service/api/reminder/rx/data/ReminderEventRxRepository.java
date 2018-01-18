@@ -1,11 +1,11 @@
-package com.neatlicity.service.api.todo.rx.data;
+package com.neatlicity.service.api.reminder.rx.data;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.data.mongodb.repository.Tailable;
 import reactor.core.publisher.Flux;
 
-public interface ToDoRxRepository extends ReactiveMongoRepository<ToDo, String> {
+public interface ReminderEventRxRepository extends ReactiveMongoRepository<ReminderEvent, String> {
 
     @Tailable
-    Flux<ToDo> findBy();
+    Flux<ReminderEvent> findBy();
 }

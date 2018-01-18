@@ -1,20 +1,28 @@
 package com.neatlicity.service.api.reminder.rx.web;
 
-import com.neatlicity.service.api.reminder.rx.data.Reminder;
-import com.neatlicity.service.api.reminder.rx.data.ReminderRxRepository;
+import com.neatlicity.service.api.reminder.rx.data.ReminderEvent;
+import com.neatlicity.service.api.reminder.rx.data.ReminderEventRxRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/api/rx/reminder-event")
 @RequiredArgsConstructor
 public class ReminderRxController {
-    private final @NonNull ReminderRxRepository reminderRxRepository;
+    private final @NonNull ReminderEventRxRepository reminderEventRxRepository;
 
-    @GetMapping("/api/rx/reminder")
-    Flux<Reminder> getAll(){
-        return reminderRxRepository.findAll();
+    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<ReminderEvent> stream(){
+        return reminderEventRxRepository.findBy();
     }
-}
+
+    @PostMapping("/")
+    public Mono<ReminderEvent> create(@Valid @RequestBody ReminderEvent reminderEvent) {
+        return reminderEventRxRepository.save(reminderEvent);
+    }}

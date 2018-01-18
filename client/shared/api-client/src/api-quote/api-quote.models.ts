@@ -1,13 +1,14 @@
 export interface QuoteState {
-    quote: Quote
+    quote: Quote;
 }
 
 export class Quote {
     constructor(public text: string,
-                public author: string) {}
+                public author: string) {
+    }
 }
 
 export interface QuoteApiResponse {
-    text: string,
-    author: string
+    text: string;
+    author: string;
 }

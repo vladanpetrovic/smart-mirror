@@ -1,5 +1,5 @@
 export interface ToDoState {
-    todos: ToDo[]
+    todos: ToDo[];
 }
 
 export class ToDo {
@@ -27,5 +27,17 @@ export interface ToDoApiResponse {
                 }
             }
         }[]
-    }
+    };
+}
+
+export interface ToDoEventApiMessage {
+    eventType: string;
+    toDo: {
+        id: string,
+        title: string,
+        dateTime: string,
+        category: number,
+        done: boolean,
+        userId: string
+    };
 }

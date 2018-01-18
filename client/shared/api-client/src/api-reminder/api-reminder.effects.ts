@@ -6,7 +6,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
 import {getApiEndpointUrl} from '../api.consts';
-import * as fromReminderActions from "./api-reminder.actions";
+import * as fromReminderActions from './api-reminder.actions';
 import {Reminder, ReminderApiResponse} from './api-reminder.models';
 
 @Injectable()
@@ -23,13 +23,13 @@ export class ApiReminderEffects {
                 getApiEndpointUrl('/reminder/data/reminders'), {
                     observe: 'body',
                     responseType: 'json'
-                })
+                });
         })
         .map((reminderApiResponse) => {
-            let reminders = [];
-            for (let reminder of reminderApiResponse._embedded.reminders) {
+            const reminders = [];
+            for (const reminder of reminderApiResponse._embedded.reminders) {
                 reminders.push(new Reminder(
-                    "123",
+                    '123',
                     reminder.title,
                     reminder.dateTime,
                     reminder.category
@@ -38,6 +38,6 @@ export class ApiReminderEffects {
             return {
                 type: fromReminderActions.REMINDER_ACTION_TYPES.SET_REMINDERS_STATE,
                 payload: reminders
-            }
+            };
         });
 }

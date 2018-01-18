@@ -10,22 +10,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection="todos-rxx")
 public class ToDo {
 
-    @Id
     private String id;
-
     private String title;
     private LocalDateTime dateTime;
     private Integer category;
     private boolean done;
     private String userId;
-
-    public ToDo(String title) {
-        this.title = title;
-    }
 }

@@ -1,5 +1,5 @@
-import * as fromWeatherActions from "./api-weather.actions";
-import * as fromWeatherState from "./api-weather.state";
+import * as fromWeatherActions from './api-weather.actions';
+import * as fromWeatherState from './api-weather.state';
 import {WeatherState} from './api-weather.models';
 
 export function apiWeatherReducer(state = fromWeatherState.weatherStateInitial,

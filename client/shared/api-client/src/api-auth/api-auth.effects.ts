@@ -3,10 +3,7 @@ import {Effect, Actions} from '@ngrx/effects';
 
 @Injectable()
 export class ApiAuthEffects {
-    constructor(private actions$: Actions) {}
+    constructor(private actions$: Actions) {
+    }
 
-    // @Effect() $ = this.actions$
-    //     .ofType()
-    //     .map(() => {
-    //     });
 }

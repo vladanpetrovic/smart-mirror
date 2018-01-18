@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {Store} from "@ngrx/store";
+import {Injectable} from '@angular/core';
+import {Store} from '@ngrx/store';
 
-import {Weather, WeatherState} from "./api-weather.models";
+import {Weather, WeatherState} from './api-weather.models';
 import {ApiGetWeatherAction} from './api-weather.actions';
 import {WEATHER_STORE_NAME} from './api-weather.consts';
 

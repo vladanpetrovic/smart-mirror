@@ -24,7 +24,7 @@ export class ApiWeatherEffects {
                 getApiEndpointUrl('/weather/current'), {
                     observe: 'body',
                     responseType: 'json'
-                })
+                });
         })
         .map((weatherApiResponse) => {
             const icon = weatherApiResponse.weather[0].icon;
@@ -34,6 +34,6 @@ export class ApiWeatherEffects {
             return {
                 type: fromWeatherActions.WEATHER_ACTION_TYPES.SET_WEATHER_STATE,
                 payload: weather
-            }
+            };
         });
 }

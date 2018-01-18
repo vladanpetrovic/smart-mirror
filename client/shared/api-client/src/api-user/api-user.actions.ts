@@ -1,4 +1,4 @@
-import {Action} from '@ngrx/store'
+import {Action} from '@ngrx/store';
 import {UserState} from './api-user.models';
 
 export const USER_ACTION_TYPES = {
@@ -9,7 +9,8 @@ export const USER_ACTION_TYPES = {
 export class SetUserStateAction implements Action {
     readonly type = USER_ACTION_TYPES.SET_USER_STATE;
 
-    constructor(public payload: UserState) {}
+    constructor(public payload: UserState) {
+    }
 }
 
 export class ApiGetUserAction implements Action {

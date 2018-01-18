@@ -1,5 +1,5 @@
-import * as fromUserActions from "./api-user.actions";
-import * as fromUserState from "./api-user.state";
+import * as fromUserActions from './api-user.actions';
+import * as fromUserState from './api-user.state';
 import {UserState} from './api-user.models';
 
 export function apiUserReducer(state = fromUserState.userStateInitial,

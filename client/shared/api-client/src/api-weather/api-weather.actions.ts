@@ -1,5 +1,5 @@
-import {Action} from '@ngrx/store'
-import {WeatherState} from "./api-weather.models";
+import {Action} from '@ngrx/store';
+import {WeatherState} from './api-weather.models';
 
 export const WEATHER_ACTION_TYPES = {
     SET_WEATHER_STATE: '[API Weather] SET_WEATHER_STATE',
@@ -9,7 +9,8 @@ export const WEATHER_ACTION_TYPES = {
 export class SetWeatherStateAction implements Action {
     readonly type = WEATHER_ACTION_TYPES.SET_WEATHER_STATE;
 
-    constructor(public payload: WeatherState) {}
+    constructor(public payload: WeatherState) {
+    }
 }
 
 export class ApiGetWeatherAction implements Action {

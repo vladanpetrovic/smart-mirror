@@ -21,7 +21,7 @@ import {WeatherComponent} from './widgets/general/weather/weather.component';
 import {TodoComponent} from './widgets/personal/todo/todo.component';
 import {ReminderComponent} from './widgets/personal/reminder/reminder.component';
 import {UserComponent} from './widgets/personal/user/user.component';
-import {QuoteComponent} from './widgets/personal/quote/quote.component';
+import {QuoteComponent} from './widgets/general/quote/quote.component';
 
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';

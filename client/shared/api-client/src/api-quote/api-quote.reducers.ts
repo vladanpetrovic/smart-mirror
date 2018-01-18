@@ -1,5 +1,5 @@
-import * as fromQuoteActions from "./api-quote.actions";
-import * as fromQuoteState from "./api-quote.state";
+import * as fromQuoteActions from './api-quote.actions';
+import * as fromQuoteState from './api-quote.state';
 import {QuoteState} from './api-quote.models';
 
 export function apiQuoteReducer(state = fromQuoteState.quoteStateInitial,

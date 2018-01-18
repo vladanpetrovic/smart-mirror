@@ -23,7 +23,7 @@ export class ApiUserEffects {
                 getApiEndpointUrl('/user/data/users/5a556d2d49e7066eb7c9e521'), {
                     observe: 'body',
                     responseType: 'json'
-                })
+                });
         })
         .map((userApiResponse) => {
             const user = new User(
@@ -34,6 +34,6 @@ export class ApiUserEffects {
             return {
                 type: fromUserActions.USER_ACTION_TYPES.SET_USER_STATE,
                 payload: user
-            }
+            };
         });
 }

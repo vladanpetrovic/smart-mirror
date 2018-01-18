@@ -1,5 +1,5 @@
-import {Action} from '@ngrx/store'
-import {QuoteState} from "./api-quote.models";
+import {Action} from '@ngrx/store';
+import {QuoteState} from './api-quote.models';
 
 export const QUOTE_ACTION_TYPES = {
     SET_QUOTE_STATE: '[API Quote] SET_QUOTE_STATE',
@@ -9,7 +9,8 @@ export const QUOTE_ACTION_TYPES = {
 export class SetQuoteStateAction implements Action {
     readonly type = QUOTE_ACTION_TYPES.SET_QUOTE_STATE;
 
-    constructor(public payload: QuoteState) {}
+    constructor(public payload: QuoteState) {
+    }
 }
 
 export class ApiGetQuoteAction implements Action {

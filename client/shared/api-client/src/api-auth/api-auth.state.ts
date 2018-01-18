@@ -6,4 +6,4 @@ export interface State {
 export let initial: State = {
     token: null,
     authenticated: false
-}
+};

@@ -10,16 +10,8 @@ import {ApiToDoService, ToDo} from 'neatlicity-api-client';
 })
 export class TodoComponent implements OnInit {
     todoState: Observable<ToDo[]>;
-    todos: ToDo[] = [];
 
-    private ws = new WebSocket('ws://localhost:9192/todos');
-
-    constructor(private apiToDoService: ApiToDoService) {
-        this.ws.onmessage = (me: MessageEvent) => {
-            const data = JSON.parse(me.data) as ToDo;
-            this.todos.push(data);
-        }
-    }
+    constructor(private apiToDoService: ApiToDoService) {}
 
     ngOnInit() {
         this.todoState = this.apiToDoService.getToDos();

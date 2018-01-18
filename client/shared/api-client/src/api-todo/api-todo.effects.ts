@@ -6,7 +6,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
 import {getApiEndpointUrl} from '../api.consts';
-import * as fromToDoActions from "./api-todo.actions";
+import * as fromToDoActions from './api-todo.actions';
 import {ToDo, ToDoApiResponse} from './api-todo.models';
 
 @Injectable()
@@ -23,22 +23,22 @@ export class ApiToDoEffects {
                 getApiEndpointUrl('/todo/data/todos'), {
                     observe: 'body',
                     responseType: 'json'
-                })
+                });
         })
         .map((todoApiResponse) => {
-            let todos = [];
-            for (let todo of todoApiResponse._embedded.todos) {
+            const todos = [];
+            for (const todo of todoApiResponse._embedded.todos) {
                 todos.push(new ToDo(
-                   "123",
-                   todo.title,
-                   todo.dateTime,
-                   todo.category,
-                   todo.done
+                    '123',
+                    todo.title,
+                    todo.dateTime,
+                    todo.category,
+                    todo.done
                 ));
             }
             return {
                 type: fromToDoActions.TODO_ACTION_TYPES.SET_TODOS_STATE,
                 payload: todos
-            }
+            };
         });
 }

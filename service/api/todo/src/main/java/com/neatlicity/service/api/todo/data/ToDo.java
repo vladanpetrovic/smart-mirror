@@ -18,7 +18,6 @@ public class ToDo {
 
     @Id
     private String id;
-
     private String title;
     private LocalDateTime dateTime;
     private Integer category;

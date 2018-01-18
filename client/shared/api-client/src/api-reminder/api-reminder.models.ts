@@ -1,12 +1,13 @@
 export interface ReminderState {
-    reminders: Reminder[]
+    reminders: Reminder[];
 }
 
 export class Reminder {
     constructor(public id: string,
                 public title: string,
                 public dateTime: string,
-                public category: number) {}
+                public category: number) {
+    }
 }
 
 export interface ReminderApiResponse {
@@ -25,5 +26,16 @@ export interface ReminderApiResponse {
                 }
             }
         }[]
-    }
+    };
+}
+
+export interface ReminderEventApiMessage {
+    eventType: string;
+    reminder: {
+        id: string,
+        title: string,
+        dateTime: string,
+        category: number,
+        userId: string
+    };
 }
