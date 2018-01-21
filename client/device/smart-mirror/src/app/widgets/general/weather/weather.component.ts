@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiWeatherService, Weather} from 'neatlicity-api-client';
+import {ApiWeatherService, Weather} from 'neatlicity-api-client-core';
 
 @Component({
     selector: 'app-weather',

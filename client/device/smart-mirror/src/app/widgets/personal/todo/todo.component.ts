@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiToDoService, ToDo} from 'neatlicity-api-client';
+import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
 
 @Component({
     selector: 'app-todo',

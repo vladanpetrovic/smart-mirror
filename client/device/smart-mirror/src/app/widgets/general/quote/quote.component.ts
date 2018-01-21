@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiQuoteService, Quote} from 'neatlicity-api-client';
+import {ApiQuoteService, Quote} from 'neatlicity-api-client-core';
 
 @Component({
     selector: 'app-quote',

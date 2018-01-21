@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {IonicPage, NavController, PopoverController} from 'ionic-angular';
 import {ReminderNewPopoverPage} from '../reminder-new-popover/reminder-new-popover';
-import {ApiReminderService, Reminder} from 'neatlicity-api-client';
 import {Observable} from 'rxjs/Observable';
+import {ApiReminderService, Reminder} from 'neatlicity-api-client-core';
 
 @IonicPage()
 @Component({

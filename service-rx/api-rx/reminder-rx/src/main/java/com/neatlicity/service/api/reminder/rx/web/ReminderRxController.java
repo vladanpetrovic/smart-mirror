@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/rx/reminder-event")
+@RequestMapping("/event")
 @RequiredArgsConstructor
 public class ReminderRxController {
     private final @NonNull ReminderEventRxRepository reminderEventRxRepository;

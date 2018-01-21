@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiUserService, User} from 'neatlicity-api-client';
+import {ApiUserService, User} from 'neatlicity-api-client-core';
 
 @Component({
     selector: 'app-user',

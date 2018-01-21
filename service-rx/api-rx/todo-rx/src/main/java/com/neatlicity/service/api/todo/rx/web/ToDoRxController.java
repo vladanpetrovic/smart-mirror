@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/rx/todo-event")
+@RequestMapping("/event")
 @RequiredArgsConstructor
 public class ToDoRxController {
     private final @NonNull ToDoEventRepository toDoEventRxRepository;

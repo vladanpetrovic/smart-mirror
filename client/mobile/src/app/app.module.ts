@@ -19,7 +19,7 @@ import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
-import {ApiModule} from 'neatlicity-api-client';
+import {ApiCoreModule} from 'neatlicity-api-client-core';
 
 @NgModule({
     declarations: [
@@ -39,7 +39,7 @@ import {ApiModule} from 'neatlicity-api-client';
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument(),
-        ApiModule
+        ApiCoreModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [

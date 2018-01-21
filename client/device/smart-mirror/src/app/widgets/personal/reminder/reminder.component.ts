@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiReminderService, Reminder} from 'neatlicity-api-client';
+import {ApiReminderService, Reminder} from 'neatlicity-api-client-core';
 
 @Component({
   selector: 'app-reminder',

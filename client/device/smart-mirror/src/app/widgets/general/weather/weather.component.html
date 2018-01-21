@@ -1,6 +1,6 @@
 <div class="app-widget app-weather">
   <div class="app-weather-temp" >
     <span class="wi weathericon {{ (weatherState | async).weather.icon }}"></span>
-    {{ (weatherState | async).weather.temperature + ' ºC'}}
+    {{ ((weatherState | async).weather.temperature).toFixed() + ' ºC'}}
   </div>
 </div>

@@ -1,0 +1,6 @@
+
+task runApiClientCoreBuild(dependsOn: npmInstall, type: NpmTask) {
+    args = ['run', 'build']
+}
+
+npmPack.dependsOn runApiClientCoreBuild

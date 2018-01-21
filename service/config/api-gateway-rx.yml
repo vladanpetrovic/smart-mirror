@@ -1,0 +1,23 @@
+server:
+  port: 8180
+
+#security:
+#  oauth2:
+#    resource:
+#      userInfoUri: http://localhost:9191/uaa/user
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: api-todo-rx
+        uri: lb://api-todo-rx
+        predicates:
+        - Path=/tood-rx/**
+      - id: api-reminder-rx
+        uri: lb://api-reminder-rx
+        predicates:
+        - Path=/reminder-rx/**

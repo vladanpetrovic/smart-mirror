@@ -8,7 +8,7 @@ import {HomePage} from '../pages/home/home';
 import {TodosPage} from '../pages/todos/todos';
 import {RemindersPage} from '../pages/reminders/reminders';
 import {SigninPage} from '../pages/signin/signin';
-import {ApiUserService, User} from 'neatlicity-api-client';
+import {ApiUserService, User} from 'neatlicity-api-client-core';
 
 @Component({
     templateUrl: 'app.html'

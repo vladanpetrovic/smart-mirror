@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {NavController} from 'ionic-angular';
-import {ApiReminderService, ApiToDoService, Reminder, ToDo} from 'neatlicity-api-client';
+import {ApiReminderService, ApiToDoService, Reminder, ToDo} from 'neatlicity-api-client-core';
 
 @Component({
     selector: 'page-home',

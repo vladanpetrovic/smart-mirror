@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {IonicPage, NavController, PopoverController} from 'ionic-angular';
 import {TodoNewPopoverPage} from '../todo-new-popover/todo-new-popover';
-import {ApiToDoService, ToDo} from 'neatlicity-api-client';
+import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
 
 @IonicPage()
 @Component({

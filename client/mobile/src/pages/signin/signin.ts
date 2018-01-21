@@ -5,7 +5,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from '../home/home';
 import {SignupPage} from '../signup/signup';
 import {Observable} from 'rxjs/Observable';
-import {ApiUserService, User} from 'neatlicity-api-client';
+import {ApiAuthService, ApiUserService, User} from 'neatlicity-api-client-core';
 
 @IonicPage()
 @Component({
@@ -15,12 +15,13 @@ import {ApiUserService, User} from 'neatlicity-api-client';
 export class SigninPage implements OnInit {
     userState: Observable<User>;
 
-    userEmail: string = 'test@test.com';
-    userPassword: string = 'test1234';
+    userEmail: string = 'vladan@test.com';
+    userPassword: string = 'pass123';
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
-                private apiUserService: ApiUserService) {
+                private apiUserService: ApiUserService,
+                private apiAuthService: ApiAuthService) {
     }
 
     ngOnInit() {
@@ -28,6 +29,9 @@ export class SigninPage implements OnInit {
     }
     
     onSubmit(form: NgForm) {
+        const email = form.value.email;
+        const password = form.value.password;
+        this.apiAuthService.login(email, password);
         this.navCtrl.setRoot(HomePage);
     }
 

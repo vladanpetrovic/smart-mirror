@@ -1,0 +1,25 @@
+server:
+  port: 9191
+  contextPath: /uaa
+
+logging.level.org.springframework.security: DEBUG
+
+spring:
+  boot:
+    admin:
+      url: http://localhost:9999
+  data:
+    mongodb:
+      database: neatlicity
+
+security:
+  sessions: if_required
+#  user:
+#    name: user
+#    password: password
+#  oauth2:
+#    client:
+#      clientId: acme
+#      clientSecret: acmesecret
+#      authorized-grant-types: authorization_code,refresh_token,password
+#      scope: openid

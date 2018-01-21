@@ -8,7 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {MaterialModule} from './material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {ApiModule} from 'neatlicity-api-client';
+import {ApiCoreModule} from 'neatlicity-api-client-core';
 
 import 'hammerjs';
 
@@ -46,7 +46,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument(),
-        ApiModule
+        ApiCoreModule
     ],
     providers: [ElectronService],
     bootstrap: [AppComponent]

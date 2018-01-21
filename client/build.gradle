@@ -8,9 +8,17 @@ buildscript {
 }
 
 def nodeProjects = [
-  project(':client:device:smart-mirror'),
-  project(':client:mobile'),
-  project(':client:shared:api-client')
+        project(':client:api-clients:api-client-core'),
+        project(':client:api-clients:api-client-mobile'),
+        project(':client:api-clients:api-client-smart-mirror'),
+        project(':client:api-clients:api-client-smart-photo-frame'),
+        project(':client:api-clients:api-client-smart-touch-display'),
+        project(':client:api-clients:api-client-web'),
+        project(':client:device:smart-mirror'),
+        project(':client:device:smart-photo-frame'),
+        project(':client:device:smart-touch-display'),
+        project(':client:mobile'),
+        project(':client:web')
 ]
 
 configure(nodeProjects) {
@@ -20,5 +28,9 @@ configure(nodeProjects) {
     version = '9.3.0'
     npmVersion = '5.6.0'
     download = true
+  }
+
+  task npmPack(type: NpmTask) {
+    args = ['pack']
   }
 }
