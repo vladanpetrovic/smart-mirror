@@ -7,5 +7,5 @@ import reactor.core.publisher.Flux;
 public interface ToDoEventRepository extends ReactiveMongoRepository<ToDoEvent, String> {
 
     @Tailable
-    Flux<ToDoEvent> findBy();
+    Flux<ToDoEvent> findByUserId(String userId);
 }

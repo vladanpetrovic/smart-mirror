@@ -11,9 +11,11 @@ import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
 export class TodoComponent implements OnInit {
     todoState: Observable<ToDo[]>;
 
-    constructor(private apiToDoService: ApiToDoService) {}
+    constructor(private apiToDoService: ApiToDoService) {
+        this.apiToDoService.getByUserId('5a612381056f1e4984dd2bc9');
+    }
 
     ngOnInit() {
-        this.todoState = this.apiToDoService.getToDos();
+        this.todoState = this.apiToDoService.toDoState();
     }
 }

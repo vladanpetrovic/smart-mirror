@@ -25,7 +25,7 @@ export class SigninPage implements OnInit {
     }
 
     ngOnInit() {
-        this.userState = this.apiUserService.getUser();
+        this.userState = this.apiUserService.userState();
     }
     
     onSubmit(form: NgForm) {

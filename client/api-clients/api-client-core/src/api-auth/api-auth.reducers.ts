@@ -8,14 +8,18 @@ export function apiAuthReducer(state = fromAuthState.authStateInitial,
         case fromAuthActions.AUTH_ACTION_TYPES.SET_TOKEN :
             return {
                 ...state,
-                token: (action as fromAuthActions.SetTokenAction).payload,
-                authenticated: true
+                auth: {
+                    token: (action as fromAuthActions.SetTokenAction).payload,
+                    authenticated: true
+                }
             };
         case fromAuthActions.AUTH_ACTION_TYPES.LOGOUT :
             return {
                 ...state,
-                token: null,
-                authenticated: false
+                auth: {
+                    token: null,
+                    authenticated: false
+                }
             };
         default :
             return state;

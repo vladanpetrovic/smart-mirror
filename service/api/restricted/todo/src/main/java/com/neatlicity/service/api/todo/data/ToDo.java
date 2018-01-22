@@ -20,7 +20,7 @@ public class ToDo {
     private String id;
     private String title;
     private LocalDateTime dateTime;
-    private Integer category;
+    private ToDoCategory category;
     private boolean done;
     private String userId;
 }

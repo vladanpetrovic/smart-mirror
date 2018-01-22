@@ -14,4 +14,12 @@ export interface UserApiResponse {
     firstName: string;
     lastName: string;
     email: string;
+    _links: {
+        self: {
+            href: string
+        },
+        toDo: {
+            href: string
+        }
+    };
 }

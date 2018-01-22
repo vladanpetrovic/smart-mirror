@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
-import {getApiEndpointUrl} from '../api.consts';
+import {getIdFromHateoasLink} from '../shared';
+import {getApiToDoByIdUrl, getApiToDosByUserIdUrl, getApiToDosUrl} from './api-todo.consts';
 import * as fromToDoActions from './api-todo.actions';
 import {ToDo, ToDoApiResponse} from './api-todo.models';
 
@@ -18,9 +19,15 @@ export class ApiToDoEffects {
     @Effect()
     apiGetToDos$ = this.actions$
         .ofType(fromToDoActions.TODO_ACTION_TYPES.API_GET_TODOS)
-        .switchMap((action: fromToDoActions.ApiGetToDosAction) => {
+        .map((action: fromToDoActions.ApiGetToDosAction) => {
+            return action.payload;
+        })
+        .switchMap((userId: string) => {
+            const params = new HttpParams()
+                .set('userId', userId);
             return this.httpClient.get<ToDoApiResponse>(
-                getApiEndpointUrl('/todo/data/todos'), {
+                getApiToDosByUserIdUrl(), {
+                    params: params,
                     observe: 'body',
                     responseType: 'json'
                 });
@@ -29,7 +36,7 @@ export class ApiToDoEffects {
             const todos = [];
             for (const todo of todoApiResponse._embedded.todos) {
                 todos.push(new ToDo(
-                    '123',
+                    getIdFromHateoasLink(todo._links.self.href),
                     todo.title,
                     todo.dateTime,
                     todo.category,
@@ -40,5 +47,47 @@ export class ApiToDoEffects {
                 type: fromToDoActions.TODO_ACTION_TYPES.SET_TODOS_STATE,
                 payload: todos
             };
+        });
+
+    @Effect({dispatch: false})
+    apiCreateToDo$ = this.actions$
+        .ofType(fromToDoActions.TODO_ACTION_TYPES.API_CREATE_TODO)
+        .map((action: fromToDoActions.ApiCreateToDoAction) => {
+            return action.payload;
+        })
+        .switchMap((toDo: ToDo) => {
+            return this.httpClient.post<any>(
+                getApiToDosUrl(), toDo, {
+                    observe: 'body',
+                    responseType: 'json'
+                });
+        });
+
+    @Effect({dispatch: false})
+    apiUpdateToDo$ = this.actions$
+        .ofType(fromToDoActions.TODO_ACTION_TYPES.API_UPDATE_TODO)
+        .map((action: fromToDoActions.ApiUpdateToDoAction) => {
+            return action.payload;
+        })
+        .switchMap((toDo: ToDo) => {
+            return this.httpClient.patch<any>(
+                getApiToDoByIdUrl(toDo.id), toDo, {
+                    observe: 'body',
+                    responseType: 'json'
+                });
+        });
+
+    @Effect({dispatch: false})
+    apiDeleteToDo$ = this.actions$
+        .ofType(fromToDoActions.TODO_ACTION_TYPES.API_DELETE_TODO)
+        .map((action: fromToDoActions.ApiDeleteToDoAction) => {
+            return action.payload;
+        })
+        .switchMap((toDoId: string) => {
+            return this.httpClient.delete<any>(
+                getApiToDoByIdUrl(toDoId), {
+                    observe: 'body',
+                    responseType: 'json'
+                });
         });
 }

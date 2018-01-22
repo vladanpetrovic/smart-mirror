@@ -17,9 +17,9 @@ import javax.validation.Valid;
 public class ReminderRxController {
     private final @NonNull ReminderEventRxRepository reminderEventRxRepository;
 
-    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<ReminderEvent> stream(){
-        return reminderEventRxRepository.findBy();
+    @GetMapping(value = "/stream/byUserId/{userId}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<ReminderEvent> stream(@PathVariable("userId")String userId){
+        return reminderEventRxRepository.findByUserId(userId);
     }
 
     @PostMapping("/")

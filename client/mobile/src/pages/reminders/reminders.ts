@@ -15,10 +15,11 @@ export class RemindersPage implements OnInit {
     constructor(public navCtrl: NavController,
                 public popoverCrtl: PopoverController,
                 private apiReminderService: ApiReminderService) {
+        this.apiReminderService.getByUserId('5a612381056f1e4984dd2bc9');
     }
 
     ngOnInit() {
-        this.reminderState = this.apiReminderService.getReminders();
+        this.reminderState = this.apiReminderService.reminderState();
     }
 
     onCreateNew(event: MouseEvent) {

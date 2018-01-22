@@ -20,6 +20,6 @@ public class Reminder {
     private String id;
     private String title;
     private LocalDateTime dateTime;
-    private Integer category;
+    private ReminderCategory category;
     private String userId;
 }

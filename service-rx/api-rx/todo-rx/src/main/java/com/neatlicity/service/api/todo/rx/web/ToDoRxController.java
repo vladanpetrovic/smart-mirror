@@ -17,9 +17,9 @@ import javax.validation.Valid;
 public class ToDoRxController {
     private final @NonNull ToDoEventRepository toDoEventRxRepository;
 
-    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<ToDoEvent> stream(){
-        return toDoEventRxRepository.findBy();
+    @GetMapping(value = "/stream/byUserId/{userId}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<ToDoEvent> stream(@PathVariable("userId")String userId){
+        return toDoEventRxRepository.findByUserId(userId);
     }
 
     @PostMapping("/")

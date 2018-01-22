@@ -16,10 +16,12 @@ export class HomePage implements OnInit {
     constructor(public navCtrl: NavController,
                 private apiToDoService: ApiToDoService,
                 private apiReminderService: ApiReminderService) {
+        this.apiToDoService.getByUserId('5a612381056f1e4984dd2bc9');
+        this.apiReminderService.getByUserId('5a612381056f1e4984dd2bc9');
     }
 
     ngOnInit() {
-        this.todoState = this.apiToDoService.getToDos();
-        this.reminderState = this.apiReminderService.getReminders();
+        this.todoState = this.apiToDoService.toDoState();
+        this.reminderState = this.apiReminderService.reminderState();
     }
 }

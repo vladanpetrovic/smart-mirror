@@ -12,10 +12,11 @@ export class ReminderComponent implements OnInit {
     reminderState: Observable<Reminder[]>;
 
     constructor(private apiReminderService: ApiReminderService) {
+        this.apiReminderService.getByUserId('5a612381056f1e4984dd2bc9');
     }
 
     ngOnInit() {
-        this.reminderState = this.apiReminderService.getReminders();
+        this.reminderState = this.apiReminderService.reminderState();
     }
 
 }

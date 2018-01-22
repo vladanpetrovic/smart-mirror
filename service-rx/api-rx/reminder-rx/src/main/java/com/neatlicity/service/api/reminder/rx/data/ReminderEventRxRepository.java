@@ -7,5 +7,5 @@ import reactor.core.publisher.Flux;
 public interface ReminderEventRxRepository extends ReactiveMongoRepository<ReminderEvent, String> {
 
     @Tailable
-    Flux<ReminderEvent> findBy();
+    Flux<ReminderEvent> findByUserId(String userId);
 }

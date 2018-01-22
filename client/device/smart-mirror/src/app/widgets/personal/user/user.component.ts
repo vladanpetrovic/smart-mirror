@@ -12,10 +12,11 @@ export class UserComponent implements OnInit {
     userState: Observable<User>;
 
     constructor(private apiUserService: ApiUserService) {
+        this.apiUserService.getById('5a612381056f1e4984dd2bc9');
     }
 
     ngOnInit() {
-        this.userState = this.apiUserService.getUser();
+        this.userState = this.apiUserService.userState();
     }
 
 }

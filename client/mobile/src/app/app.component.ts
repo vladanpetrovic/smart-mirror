@@ -38,7 +38,7 @@ export class MyApp implements OnInit {
     }
 
     ngOnInit() {
-        this.userState = this.apiUserService.getUser();
+        this.userState = this.apiUserService.userState();
     }
 
     initializeApp() {

@@ -1,9 +1,12 @@
 import {Action} from '@ngrx/store';
-import {ToDoEventApiMessage, ToDoState} from './api-todo.models';
+import {ToDo, ToDoEventApiMessage, ToDoState} from './api-todo.models';
 
 export const TODO_ACTION_TYPES = {
     SET_TODOS_STATE: '[API ToDo] SET_TODOS_STATE',
     API_GET_TODOS: '[API ToDo] API_GET_TODOS',
+    API_CREATE_TODO: '[API ToDo] API_CREATE_TODO',
+    API_UPDATE_TODO: '[API ToDo] API_UPDATE_TODO',
+    API_DELETE_TODO: '[API ToDo] API_DELETE_TODO',
     ON_TODO_EVENT_CHANGE: '[API ToDo] ON_TODO_EVENT_CHANGE'
 };
 
@@ -16,6 +19,30 @@ export class SetToDosStateAction implements Action {
 
 export class ApiGetToDosAction implements Action {
     readonly type = TODO_ACTION_TYPES.API_GET_TODOS;
+
+    constructor(public payload: String) {
+    }
+}
+
+export class ApiCreateToDoAction implements Action {
+    readonly type = TODO_ACTION_TYPES.API_CREATE_TODO;
+
+    constructor(public payload: ToDo) {
+    }
+}
+
+export class ApiUpdateToDoAction implements Action {
+    readonly type = TODO_ACTION_TYPES.API_UPDATE_TODO;
+
+    constructor(public payload: ToDo) {
+    }
+}
+
+export class ApiDeleteToDoAction implements Action {
+    readonly type = TODO_ACTION_TYPES.API_DELETE_TODO;
+
+    constructor(public payload: String) {
+    }
 }
 
 export class OnToDoEventChangeAction implements Action {
@@ -25,4 +52,6 @@ export class OnToDoEventChangeAction implements Action {
     }
 }
 
-export type ToDoActions = SetToDosStateAction | ApiGetToDosAction | OnToDoEventChangeAction;
+export type ToDoActions = SetToDosStateAction | ApiGetToDosAction
+    | ApiCreateToDoAction | ApiUpdateToDoAction | ApiDeleteToDoAction
+    | OnToDoEventChangeAction;
