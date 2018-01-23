@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "reminders", path = "reminders")
-public interface ReminderRepository extends MongoRepository<Reminder, String> {
+public interface ReminderRepository extends MongoRepository<Reminder, String>, ReminderRepositoryCustom {
 
     List<Reminder> findByUserId(@Param("userId") String userId);
 }

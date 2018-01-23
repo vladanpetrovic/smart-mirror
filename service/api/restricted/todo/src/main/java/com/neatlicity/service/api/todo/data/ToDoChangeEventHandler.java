@@ -1,8 +1,5 @@
 package com.neatlicity.service.api.todo.data;
 
-import com.neatlicity.service.api.todo.integration.EventType;
-import com.neatlicity.service.api.todo.integration.ToDoEventJson;
-import com.neatlicity.service.api.todo.integration.ToDoRxApiClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.annotation.HandleAfterCreate;
@@ -15,38 +12,38 @@ import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 public class ToDoChangeEventHandler {
 
     @Autowired
-    ToDoRxApiClient toDoRxApiClient;
+    ToDoEventRepository toDoEventRepository;
 
     @HandleAfterCreate
     public void onAfterCreate(ToDo toDo) {
         log.info("TODO AFTER CREATE " + toDo);
-        toDoRxApiClient.createEvent(
-                ToDoEventJson
-                        .builder()
+        toDoEventRepository.save(
+                ToDoEvent.builder()
                         .toDo(toDo)
-                        .eventType(EventType.CREATED)
+                        .eventType(ToDoEventType.CREATED)
+                        .userId(toDo.getUserId())
                         .build());
     }
 
     @HandleAfterSave
     public void onAfterSave(ToDo toDo) {
         log.info("TODO AFTER SAVE " + toDo);
-        toDoRxApiClient.createEvent(
-                ToDoEventJson
-                        .builder()
+        toDoEventRepository.save(
+                ToDoEvent.builder()
                         .toDo(toDo)
-                        .eventType(EventType.UPDATED)
+                        .eventType(ToDoEventType.UPDATED)
+                        .userId(toDo.getUserId())
                         .build());
     }
 
     @HandleAfterDelete
     public void onAfterDelete(ToDo toDo) {
         log.info("TODO AFTER DELETE " + toDo);
-        toDoRxApiClient.createEvent(
-                ToDoEventJson
-                        .builder()
+        toDoEventRepository.save(
+                ToDoEvent.builder()
                         .toDo(toDo)
-                        .eventType(EventType.DELETED)
+                        .eventType(ToDoEventType.DELETED)
+                        .userId(toDo.getUserId())
                         .build());
     }
 }

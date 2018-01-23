@@ -1,4 +1,4 @@
-package com.neatlicity.service.api.reminder.rx.data;
+package com.neatlicity.service.api.todo.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,12 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection="reminder-events")
-public class ReminderEvent {
+@Document(collection="todo-events")
+public class ToDoEvent {
 
     @Id
     private String id;
-    private ReminderEventType eventType;
-    private Reminder reminder;
+    private ToDoEventType eventType;
+    private ToDo toDo;
     private String userId;
 }

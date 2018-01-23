@@ -7,7 +7,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "todos", path = "todos")
-public interface ToDoRepository extends MongoRepository<ToDo, String> {
+public interface ToDoRepository extends MongoRepository<ToDo, String>, ToDoRepositoryCustom {
 
     List<ToDo> findByUserId(@Param("userId") String userId);
+
 }

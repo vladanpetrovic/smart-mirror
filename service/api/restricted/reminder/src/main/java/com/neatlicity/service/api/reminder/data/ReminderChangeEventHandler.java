@@ -1,8 +1,5 @@
 package com.neatlicity.service.api.reminder.data;
 
-import com.neatlicity.service.api.reminder.integration.EventType;
-import com.neatlicity.service.api.reminder.integration.ReminderEventJson;
-import com.neatlicity.service.api.reminder.integration.ReminderRxApiClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.annotation.HandleAfterCreate;
@@ -14,38 +11,38 @@ import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 @RepositoryEventHandler(Reminder.class)
 public class ReminderChangeEventHandler {
 
-    @Autowired ReminderRxApiClient reminderRxApiClient;
+    @Autowired ReminderEventRepository reminderEventRepository;
 
     @HandleAfterCreate
     public void onAfterCreate(Reminder reminder) {
         log.info("REMINDER AFTER CREATE " + reminder);
-        reminderRxApiClient.createEvent(
-                ReminderEventJson
-                        .builder()
+        reminderEventRepository.save(
+                ReminderEvent.builder()
                         .reminder(reminder)
-                        .eventType(EventType.CREATED)
+                        .eventType(ReminderEventType.CREATED)
+                        .userId(reminder.getUserId())
                         .build());
     }
 
     @HandleAfterSave
     public void onAfterSave(Reminder reminder) {
         log.info("REMINDER AFTER SAVE " + reminder);
-        reminderRxApiClient.createEvent(
-                ReminderEventJson
-                        .builder()
+        reminderEventRepository.save(
+                ReminderEvent.builder()
                         .reminder(reminder)
-                        .eventType(EventType.UPDATED)
+                        .eventType(ReminderEventType.UPDATED)
+                        .userId(reminder.getUserId())
                         .build());
     }
 
     @HandleAfterDelete
     public void onAfterDelete(Reminder reminder) {
         log.info("REMINDER AFTER DELETE " + reminder);
-        reminderRxApiClient.createEvent(
-                ReminderEventJson
-                        .builder()
+        reminderEventRepository.save(
+                ReminderEvent.builder()
                         .reminder(reminder)
-                        .eventType(EventType.DELETED)
+                        .eventType(ReminderEventType.DELETED)
+                        .userId(reminder.getUserId())
                         .build());
     }
 }

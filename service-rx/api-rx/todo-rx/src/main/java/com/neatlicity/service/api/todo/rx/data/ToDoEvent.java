@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -18,6 +16,7 @@ public class ToDoEvent {
 
     @Id
     private String id;
-    private EventType eventType;
+    private ToDoEventType eventType;
     private ToDo toDo;
+    private String userId;
 }

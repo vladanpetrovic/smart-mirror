@@ -1,4 +1,4 @@
-package com.neatlicity.service.api.reminder.rx.data;
+package com.neatlicity.service.api.reminder.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

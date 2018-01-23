@@ -10,3 +10,6 @@ spring:
       database: neatlicity
     rest:
       basePath: /data
+  jackson:
+    serialization:
+      writeDatesAsTimestamps: false
