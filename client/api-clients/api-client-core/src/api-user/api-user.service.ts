@@ -20,14 +20,14 @@ export class ApiUserService {
     }
 
     create(user: User) {
-        this.store.dispatch(new fromUserActions.ApiCreateUserAction(user));
+        return this.store.dispatch(new fromUserActions.ApiCreateUserAction(user));
     }
 
     update(user: User) {
-        this.store.dispatch(new fromUserActions.ApiUpdateUserAction(user));
+        return this.store.dispatch(new fromUserActions.ApiUpdateUserAction(user));
     }
 
     delete(userId: string) {
-        this.store.dispatch(new fromUserActions.ApiDeleteUserAction(userId));
+        return this.store.dispatch(new fromUserActions.ApiDeleteUserAction(userId));
     }
 }

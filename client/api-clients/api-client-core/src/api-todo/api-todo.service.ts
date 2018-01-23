@@ -21,15 +21,15 @@ export class ApiToDoService {
     }
 
     create(toDo: ToDo) {
-        this.store.dispatch(new fromToDoActions.ApiCreateToDoAction(toDo));
+        return this.store.dispatch(new fromToDoActions.ApiCreateToDoAction(toDo));
     }
 
     update(toDo: ToDo) {
-        this.store.dispatch(new fromToDoActions.ApiUpdateToDoAction(toDo));
+        return this.store.dispatch(new fromToDoActions.ApiUpdateToDoAction(toDo));
     }
 
     delete(toDoId: string) {
-        this.store.dispatch(new fromToDoActions.ApiDeleteToDoAction(toDoId));
+        return this.store.dispatch(new fromToDoActions.ApiDeleteToDoAction(toDoId));
     }
 
     initEventStreamByUserId(userId: string) {

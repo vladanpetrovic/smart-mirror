@@ -18,6 +18,14 @@
           <ion-option value="MAINTENANCE">Maintenance</ion-option>
         </ion-select>
       </ion-item>
+      <ion-item>
+        <ion-label stacked>Date & Time</ion-label>
+        <ion-datetime
+                name="dateTime"
+                displayFormat="MMM DD, YYYY HH:mm"
+                pickerFormat="MMM DD, YYYY HH:mm"
+                [(ngModel)]="newDate"></ion-datetime>
+      </ion-item>
     </ion-list>
     <button
       ion-button

@@ -35,12 +35,12 @@ export class ApiReminderEffects {
         .map((reminderApiResponse) => {
             const reminders = [];
             for (const reminder of reminderApiResponse._embedded.reminders) {
-                reminders.push(new Reminder(
-                    getIdFromHateoasLink(reminder._links.self.href),
-                    reminder.title,
-                    reminder.dateTime,
-                    reminder.category
-                ));
+                reminders.push({
+                    id: getIdFromHateoasLink(reminder._links.self.href),
+                    title: reminder.title,
+                    dateTime: reminder.dateTime,
+                    category: reminder.category
+                } as Reminder);
             }
             return {
                 type: fromReminderActions.REMINDER_ACTION_TYPES.SET_REMINDERS_STATE,

@@ -1,5 +1,9 @@
 import {User, UserState} from './api-user.models';
 
 export let userStateInitial: UserState = {
-    user: new User('123', 'John', 'Doe', 'john@test.com')
+    user: {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john@test.com'
+    } as User
 };

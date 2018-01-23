@@ -35,13 +35,13 @@ export class ApiToDoEffects {
         .map((todoApiResponse) => {
             const todos = [];
             for (const todo of todoApiResponse._embedded.todos) {
-                todos.push(new ToDo(
-                    getIdFromHateoasLink(todo._links.self.href),
-                    todo.title,
-                    todo.dateTime,
-                    todo.category,
-                    todo.done
-                ));
+                todos.push({
+                    id: getIdFromHateoasLink(todo._links.self.href),
+                    title: todo.title,
+                    dateTime: todo.dateTime,
+                    category: todo.category,
+                    done: todo.done
+                } as ToDo);
             }
             return {
                 type: fromToDoActions.TODO_ACTION_TYPES.SET_TODOS_STATE,

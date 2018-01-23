@@ -27,7 +27,7 @@ export class SigninPage implements OnInit {
     ngOnInit() {
         this.userState = this.apiUserService.userState();
     }
-    
+
     onSubmit(form: NgForm) {
         const email = form.value.email;
         const password = form.value.password;

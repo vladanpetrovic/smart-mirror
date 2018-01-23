@@ -3,11 +3,11 @@ export interface ReminderState {
 }
 
 export class Reminder {
-    constructor(public id: string,
-                public title: string,
-                public dateTime: string,
-                public category: number) {
-    }
+    id: string;
+    title: string;
+    dateTime: string;
+    category: number;
+    userId: string;
 }
 
 export interface ReminderApiResponse {

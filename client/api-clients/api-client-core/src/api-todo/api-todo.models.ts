@@ -3,11 +3,12 @@ export interface ToDoState {
 }
 
 export class ToDo {
-    constructor(public id: string,
-                public title: string,
-                public dateTime: string,
-                public category: number,
-                public done: boolean) {}
+    id: string;
+    title: string;
+    dateTime: string;
+    category: number;
+    done: boolean;
+    userId: string;
 }
 
 export interface ToDoApiResponse {

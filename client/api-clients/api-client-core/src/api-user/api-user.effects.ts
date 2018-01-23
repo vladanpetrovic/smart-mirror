@@ -30,11 +30,12 @@ export class ApiUserEffects {
                 });
         })
         .map((userApiResponse) => {
-            const user = new User(
-                getIdFromHateoasLink(userApiResponse._links.self.href),
-                userApiResponse.firstName,
-                userApiResponse.lastName,
-                userApiResponse.email);
+            const user = {
+                id: getIdFromHateoasLink(userApiResponse._links.self.href),
+                firstName: userApiResponse.firstName,
+                lastName: userApiResponse.lastName,
+                email: userApiResponse.email
+            } as User;
             return {
                 type: fromUserActions.USER_ACTION_TYPES.SET_USER_STATE,
                 payload: user
@@ -63,7 +64,8 @@ export class ApiUserEffects {
         })
         .switchMap((user: User) => {
             return this.httpClient.patch<any>(
-                getApiUserByIdUrl(user.id), user, {
+                getApiUserByIdUrl(user.id),
+                    user, {
                     observe: 'body',
                     responseType: 'json'
                 });

@@ -21,15 +21,15 @@ export class ApiReminderService {
     }
 
     create(reminder: Reminder) {
-        this.store.dispatch(new fromReminderActions.ApiCreateReminderAction(reminder));
+        return this.store.dispatch(new fromReminderActions.ApiCreateReminderAction(reminder));
     }
 
     update(reminder: Reminder) {
-        this.store.dispatch(new fromReminderActions.ApiUpdateReminderAction(reminder));
+        return this.store.dispatch(new fromReminderActions.ApiUpdateReminderAction(reminder));
     }
 
     delete(reminderId: string) {
-        this.store.dispatch(new fromReminderActions.ApiDeleteReminderAction(reminderId));
+        return this.store.dispatch(new fromReminderActions.ApiDeleteReminderAction(reminderId));
     }
 
     initEventStreamByUserId(userId: string) {
