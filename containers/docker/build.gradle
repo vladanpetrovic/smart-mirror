@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'docker-compose'
 
 dockerCompose {
-    useComposeFiles = ['docker-compose.datasources.yml'] // like 'docker-compose -f <file>'; default is empty
+    useComposeFiles = ['docker-compose.datasources.yml', 'docker-compose.infrastructure.yml'] // like 'docker-compose -f <file>'; default is empty
     // startedServices = ['web'] // list of services to execute when calling 'docker-compose up' or 'docker-compose pull' (when not specified, all services are executed)
     // exitCodeFromService = 'web'
     // scale = [${serviceName1}: 5, ${serviceName2}: 2] // Pass docker compose --scale option like 'docker-compose up --scale serviceName1=5 --scale serviceName2=2'

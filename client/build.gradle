@@ -16,7 +16,6 @@ def nodeProjects = [
         project(':client:api-clients:api-client-web'),
         project(':client:device:smart-mirror'),
         project(':client:device:smart-photo-frame'),
-        project(':client:device:smart-touch-display'),
         project(':client:mobile'),
         project(':client:web')
 ]
