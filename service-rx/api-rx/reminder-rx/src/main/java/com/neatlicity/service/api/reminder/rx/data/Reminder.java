@@ -14,6 +14,6 @@ public class Reminder {
     private String id;
     private String title;
     private LocalDateTime dateTime;
-    private Integer category;
+    private String category;
     private String userId;
 }

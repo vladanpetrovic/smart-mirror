@@ -15,7 +15,9 @@ export class RemindersPage implements OnInit {
     constructor(public navCtrl: NavController,
                 public popoverCrtl: PopoverController,
                 private apiReminderService: ApiReminderService) {
-        this.apiReminderService.getByUserId('5a612381056f1e4984dd2bc9');
+        const userId = '5a67f83460149b798047be46';
+        this.apiReminderService.initEventStreamByUserId(userId)
+        this.apiReminderService.getByUserId(userId);
     }
 
     ngOnInit() {

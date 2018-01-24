@@ -15,12 +15,16 @@ export function apiToDoReducer(state = fromToDoState.todoStateInitial,
             const stateToDos = state.todos;
             switch (toDoEvent.eventType) {
                 case 'CREATED':
+                    let exists = false;
                     for (const todo of stateToDos) {
                         if (todo.id === toDoEvent.toDo.id) {
+                            exists = true;
                             break;
                         }
                     }
-                    stateToDos.push(toDoEvent.toDo);
+                    if (!exists) {
+                        stateToDos.push(toDoEvent.toDo);
+                    }
                     break;
                 case 'UPDATED':
                     for (const todo of stateToDos) {

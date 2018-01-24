@@ -15,12 +15,16 @@ export function apiReminderReducer(state = fromReminderState.reminderStateInitia
             const stateReminders = state.reminders;
             switch (reminderEvent.eventType) {
                 case 'CREATED':
+                    let exists = false;
                     for (const todo of stateReminders) {
                         if (todo.id === reminderEvent.reminder.id) {
+                            exists = true;
                             break;
                         }
                     }
-                    stateReminders.push(reminderEvent.reminder);
+                    if (!exists) {
+                        stateReminders.push(reminderEvent.reminder);
+                    }
                     break;
                 case 'UPDATED':
                     for (const todo of stateReminders) {

@@ -16,8 +16,11 @@ export class HomePage implements OnInit {
     constructor(public navCtrl: NavController,
                 private apiToDoService: ApiToDoService,
                 private apiReminderService: ApiReminderService) {
-        this.apiToDoService.getByUserId('5a612381056f1e4984dd2bc9');
-        this.apiReminderService.getByUserId('5a612381056f1e4984dd2bc9');
+        const userId = '5a67f83460149b798047be46';
+        this.apiToDoService.initEventStreamByUserId(userId);
+        this.apiToDoService.getByUserId(userId);
+        this.apiReminderService.initEventStreamByUserId(userId)
+        this.apiReminderService.getByUserId(userId);
     }
 
     ngOnInit() {

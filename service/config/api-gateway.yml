@@ -25,3 +25,14 @@ zuul:
     api-weather:
       path: /api/weather/**
       serviceId: api-weather
+  host:
+    connect-timeout-millis: 5000
+    socket-timeout-millis: 10000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
