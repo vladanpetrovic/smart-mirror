@@ -2,7 +2,7 @@ export interface ToDoState {
     todos: ToDo[];
 }
 
-export class ToDo {
+export interface ToDo {
     id: string;
     title: string;
     dateTime: string;

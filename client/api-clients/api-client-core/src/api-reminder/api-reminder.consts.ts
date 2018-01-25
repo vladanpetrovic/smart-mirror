@@ -13,7 +13,7 @@ export function getApiRemindersUrl() {
 }
 
 export function getApiReminderByIdUrl(reminderId: string) {
-    return getApiRemindersUrl() + reminderId;
+    return getApiRemindersUrl() + '/' + reminderId;
 }
 
 export function getApiRemindersByUserIdUrl() {

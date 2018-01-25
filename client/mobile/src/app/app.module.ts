@@ -4,16 +4,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import {MyApp} from './app.component';
-import {HomePage} from '../pages/home/home';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {SigninPage} from '../pages/signin/signin';
-import {SignupPage} from '../pages/signup/signup';
-import {TodosPage} from '../pages/todos/todos';
-import {TodoNewPopoverPage} from '../pages/todo-new-popover/todo-new-popover';
-import {RemindersPage} from '../pages/reminders/reminders';
-import {ReminderNewPopoverPage} from '../pages/reminder-new-popover/reminder-new-popover';
 
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
@@ -23,18 +16,11 @@ import {ApiCoreModule} from 'neatlicity-api-client-core';
 
 @NgModule({
     declarations: [
-        MyApp,
-        HomePage,
-        SigninPage,
-        SignupPage,
-        TodosPage,
-        TodoNewPopoverPage,
-        RemindersPage,
-        ReminderNewPopoverPage
+        MyApp
     ],
     imports: [
-        BrowserModule,
         IonicModule.forRoot(MyApp),
+        BrowserModule,
         HttpClientModule,
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
@@ -43,14 +29,7 @@ import {ApiCoreModule} from 'neatlicity-api-client-core';
     ],
     bootstrap: [IonicApp],
     entryComponents: [
-        MyApp,
-        HomePage,
-        SigninPage,
-        SignupPage,
-        TodosPage,
-        TodoNewPopoverPage,
-        RemindersPage,
-        ReminderNewPopoverPage
+        MyApp
     ],
     providers: [
         StatusBar,

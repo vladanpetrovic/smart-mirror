@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {HomePage} from '../home/home';
-import {SignupPage} from '../signup/signup';
 import {Observable} from 'rxjs/Observable';
 import {ApiAuthService, ApiUserService, User} from 'neatlicity-api-client-core';
+import {HomePage} from '../home/home';
 
 @IonicPage()
 @Component({
@@ -32,10 +31,10 @@ export class SigninPage implements OnInit {
         const email = form.value.email;
         const password = form.value.password;
         this.apiAuthService.login(email, password);
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot('HomePage');
     }
 
     onSignup() {
-        this.navCtrl.push(SignupPage);
+        this.navCtrl.push('SignupPage');
     }
 }

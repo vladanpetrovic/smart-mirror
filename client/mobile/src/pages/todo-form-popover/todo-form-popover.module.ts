@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
-import {TodoNewPopoverPage} from './todo-new-popover';
+import {ToDoFormPopoverPage} from './todo-form-popover';
 
 @NgModule({
     declarations: [
-        TodoNewPopoverPage,
+        ToDoFormPopoverPage,
     ],
     imports: [
-        IonicPageModule.forChild(TodoNewPopoverPage),
-    ],
+        IonicPageModule.forChild(ToDoFormPopoverPage),
+    ]
 })
 export class TodoNewPopoverPageModule {
 }

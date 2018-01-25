@@ -2,7 +2,7 @@ export interface ReminderState {
     reminders: Reminder[];
 }
 
-export class Reminder {
+export interface Reminder {
     id: string;
     title: string;
     dateTime: string;

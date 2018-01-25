@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
-import {ReminderNewPopoverPage} from './reminder-new-popover';
+import {ReminderFormPopoverPage} from './reminder-form-popover';
 
 @NgModule({
     declarations: [
-        ReminderNewPopoverPage,
+        ReminderFormPopoverPage,
     ],
     imports: [
-        IonicPageModule.forChild(ReminderNewPopoverPage),
-    ],
+        IonicPageModule.forChild(ReminderFormPopoverPage),
+    ]
 })
 export class ReminderNewPopoverPageModule {
 }

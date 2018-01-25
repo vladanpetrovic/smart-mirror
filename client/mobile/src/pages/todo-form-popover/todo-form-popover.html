@@ -1,0 +1,36 @@
+<ion-content padding>
+    <form [formGroup]="toDoForm" (ngSubmit)="onSubmit(f)">
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>To Do</ion-label>
+                <ion-textarea
+                        formControlName="title"
+                        required></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Type</ion-label>
+                <ion-select
+                        formControlName="category"
+                        required>
+                    <ion-option value="HOME">Home</ion-option>
+                    <ion-option value="SHOPPING">Shopping</ion-option>
+                    <ion-option value="MAINTENANCE">Maintenance</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Date & Time</ion-label>
+                <ion-datetime
+                        formControlName="dateTime"
+                        displayFormat="MMM DD, YYYY HH:mm"
+                        pickerFormat="MMM DD, YYYY HH:mm"
+                        required></ion-datetime>
+            </ion-item>
+        </ion-list>
+        <button
+                ion-button
+                block
+                type="submit"
+                [disabled]="!toDoForm.valid">Add
+        </button>
+    </form>
+</ion-content>

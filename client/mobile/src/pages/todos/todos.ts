@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {IonicPage, NavController, PopoverController} from 'ionic-angular';
-import {TodoNewPopoverPage} from '../todo-new-popover/todo-new-popover';
+import {Checkbox, IonicPage, NavController, PopoverController} from 'ionic-angular';
+import {ToDoFormPopoverPage} from '../todo-form-popover/todo-form-popover';
 import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
 
 @IonicPage()
@@ -24,8 +24,40 @@ export class TodosPage implements OnInit {
         this.todoState = this.apiToDoService.toDoState();
     }
 
-    onCreateNew(event: MouseEvent) {
-        const newPopover = this.popoverCrtl.create(TodoNewPopoverPage);
+    onCreate(event: MouseEvent) {
+        const newPopover = this.popoverCrtl.create(ToDoFormPopoverPage);
         newPopover.present({ev: event});
+    }
+
+    onEdit(event: MouseEvent, toDo: ToDo) {
+        const popover = this.popoverCrtl.create(ToDoFormPopoverPage, toDo);
+        popover.present({ev: event});
+    }
+
+    onDelete(event: MouseEvent, toDoId: string) {
+        this.apiToDoService.delete(toDoId);
+    }
+
+    onCheck(event: Checkbox, toDoId: string) {
+        const toDo = {
+            id: toDoId,
+            done: event.checked
+        } as ToDo;
+        this.apiToDoService.update(toDo);
+    }
+
+    getIconName(category: String) {
+        switch (category) {
+            case 'HOME':
+                return 'home';
+            case 'WORK':
+                return 'briefcase';
+            case 'SHOPPING':
+                return 'basket';
+            case 'MAINTENANCE':
+                return 'build';
+            default:
+                return 'home';
+        }
     }
 }

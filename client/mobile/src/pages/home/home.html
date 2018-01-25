@@ -1,33 +1,25 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title text-uppercase>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-uppercase>Home</ion-title>
+    </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <h1>Home Duties</h1>
-  <h2>{{date | date:'fullDate'}}</h2>
-  <ion-list>
-    <ion-list-header no-lines>
-      To Do's
-    </ion-list-header>
-    <ion-item *ngFor="let task of (todoState | async).todos">
-      <ion-label>{{task.title}}</ion-label>
-      <ion-checkbox [checked]="task.done"></ion-checkbox>
-      <ion-icon name="home" item-end></ion-icon>
-    </ion-item>
-  </ion-list>
+    <h1>Home Duties</h1>
+    <h2>{{date | date:'fullDate'}}</h2>
+    <todo-list
+            [todos]="(todoState | async).todos"
+            toDoListHeader="To Do's"></todo-list>
 
-  <ion-list>
-    <ion-list-header no-lines>
-      Reminders
-    </ion-list-header>
-    <ion-item *ngFor="let event of (reminderState | async).reminders">
-      <ion-label>{{event.title}}</ion-label>
-      <ion-icon name="people" item-end></ion-icon>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+        <ion-list-header no-lines>
+            Reminders
+        </ion-list-header>
+        <ion-item *ngFor="let event of (reminderState | async).reminders">
+            <ion-label>{{event.title}}</ion-label>
+            <ion-icon name="{{getReminderIconName(event.category)}}" item-end></ion-icon>
+        </ion-item>
+    </ion-list>
 </ion-content>

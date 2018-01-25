@@ -18,7 +18,7 @@ export class MyApp implements OnInit {
 
     userState: Observable<User>;
 
-    rootPage: any = SigninPage;
+    rootPage: any = 'SigninPage';
 
     pages: Array<{ title: string, component: any }>;
 
@@ -30,9 +30,9 @@ export class MyApp implements OnInit {
 
         // used for an example of ngFor and navigation
         this.pages = [
-            {title: 'Home', component: HomePage},
-            {title: 'To Do\'s', component: TodosPage},
-            {title: 'Reminders', component: RemindersPage}
+            {title: 'Home', component: 'HomePage'},
+            {title: 'To Do\'s', component: 'TodosPage'},
+            {title: 'Reminders', component: 'RemindersPage'}
         ];
 
     }
@@ -57,6 +57,6 @@ export class MyApp implements OnInit {
     }
 
     onLogout() {
-        this.nav.setRoot(SigninPage)
+        this.nav.setRoot('SigninPage')
     }
 }

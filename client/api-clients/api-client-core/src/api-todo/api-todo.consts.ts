@@ -13,7 +13,7 @@ export function getApiToDosUrl() {
 }
 
 export function getApiToDoByIdUrl(toDoId: string) {
-    return getApiToDosUrl() + toDoId;
+    return getApiToDosUrl() + '/' + toDoId;
 }
 
 export function getApiToDosByUserIdUrl() {

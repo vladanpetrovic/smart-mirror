@@ -8,7 +8,7 @@ import {RemindersPage} from './reminders';
     ],
     imports: [
         IonicPageModule.forChild(RemindersPage),
-    ],
+    ]
 })
 export class RemindersPageModule {
 }
