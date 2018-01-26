@@ -10,6 +10,7 @@ import {getToDoIconName} from '../../shared/todo.util';
 export class ToDoListComponent {
     @Input() toDoListHeader: string = '';
     @Input() todos: ToDo[] = [];
+    @Input() selectable: boolean = true;
 
     constructor(public popoverCtrl: PopoverController,
                 public apiToDoService: ApiToDoService) {

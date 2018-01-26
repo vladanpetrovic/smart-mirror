@@ -1,23 +1,27 @@
-<ion-item-sliding *ngFor="let todo of todos">
-    <ion-item>
-        <ion-label>{{todo.title}}</ion-label>
-        <ion-checkbox
-                [checked]="todo.done"
-                (ionChange)="onCheck($event, todo.id)"></ion-checkbox>
-        <ion-icon
-                name="{{getIconName(todo.category)}}"
-                item-end></ion-icon>
-    </ion-item>
-    <ion-item-options side="right">
-        <button ion-button color="dark"
-                (click)="onEdit($event, todo)">
-            <ion-icon name="create"></ion-icon>
-            Edit
-        </button>
-        <button ion-button color="danger"
-                (click)="onDelete($event, todo.id)">
-            <ion-icon name="trash"></ion-icon>
-            Delete
-        </button>
-    </ion-item-options>
-</ion-item-sliding>
+<ion-list>
+    <ion-list-header no-lines>{{toDoListHeader}}</ion-list-header>
+    <ion-item-sliding *ngFor="let todo of todos">
+        <ion-item>
+            <ion-label>{{todo.title}}</ion-label>
+            <ion-checkbox
+                    *ngIf="selectable"
+                    [checked]="todo.done"
+                    (ionChange)="onCheck($event, todo.id)"></ion-checkbox>
+            <ion-icon
+                    name="{{getIconName(todo.category)}}"
+                    item-end></ion-icon>
+        </ion-item>
+        <ion-item-options side="right">
+            <button ion-button color="dark"
+                    (click)="onEdit($event, todo)">
+                <ion-icon name="create"></ion-icon>
+                Edit
+            </button>
+            <button ion-button color="danger"
+                    (click)="onDelete($event, todo.id)">
+                <ion-icon name="trash"></ion-icon>
+                Delete
+            </button>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-list>

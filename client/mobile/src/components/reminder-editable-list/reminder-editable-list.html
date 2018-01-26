@@ -1,2 +1,24 @@
-<div>
-</div>
+<ion-list>
+    <ion-list-header no-lines>{{reminderListHeader}}</ion-list-header>
+    <ion-item-sliding *ngFor="let reminder of reminders">
+        <ion-item>
+            <ion-label>{{reminder.title}}</ion-label>
+            <ion-icon
+                    name="{{getIconName(reminder.category)}}"
+                    item-end></ion-icon>
+        </ion-item>
+        <ion-item-options side="right">
+            <button ion-button color="dark"
+                    (click)="onEdit($event, reminder)">
+                <ion-icon name="create"></ion-icon>
+                Edit
+            </button>
+            <button ion-button color="danger"
+                    (click)="onDelete($event, reminder.id)">
+                <ion-icon name="trash"></ion-icon>
+                Delete
+            </button>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
+

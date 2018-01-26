@@ -10,7 +10,7 @@ import {ToDoListComponent} from '../todo-list/todo-list';
 export class ToDoEditableListComponent extends ToDoListComponent {
 
     onEdit(event: MouseEvent, toDo: ToDo) {
-        const popover = this.popoverCtrl.create(ToDoFormPopoverPage, toDo);
+        const popover = this.popoverCtrl.create('ToDoFormPopoverPage', toDo);
         popover.present({ev: event});
     }
 

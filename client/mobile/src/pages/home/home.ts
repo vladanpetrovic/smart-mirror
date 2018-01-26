@@ -17,47 +17,15 @@ export class HomePage implements OnInit {
     constructor(public navCtrl: NavController,
                 private apiToDoService: ApiToDoService,
                 private apiReminderService: ApiReminderService) {
+    }
+
+    ngOnInit() {
         const userId = '5a67f83460149b798047be46';
         this.apiToDoService.initEventStreamByUserId(userId);
         this.apiToDoService.getByUserId(userId);
         this.apiReminderService.initEventStreamByUserId(userId)
         this.apiReminderService.getByUserId(userId);
-    }
-
-    ngOnInit() {
         this.todoState = this.apiToDoService.toDoState();
         this.reminderState = this.apiReminderService.reminderState();
-    }
-
-    getToDoIconName(category: String) {
-        switch (category) {
-            case 'HOME':
-                return 'home';
-            case 'WORK':
-                return 'briefcase';
-            case 'SHOPPING':
-                return 'basket';
-            case 'MAINTENANCE':
-                return 'build';
-            default:
-                return 'home';
-        }
-    }
-
-    getReminderIconName(category: String) {
-        switch (category) {
-            case 'MEETING':
-                return 'people';
-            case 'BIRTHDAY':
-                return 'calendar';
-            case 'HOLIDAY':
-                return 'calendar';
-            case 'ANNIVERSARY':
-                return 'calendar';
-            case 'NOTICE':
-                return 'alert';
-            default:
-                return 'home';
-        }
     }
 }

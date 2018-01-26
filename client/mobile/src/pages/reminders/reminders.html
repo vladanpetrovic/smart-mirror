@@ -1,62 +1,24 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title text-uppercase>Reminders</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-uppercase>Reminders</ion-title>
+    </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-  <ion-fab top right edge>
-    <button
-      ion-fab
-      color="red"
-      (click)="onCreate($event)"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
-
-  <ion-list>
-    <ion-list-header no-lines>
-      Today
-    </ion-list-header>
-    <ion-item-sliding *ngFor="let event of (reminderState | async).reminders">
-      <ion-item>
-        <ion-label>{{event.title}}</ion-label>
-        <ion-icon name="{{getReminderIconName(event.category)}}" item-end></ion-icon>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="dark">
-          <ion-icon name="create"></ion-icon>
-          Edit
+    <ion-fab top right edge>
+        <button ion-fab
+                color="red"
+                (click)="onCreate($event)">
+            <ion-icon name="add"></ion-icon>
         </button>
-        <button ion-button color="danger">
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-
-  <ion-list>
-    <ion-list-header no-lines>
-      Tomorrow
-    </ion-list-header>
-    <ion-item-sliding *ngFor="let event of (reminderState | async).reminders">
-      <ion-item>
-        <ion-label>{{event.title}}</ion-label>
-        <ion-icon name="{{getReminderIconName(event.category)}}" item-end></ion-icon>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="dark">
-          <ion-icon name="create"></ion-icon>
-          Edit
-        </button>
-        <button ion-button color="danger">
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+    </ion-fab>
+    <reminder-editable-list
+            [reminders]="(reminderState | async).reminders"
+            reminderListHeader="Today"></reminder-editable-list>
+    <reminder-editable-list
+            [reminders]="(reminderState | async).reminders"
+            reminderListHeader="Tomorrow"></reminder-editable-list>
 </ion-content>

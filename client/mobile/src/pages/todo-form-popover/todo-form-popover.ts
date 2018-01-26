@@ -3,7 +3,6 @@ import {IonicPage, LoadingController, NavParams, ViewController} from 'ionic-ang
 import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-
 @IonicPage()
 @Component({
     selector: 'page-todo-form-popover',
@@ -11,9 +10,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ToDoFormPopoverPage implements OnInit {
     toDoForm: FormGroup;
-    newDate: Date = new Date();
-    toDoEdit: ToDo = null;
+    toDoEditData: ToDo = null;
     isEdit: boolean = false;
+    submitBtnText: string = 'Create';
 
     constructor(private navParams: NavParams,
                 private viewController: ViewController,
@@ -26,12 +25,13 @@ export class ToDoFormPopoverPage implements OnInit {
         let category = null;
         let dateTime = null;
 
-        this.toDoEdit = this.navParams.data;
-        if (this.toDoEdit != null && this.toDoEdit.id != null) {
+        this.toDoEditData = this.navParams.data;
+        if (this.toDoEditData != null && this.toDoEditData.id != null) {
             this.isEdit = true;
-            title = this.toDoEdit.title;
-            category = this.toDoEdit.category;
-            dateTime = this.toDoEdit.dateTime;
+            this.submitBtnText = 'Edit';
+            title = this.toDoEditData.title;
+            category = this.toDoEditData.category;
+            dateTime = this.toDoEditData.dateTime;
         }
         this.toDoForm = new FormGroup({
             'title': new FormControl(title, Validators.required),
@@ -58,8 +58,8 @@ export class ToDoFormPopoverPage implements OnInit {
         } as ToDo;
 
         let httpResponse;
-        if(this.isEdit && this.toDoEdit != null) {
-            toDo.id = this.toDoEdit.id;
+        if(this.isEdit && this.toDoEditData != null) {
+            toDo.id = this.toDoEditData.id;
             httpResponse = this.apiToDoService.update(toDo);
         } else {
             httpResponse = this.apiToDoService.create(toDo);

@@ -12,14 +12,7 @@
     <todo-list
             [todos]="(todoState | async).todos"
             toDoListHeader="To Do's"></todo-list>
-
-    <ion-list>
-        <ion-list-header no-lines>
-            Reminders
-        </ion-list-header>
-        <ion-item *ngFor="let event of (reminderState | async).reminders">
-            <ion-label>{{event.title}}</ion-label>
-            <ion-icon name="{{getReminderIconName(event.category)}}" item-end></ion-icon>
-        </ion-item>
-    </ion-list>
+    <reminder-list
+            [reminders]="(reminderState | async).reminders"
+            reminderListHeader="Reminders"></reminder-list>
 </ion-content>

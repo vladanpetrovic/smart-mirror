@@ -1,37 +1,39 @@
 <ion-content padding>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <ion-list>
-      <ion-item>
-        <ion-label stacked>Reminder</ion-label>
-        <ion-input
-          type="text-area"
-          required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Type</ion-label>
-        <ion-select
-          name="type"
-          [(ngModel)]="type">
-          <ion-option value="MEETING">Meeting</ion-option>
-          <ion-option value="BIRTHDAY">Birthday</ion-option>
-          <ion-option value="HOLIDAY">Holiday</ion-option>
-          <ion-option value="ANNIVERSARY">Anniversary</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Date & Time</ion-label>
-        <ion-datetime
-          name="dateTime"
-          displayFormat="MMM DD, YYYY HH:mm"
-          pickerFormat="MMM DD, YYYY HH:mm"
-          [(ngModel)]="newDate"></ion-datetime>
-      </ion-item>
-    </ion-list>
-    <button
-      ion-button
-      block
-      type="submit"
-      [disabled]="!f.valid">Add
-    </button>
-  </form>
+    <form [formGroup]="reminderForm" (ngSubmit)="onSubmit()">
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>Reminder</ion-label>
+                <ion-textarea
+                        formControlName="title"
+                        required></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Type</ion-label>
+                <ion-select
+                        formControlName="category"
+                        required>
+                    <ion-option value="MEETING">Meeting</ion-option>
+                    <ion-option value="BIRTHDAY">Birthday</ion-option>
+                    <ion-option value="HOLIDAY">Holiday</ion-option>
+                    <ion-option value="ANNIVERSARY">Anniversary</ion-option>
+                    <ion-option value="NOTICE">Notice</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Date & Time</ion-label>
+                <ion-datetime
+                        formControlName="dateTime"
+                        displayFormat="MMM DD, YYYY HH:mm"
+                        pickerFormat="MMM DD, YYYY HH:mm"
+                        required></ion-datetime>
+            </ion-item>
+        </ion-list>
+        <button
+                ion-button
+                block
+                type="submit"
+                [disabled]="!reminderForm.valid">
+            {{submitBtnText}}
+        </button>
+    </form>
 </ion-content>

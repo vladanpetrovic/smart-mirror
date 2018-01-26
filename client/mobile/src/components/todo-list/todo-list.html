@@ -3,6 +3,7 @@
     <ion-item *ngFor="let todo of todos">
         <ion-label>{{todo.title}}</ion-label>
         <ion-checkbox
+                *ngIf="selectable"
                 [checked]="todo.done"
                 (ionChange)="onCheck($event, todo.id)"></ion-checkbox>
         <ion-icon

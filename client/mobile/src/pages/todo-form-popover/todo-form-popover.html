@@ -1,5 +1,5 @@
 <ion-content padding>
-    <form [formGroup]="toDoForm" (ngSubmit)="onSubmit(f)">
+    <form [formGroup]="toDoForm" (ngSubmit)="onSubmit()">
         <ion-list>
             <ion-item>
                 <ion-label stacked>To Do</ion-label>
@@ -13,6 +13,7 @@
                         formControlName="category"
                         required>
                     <ion-option value="HOME">Home</ion-option>
+                    <ion-option value="WORK">Work</ion-option>
                     <ion-option value="SHOPPING">Shopping</ion-option>
                     <ion-option value="MAINTENANCE">Maintenance</ion-option>
                 </ion-select>
@@ -30,7 +31,8 @@
                 ion-button
                 block
                 type="submit"
-                [disabled]="!toDoForm.valid">Add
+                [disabled]="!toDoForm.valid">
+            {{submitBtnText}}
         </button>
     </form>
 </ion-content>
