@@ -1,10 +1,10 @@
 <div class="app-user-widget app-todo">
-    <h1>TO DO'S ({{todo.selectedOptions.selected.length}} / {{(todoState | async).todos.length}})</h1>
+    <h1>TO DO'S ({{todo.selectedOptions.selected.length}} / {{(todoState | async).todosForToday.length}})</h1>
     <div class="app-todo-list">
         <mat-selection-list #todo>
             <mat-list-option
                     checkboxPosition="before"
-                    *ngFor="let task of (todoState | async).todos"
+                    *ngFor="let task of (todoState | async).todosForToday"
                     [selected]="task.done">
                 {{task.title}}
             </mat-list-option>

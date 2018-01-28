@@ -37,11 +37,12 @@ export function apiReminderReducer(state = fromReminderState.reminderStateInitia
             const reminderEvent = (action as fromReminderActions.OnReminderEventChangeAction).payload;
             let stateReminders = state.reminders;
             const reminderDate = new Date(reminderEvent.reminder.dateTime);
+            reminderEvent.reminder.dateTime = reminderDate.toDateString();
             const daysDiff = moment().diff(reminderDate, 'd');
             if (daysDiff === 0) {
                 stateReminders = state.remindersForToday;
             } else {
-                if (daysDiff > 0) {
+                if (daysDiff < 0) {
                     stateReminders = state.remindersInFuture;
                 } else {
                     stateReminders = state.remindersInPast;
@@ -85,7 +86,7 @@ export function apiReminderReducer(state = fromReminderState.reminderStateInitia
                     remindersForToday: stateReminders
                 };
             } else {
-                if (daysDiff > 0) {
+                if (daysDiff < 0) {
                     return {
                         ...state,
                         remindersInFuture: stateReminders

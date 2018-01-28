@@ -3,5 +3,4 @@ version = '0.0.1'
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
     compile 'org.springframework.boot:spring-boot-starter-webflux'
-    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 }

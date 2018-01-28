@@ -14,7 +14,7 @@ export class TodoComponent implements OnInit {
     constructor(private apiToDoService: ApiToDoService) {
         const userId = '5a67f83460149b798047be46';
         this.apiToDoService.initEventStreamByUserId(userId)
-        this.apiToDoService.getByUserId(userId);
+        this.apiToDoService.apiGetToDosForToday(userId);
     }
 
     ngOnInit() {

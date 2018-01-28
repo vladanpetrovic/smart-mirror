@@ -14,7 +14,7 @@ export class ReminderComponent implements OnInit {
     constructor(private apiReminderService: ApiReminderService) {
         const userId = '5a67f83460149b798047be46';
         this.apiReminderService.initEventStreamByUserId(userId)
-        this.apiReminderService.getByUserId('5a67f83460149b798047be46');
+        this.apiReminderService.apiGetRemindersForToday('5a67f83460149b798047be46');
     }
 
     ngOnInit() {

@@ -37,11 +37,12 @@ export function apiToDoReducer(state = fromToDoState.todoStateInitial,
             const toDoEvent = (action as fromToDoActions.OnToDoEventChangeAction).payload;
             let stateToDos = state.todos;
             const toDoDate = new Date(toDoEvent.toDo.dateTime);
+            toDoEvent.toDo.dateTime = toDoDate.toDateString();
             const daysDiff = moment().diff(toDoDate, 'd');
             if (daysDiff === 0) {
                 stateToDos = state.todosForToday;
             } else {
-                if (daysDiff > 0) {
+                if (daysDiff < 0) {
                     stateToDos = state.todosInFuture;
                 } else {
                     stateToDos = state.todosInPast;
@@ -85,7 +86,7 @@ export function apiToDoReducer(state = fromToDoState.todoStateInitial,
                     todosForToday: stateToDos
                 };
             } else {
-                if (daysDiff > 0) {
+                if (daysDiff < 0) {
                     return {
                         ...state,
                         todosInFuture: stateToDos

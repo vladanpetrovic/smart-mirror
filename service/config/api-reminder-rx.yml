@@ -5,6 +5,3 @@ spring:
   data:
     mongodb:
       database: neatlicity
-  jackson:
-    serialization:
-      writeDatesAsTimestamps: false
