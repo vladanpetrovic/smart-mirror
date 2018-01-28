@@ -11,6 +11,7 @@ export class ToDoListComponent {
     @Input() toDoListHeader: string = '';
     @Input() todos: ToDo[] = [];
     @Input() selectable: boolean = true;
+    @Input() disable: boolean = false;
 
     constructor(public popoverCtrl: PopoverController,
                 public apiToDoService: ApiToDoService) {

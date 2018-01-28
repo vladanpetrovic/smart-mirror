@@ -1,9 +1,16 @@
 <ion-list>
-    <ion-list-header no-lines>{{toDoListHeader}}</ion-list-header>
+    <ion-list-header no-lines>{{toDoListHeader | uppercase}}</ion-list-header>
+    <ion-item *ngIf="todos.length === 0">
+        <ion-label>No entries, create one!</ion-label>
+    </ion-item>
     <ion-item *ngFor="let todo of todos">
-        <ion-label>{{todo.title}}</ion-label>
+        <ion-label>
+            <h2>{{todo.title}}</h2>
+            <p>{{todo.dateTime | date:'EEEE, MMMM d, y, h:mm'}}</p>
+        </ion-label>
         <ion-checkbox
                 *ngIf="selectable"
+                [disabled]="disable"
                 [checked]="todo.done"
                 (ionChange)="onCheck($event, todo.id)"></ion-checkbox>
         <ion-icon

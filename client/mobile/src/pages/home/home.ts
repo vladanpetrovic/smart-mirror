@@ -22,9 +22,9 @@ export class HomePage implements OnInit {
     ngOnInit() {
         const userId = '5a67f83460149b798047be46';
         this.apiToDoService.initEventStreamByUserId(userId);
-        this.apiToDoService.getByUserId(userId);
+        this.apiToDoService.apiGetToDosForToday(userId);
         this.apiReminderService.initEventStreamByUserId(userId)
-        this.apiReminderService.getByUserId(userId);
+        this.apiReminderService.apiGetRemindersForToday(userId);
         this.todoState = this.apiToDoService.toDoState();
         this.reminderState = this.apiReminderService.reminderState();
     }

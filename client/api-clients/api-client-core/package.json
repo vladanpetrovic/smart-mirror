@@ -8,7 +8,10 @@
     "clean": "rm -rf ./lib/*",
     "build": "npm run clean && ngc -p tsconfig.json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "moment": "^2.20.1"
+  },
   "devDependencies": {
     "@angular/common": "^5.0.0",
     "@angular/core": "^5.0.0",

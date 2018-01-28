@@ -1,25 +1,5 @@
-<ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title text-uppercase>To Do's</ion-title>
-    </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-    <ion-fab top right edge>
-        <button ion-fab
-                color="red"
-                (click)="onCreate($event)">
-            <ion-icon name="add"></ion-icon>
-        </button>
-    </ion-fab>
-    <todo-editable-list
-            [todos]="(todoState | async).todos"
-            toDoListHeader="Today"></todo-editable-list>
-    <todo-editable-list
-            [todos]="(todoState | async).todos"
-            toDoListHeader="Tomorrow"
-            [selectable]="false"></todo-editable-list>
-</ion-content>
+<ion-tabs [selectedIndex]="1">
+    <ion-tab [root]="tabPast" tabTitle="PAST"></ion-tab>
+    <ion-tab [root]="tabCurrent" tabTitle="CURRENT"></ion-tab>
+    <ion-tab [root]="tabFuture" tabTitle="FUTURE"></ion-tab>
+</ion-tabs>

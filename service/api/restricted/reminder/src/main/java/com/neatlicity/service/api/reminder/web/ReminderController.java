@@ -24,11 +24,6 @@ public class ReminderController {
         return reminderRepository.getByUserIdAndForToday(userId);
     }
 
-    @GetMapping("/getByUserIdAndForTomorrow")
-    public List<Reminder> getByUserIdAndForTomorrow(@QueryParam("userId") String userId) {
-        return reminderRepository.getByUserIdAndForTomorrow(userId);
-    }
-
     @GetMapping("/getByUserIdAndInPast")
     public List<Reminder> getByUserIdAndInPast(@QueryParam("userId") String userId) {
         return reminderRepository.getByUserIdAndInPast(userId);

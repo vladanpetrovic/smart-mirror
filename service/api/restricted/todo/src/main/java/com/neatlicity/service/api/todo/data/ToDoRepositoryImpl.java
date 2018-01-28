@@ -28,18 +28,6 @@ public class ToDoRepositoryImpl implements ToDoRepositoryCustom {
     }
 
     @Override
-    public List<ToDo> getByUserIdAndForTomorrow(String userId) {
-        Criteria publishedDateCriteria = Criteria
-                .where("dateTime")
-                .gte(Date.from(LocalDate.now().plusDays(1)
-                        .atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()))
-                .lte(Date.from(LocalDate.now().plusDays(2)
-                        .atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
-        Query query = new Query(publishedDateCriteria);
-        return mongoTemplate.find(query, ToDo.class);
-    }
-
-    @Override
     public List<ToDo> getByUserIdAndInPast(String userId) {
         Criteria publishedDateCriteria = Criteria
                 .where("dateTime")

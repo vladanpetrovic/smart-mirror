@@ -20,6 +20,18 @@ export class ApiToDoService {
         this.store.dispatch(new fromToDoActions.ApiGetToDosAction(userId));
     }
 
+    apiGetToDosForToday(userId: string) {
+        return this.store.dispatch(new fromToDoActions.ApiGetToDosForTodayAction(userId));
+    }
+
+    apiGetToDosInFuture(userId: string) {
+        return this.store.dispatch(new fromToDoActions.ApiGetToDosInFutureAction(userId));
+    }
+
+    apiGetToDosInPast(userId: string) {
+        return this.store.dispatch(new fromToDoActions.ApiGetToDosInPastAction(userId));
+    }
+
     create(toDo: ToDo) {
         return this.store.dispatch(new fromToDoActions.ApiCreateToDoAction(toDo));
     }

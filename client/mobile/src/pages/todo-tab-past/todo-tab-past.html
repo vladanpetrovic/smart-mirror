@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-uppercase>To Dos</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <todo-editable-list
+            [todos]="(todoState | async).todosInPast"
+            toDoListHeader="Past To Dos"
+            [disable]="true"
+            [selectable]="true"></todo-editable-list>
+</ion-content>

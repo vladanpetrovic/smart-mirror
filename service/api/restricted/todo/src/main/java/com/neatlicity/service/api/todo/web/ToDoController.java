@@ -23,11 +23,6 @@ public class ToDoController {
         return toDoRepository.getByUserIdAndForToday(userId);
     }
 
-    @GetMapping("/getByUserIdAndForTomorrow")
-    public List<ToDo> getByUserIdAndForTomorrow(@QueryParam("userId") String userId) {
-        return toDoRepository.getByUserIdAndForTomorrow(userId);
-    }
-
     @GetMapping("/getByUserIdAndInPast")
     public List<ToDo> getByUserIdAndInPast(@QueryParam("userId") String userId) {
         return toDoRepository.getByUserIdAndInPast(userId);

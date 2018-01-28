@@ -5,7 +5,6 @@ import java.util.List;
 public interface ToDoRepositoryCustom {
 
     List<ToDo> getByUserIdAndForToday(String userId);
-    List<ToDo> getByUserIdAndForTomorrow(String userId);
     List<ToDo> getByUserIdAndInPast(String userId);
     List<ToDo> getByUserIdAndInFuture(String userId);
 }

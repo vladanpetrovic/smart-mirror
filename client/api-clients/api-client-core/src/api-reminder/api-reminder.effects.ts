@@ -1,14 +1,22 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
 import {getIdFromHateoasLink} from '../shared';
-import {getApiReminderByIdUrl, getApiRemindersByUserIdUrl, getApiRemindersUrl} from './api-reminder.consts';
+import {
+    getApiReminderByIdUrl,
+    getApiRemindersByUserIdAndForTodayUrl,
+    getApiRemindersByUserIdAndInFutureUrl,
+    getApiRemindersByUserIdAndInPastUrl,
+    getApiRemindersByUserIdUrl,
+    getApiRemindersUrl,
+    REMINDER_QUERIES
+} from './api-reminder.consts';
 import * as fromReminderActions from './api-reminder.actions';
-import {Reminder, ReminderApiResponse} from './api-reminder.models';
+import {Reminder, ReminderApiResponse, ReminderStatePayload} from './api-reminder.models';
 
 @Injectable()
 export class ApiReminderEffects {
@@ -42,9 +50,94 @@ export class ApiReminderEffects {
                     category: reminder.category
                 } as Reminder);
             }
+            const remindersStatePayload = {
+                queryType: REMINDER_QUERIES.DEFAULT,
+                reminders: reminders
+            } as ReminderStatePayload;
             return {
                 type: fromReminderActions.REMINDER_ACTION_TYPES.SET_REMINDERS_STATE,
-                payload: reminders
+                payload: remindersStatePayload
+            };
+        });
+
+    @Effect()
+    apiGetRemindersForToday$ = this.actions$
+        .ofType(fromReminderActions.REMINDER_ACTION_TYPES.API_GET_REMINDERS_FOR_TODAY)
+        .map((action: fromReminderActions.ApiGetRemindersForTodayAction) => {
+            return action.payload;
+        })
+        .switchMap((userId: string) => {
+            const params = new HttpParams()
+                .set('userId', userId);
+            return this.httpClient.get<Reminder[]>(
+                getApiRemindersByUserIdAndForTodayUrl(), {
+                    params: params,
+                    observe: 'body',
+                    responseType: 'json'
+                });
+        })
+        .map((reminders) => {
+            const remindersStatePayload = {
+                queryType: REMINDER_QUERIES.GET_REMINDERS_FOR_TODAY,
+                reminders: reminders
+            } as ReminderStatePayload;
+            return {
+                type: fromReminderActions.REMINDER_ACTION_TYPES.SET_REMINDERS_STATE,
+                payload: remindersStatePayload
+            };
+        });
+
+    @Effect()
+    apiGetRemindersInFuture$ = this.actions$
+        .ofType(fromReminderActions.REMINDER_ACTION_TYPES.API_GET_REMINDERS_IN_FUTURE)
+        .map((action: fromReminderActions.ApiGetRemindersInFutureAction) => {
+            return action.payload;
+        })
+        .switchMap((userId: string) => {
+            const params = new HttpParams()
+                .set('userId', userId);
+            return this.httpClient.get<Reminder[]>(
+                getApiRemindersByUserIdAndInFutureUrl(), {
+                    params: params,
+                    observe: 'body',
+                    responseType: 'json'
+                });
+        })
+        .map((reminders) => {
+            const remindersStatePayload = {
+                queryType: REMINDER_QUERIES.GET_REMINDERS_IN_FUTURE,
+                reminders: reminders
+            } as ReminderStatePayload;
+            return {
+                type: fromReminderActions.REMINDER_ACTION_TYPES.SET_REMINDERS_STATE,
+                payload: remindersStatePayload
+            };
+        });
+
+    @Effect()
+    apiGetRemindersInPast$ = this.actions$
+        .ofType(fromReminderActions.REMINDER_ACTION_TYPES.API_GET_REMINDERS_IN_PAST)
+        .map((action: fromReminderActions.ApiGetRemindersInPastAction) => {
+            return action.payload;
+        })
+        .switchMap((userId: string) => {
+            const params = new HttpParams()
+                .set('userId', userId);
+            return this.httpClient.get<Reminder[]>(
+                getApiRemindersByUserIdAndInPastUrl(), {
+                    params: params,
+                    observe: 'body',
+                    responseType: 'json'
+                });
+        })
+        .map((reminders) => {
+            const remindersStatePayload = {
+                queryType: REMINDER_QUERIES.GET_REMINDERS_IN_PAST,
+                reminders: reminders
+            } as ReminderStatePayload;
+            return {
+                type: fromReminderActions.REMINDER_ACTION_TYPES.SET_REMINDERS_STATE,
+                payload: remindersStatePayload
             };
         });
 

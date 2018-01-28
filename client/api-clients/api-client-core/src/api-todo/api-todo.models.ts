@@ -1,5 +1,13 @@
 export interface ToDoState {
     todos: ToDo[];
+    todosForToday: ToDo[];
+    todosInFuture: ToDo[];
+    todosInPast: ToDo[];
+}
+
+export interface ToDoStatePayload {
+    queryType: string;
+    todos: ToDo[];
 }
 
 export interface ToDo {

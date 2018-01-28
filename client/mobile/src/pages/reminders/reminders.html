@@ -1,24 +1,5 @@
-<ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title text-uppercase>Reminders</ion-title>
-    </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-    <ion-fab top right edge>
-        <button ion-fab
-                color="red"
-                (click)="onCreate($event)">
-            <ion-icon name="add"></ion-icon>
-        </button>
-    </ion-fab>
-    <reminder-editable-list
-            [reminders]="(reminderState | async).reminders"
-            reminderListHeader="Today"></reminder-editable-list>
-    <reminder-editable-list
-            [reminders]="(reminderState | async).reminders"
-            reminderListHeader="Tomorrow"></reminder-editable-list>
-</ion-content>
+<ion-tabs [selectedIndex]="1">
+    <ion-tab [root]="tabPast" tabTitle="PAST"></ion-tab>
+    <ion-tab [root]="tabCurrent" tabTitle="CURRENT"></ion-tab>
+    <ion-tab [root]="tabFuture" tabTitle="FUTURE"></ion-tab>
+</ion-tabs>

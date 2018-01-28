@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavParams, ViewController} from 'ionic-angular';
 import {ApiReminderService, Reminder} from 'neatlicity-api-client-core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 

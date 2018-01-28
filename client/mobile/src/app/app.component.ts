@@ -4,10 +4,6 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {Observable} from 'rxjs/Observable';
 
-import {HomePage} from '../pages/home/home';
-import {TodosPage} from '../pages/todos/todos';
-import {RemindersPage} from '../pages/reminders/reminders';
-import {SigninPage} from '../pages/signin/signin';
 import {ApiUserService, User} from 'neatlicity-api-client-core';
 
 @Component({
@@ -31,7 +27,7 @@ export class MyApp implements OnInit {
         // used for an example of ngFor and navigation
         this.pages = [
             {title: 'Home', component: 'HomePage'},
-            {title: 'To Do\'s', component: 'TodosPage'},
+            {title: 'To Dos', component: 'TodosPage'},
             {title: 'Reminders', component: 'RemindersPage'}
         ];
 

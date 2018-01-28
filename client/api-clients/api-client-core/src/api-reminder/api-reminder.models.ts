@@ -1,5 +1,13 @@
 export interface ReminderState {
     reminders: Reminder[];
+    remindersForToday: Reminder[];
+    remindersInFuture: Reminder[];
+    remindersInPast: Reminder[];
+}
+
+export interface ReminderStatePayload {
+    queryType: string;
+    reminders: Reminder[];
 }
 
 export interface Reminder {

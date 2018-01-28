@@ -12,6 +12,10 @@ export function getApiToDosUrl() {
     return getApiEndpointUrl('/todo/data/todos');
 }
 
+export function getApiToDoFilterUrl() {
+    return getApiEndpointUrl('/todo/filter');
+}
+
 export function getApiToDoByIdUrl(toDoId: string) {
     return getApiToDosUrl() + '/' + toDoId;
 }
@@ -19,3 +23,22 @@ export function getApiToDoByIdUrl(toDoId: string) {
 export function getApiToDosByUserIdUrl() {
     return getApiToDosUrl() + '/search/findByUserId';
 }
+
+export function getApiToDosByUserIdAndForTodayUrl() {
+    return getApiToDoFilterUrl() + '/getByUserIdAndForToday';
+}
+
+export function getApiToDosByUserIdAndInFutureUrl() {
+    return getApiToDoFilterUrl() + '/getByUserIdAndInFuture';
+}
+
+export function getApiToDosByUserIdAndInPastUrl() {
+    return getApiToDoFilterUrl() + '/getByUserIdAndInPast';
+}
+
+export const TODO_QUERIES = {
+    DEFAULT: 'getApiToDosByUserId',
+    GET_TODOS_FOR_TODAY: 'getApiToDosByUserIdAndForToday',
+    GET_TODOS_IN_FUTURE: 'getApiToDosByUserIdAndInFuture',
+    GET_TODOS_IN_PAST: 'getApiToDosByUserIdAndInPast'
+};

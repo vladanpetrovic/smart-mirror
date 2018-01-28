@@ -20,6 +20,18 @@ export class ApiReminderService {
         this.store.dispatch(new fromReminderActions.ApiGetRemindersAction(userId));
     }
 
+    apiGetRemindersForToday(userId: string) {
+        return this.store.dispatch(new fromReminderActions.ApiGetRemindersForTodayAction(userId));
+    }
+
+    apiGetRemindersInFuture(userId: string) {
+        return this.store.dispatch(new fromReminderActions.ApiGetRemindersInFutureAction(userId));
+    }
+
+    apiGetRemindersInPast(userId: string) {
+        return this.store.dispatch(new fromReminderActions.ApiGetRemindersInPastAction(userId));
+    }
+
     create(reminder: Reminder) {
         return this.store.dispatch(new fromReminderActions.ApiCreateReminderAction(reminder));
     }

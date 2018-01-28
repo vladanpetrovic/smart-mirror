@@ -1,18 +1,52 @@
+import {Observable} from 'rxjs/Observable';
+import * as moment from 'moment';
+
 import * as fromToDoActions from './api-todo.actions';
 import * as fromToDoState from './api-todo.state';
-import {ToDoState} from './api-todo.models';
+import {ToDoState, ToDoStatePayload} from './api-todo.models';
+import {TODO_QUERIES} from './api-todo.consts';
 
 export function apiToDoReducer(state = fromToDoState.todoStateInitial,
                                action: fromToDoActions.ToDoActions) {
     switch (action.type) {
         case fromToDoActions.TODO_ACTION_TYPES.SET_TODOS_STATE:
-            return {
-                ...state,
-                todos: (action as fromToDoActions.SetToDosStateAction).payload
-            };
+            const todosStatePayload: ToDoStatePayload = (action as fromToDoActions.SetToDosStateAction).payload;
+            switch (todosStatePayload.queryType) {
+                case TODO_QUERIES.GET_TODOS_FOR_TODAY:
+                    return {
+                        ...state,
+                        todosForToday: todosStatePayload.todos
+                    };
+                case TODO_QUERIES.GET_TODOS_IN_FUTURE:
+                    return {
+                        ...state,
+                        todosInFuture: todosStatePayload.todos
+                    };
+                case TODO_QUERIES.GET_TODOS_IN_PAST:
+                    return {
+                        ...state,
+                        todosInPast: todosStatePayload.todos
+                    };
+                default:
+                    return {
+                        ...state,
+                        todos: todosStatePayload.todos
+                    };
+            }
         case fromToDoActions.TODO_ACTION_TYPES.ON_TODO_EVENT_CHANGE:
             const toDoEvent = (action as fromToDoActions.OnToDoEventChangeAction).payload;
-            const stateToDos = state.todos;
+            let stateToDos = state.todos;
+            const toDoDate = new Date(toDoEvent.toDo.dateTime);
+            const daysDiff = moment().diff(toDoDate, 'd');
+            if (daysDiff === 0) {
+                stateToDos = state.todosForToday;
+            } else {
+                if (daysDiff > 0) {
+                    stateToDos = state.todosInFuture;
+                } else {
+                    stateToDos = state.todosInPast;
+                }
+            }
             switch (toDoEvent.eventType) {
                 case 'CREATED':
                     let exists = false;
@@ -45,10 +79,24 @@ export function apiToDoReducer(state = fromToDoState.todoStateInitial,
                 default:
                     console.log(toDoEvent);
             }
-            return {
-                ...state,
-                todos: stateToDos
-            };
+            if (daysDiff === 0) {
+                return {
+                    ...state,
+                    todosForToday: stateToDos
+                };
+            } else {
+                if (daysDiff > 0) {
+                    return {
+                        ...state,
+                        todosInFuture: stateToDos
+                    };
+                } else {
+                    return {
+                        ...state,
+                        todosInPast: stateToDos
+                    };
+                }
+            }
         default:
             return state;
     }

@@ -1,8 +1,14 @@
 <ion-list>
-    <ion-list-header no-lines>{{reminderListHeader}}</ion-list-header>
+    <ion-list-header no-lines>{{reminderListHeader | uppercase}}</ion-list-header>
+    <ion-item *ngIf="reminders.length === 0">
+        <p>No entries, create one!</p>
+    </ion-item>
     <ion-item-sliding *ngFor="let reminder of reminders">
         <ion-item>
-            <ion-label>{{reminder.title}}</ion-label>
+            <ion-label>
+                <h2>{{reminder.title}}</h2>
+                <p>{{reminder.dateTime | date:'EEEE, MMMM d, y, h:mm'}}</p>
+            </ion-label>
             <ion-icon
                     name="{{getIconName(reminder.category)}}"
                     item-end></ion-icon>

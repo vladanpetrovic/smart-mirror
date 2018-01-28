@@ -1,5 +1,8 @@
 import {ReminderState} from './api-reminder.models';
 
 export let reminderStateInitial: ReminderState = {
-    reminders: []
+    reminders: [],
+    remindersForToday: [],
+    remindersInFuture: [],
+    remindersInPast: []
 };

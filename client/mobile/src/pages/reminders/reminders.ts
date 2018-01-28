@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {IonicPage, NavController, PopoverController} from 'ionic-angular';
-import {ReminderFormPopoverPage} from '../reminder-form-popover/reminder-form-popover';
-import {Observable} from 'rxjs/Observable';
-import {ApiReminderService, Reminder} from 'neatlicity-api-client-core';
+import {IonicPage} from 'ionic-angular';
+import {ApiReminderService} from 'neatlicity-api-client-core';
 
 @IonicPage()
 @Component({
@@ -10,22 +8,19 @@ import {ApiReminderService, Reminder} from 'neatlicity-api-client-core';
     templateUrl: 'reminders.html',
 })
 export class RemindersPage implements OnInit {
-    reminderState: Observable<Reminder[]>;
+    tabPast: any = 'ReminderTabPastPage';
+    tabCurrent: any = 'ReminderTabCurrentPage';
+    tabFuture: any = 'ReminderTabFuturePage';
 
-    constructor(public navCtrl: NavController,
-                public popoverCtrl: PopoverController,
-                private apiReminderService: ApiReminderService) {
+    constructor(private apiReminderService: ApiReminderService) {
     }
 
     ngOnInit() {
         const userId = '5a67f83460149b798047be46';
         this.apiReminderService.initEventStreamByUserId(userId);
         this.apiReminderService.getByUserId(userId);
-        this.reminderState = this.apiReminderService.reminderState();
-    }
-
-    onCreate(event: MouseEvent) {
-        const newPopover = this.popoverCtrl.create('ReminderFormPopoverPage');
-        newPopover.present({ev: event});
+        this.apiReminderService.apiGetRemindersForToday(userId);
+        this.apiReminderService.apiGetRemindersInFuture(userId);
+        this.apiReminderService.apiGetRemindersInPast(userId);
     }
 }

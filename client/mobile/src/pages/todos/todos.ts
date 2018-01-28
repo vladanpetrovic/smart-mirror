@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {IonicPage, NavController, PopoverController} from 'ionic-angular';
-import {ToDoFormPopoverPage} from '../todo-form-popover/todo-form-popover';
-import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
+import {IonicPage} from 'ionic-angular';
+import {ApiToDoService} from 'neatlicity-api-client-core';
 
 @IonicPage()
 @Component({
@@ -10,22 +8,20 @@ import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
     templateUrl: 'todos.html',
 })
 export class TodosPage implements OnInit {
-    todoState: Observable<ToDo[]>;
+    tabPast: any = 'TodoTabPastPage';
+    tabCurrent: any = 'TodoTabCurrentPage';
+    tabFuture: any = 'TodoTabFuturePage';
 
-    constructor(private navCtrl: NavController,
-                private popoverCtrl: PopoverController,
-                private apiToDoService: ApiToDoService) {
+    constructor(private apiToDoService: ApiToDoService) {
     }
 
     ngOnInit() {
         const userId = '5a67f83460149b798047be46';
         this.apiToDoService.initEventStreamByUserId(userId);
         this.apiToDoService.getByUserId(userId);
-        this.todoState = this.apiToDoService.toDoState();
+        this.apiToDoService.apiGetToDosForToday(userId);
+        this.apiToDoService.apiGetToDosInFuture(userId);
+        this.apiToDoService.apiGetToDosInPast(userId);
     }
 
-    onCreate(event: MouseEvent) {
-        const newPopover = this.popoverCtrl.create('ToDoFormPopoverPage');
-        newPopover.present({ev: event});
-    }
 }

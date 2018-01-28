@@ -58,7 +58,7 @@ export class ToDoFormPopoverPage implements OnInit {
         } as ToDo;
 
         let httpResponse;
-        if(this.isEdit && this.toDoEditData != null) {
+        if (this.isEdit && this.toDoEditData != null) {
             toDo.id = this.toDoEditData.id;
             httpResponse = this.apiToDoService.update(toDo);
         } else {

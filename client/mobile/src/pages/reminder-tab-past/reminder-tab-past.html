@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-uppercase>Reminders</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <reminder-editable-list
+            [reminders]="(reminderState | async).remindersInPast"
+            reminderListHeader="In Past"></reminder-editable-list>
+</ion-content>
+

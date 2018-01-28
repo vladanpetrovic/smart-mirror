@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {ReminderListComponent} from '../reminder-list/reminder-list';
-import {ReminderFormPopoverPage} from '../../pages/reminder-form-popover/reminder-form-popover';
 import {Reminder} from 'neatlicity-api-client-core';
 
 @Component({

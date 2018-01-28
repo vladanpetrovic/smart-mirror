@@ -4,7 +4,6 @@ import {NgForm} from '@angular/forms';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Observable} from 'rxjs/Observable';
 import {ApiAuthService, ApiUserService, User} from 'neatlicity-api-client-core';
-import {HomePage} from '../home/home';
 
 @IonicPage()
 @Component({

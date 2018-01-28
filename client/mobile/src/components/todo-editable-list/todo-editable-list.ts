@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {ToDo} from 'neatlicity-api-client-core';
-import {ToDoFormPopoverPage} from '../../pages/todo-form-popover/todo-form-popover';
 import {ToDoListComponent} from '../todo-list/todo-list';
 
 @Component({
