@@ -3,6 +3,7 @@ import {IonicPageModule} from 'ionic-angular';
 import {HomePage} from './home';
 import {ToDoListComponentModule} from '../../components/todo-list/todo-list.module';
 import {ReminderListComponentModule} from '../../components/reminder-list/reminder-list.module';
+import {QuoteComponentModule} from '../../components/quote/quote.module';
 
 @NgModule({
     declarations: [
@@ -11,6 +12,7 @@ import {ReminderListComponentModule} from '../../components/reminder-list/remind
     imports: [
         ToDoListComponentModule,
         ReminderListComponentModule,
+        QuoteComponentModule,
         IonicPageModule.forChild(HomePage)
     ]
 })

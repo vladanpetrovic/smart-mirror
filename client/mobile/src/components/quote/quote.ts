@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-
 import {ApiQuoteService, Quote} from 'neatlicity-api-client-core';
 
 @Component({
-    selector: 'app-quote',
-    templateUrl: './quote.component.html',
-    styleUrls: ['./quote.component.scss']
+  selector: 'quote',
+  templateUrl: 'quote.html'
 })
 export class QuoteComponent implements OnInit {
     quoteState: Observable<Quote>;
@@ -17,4 +15,5 @@ export class QuoteComponent implements OnInit {
     ngOnInit() {
         this.quoteState = this.apiQuoteService.quoteOfTheDay();
     }
+
 }
