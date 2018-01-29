@@ -1,21 +1,27 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>{{ (userState | async).user.firstName }}'s</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>
+                <ion-icon name="person"></ion-icon>
+                {{ (userState | async).user.firstName }}'s
+            </ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-      <button
-        menuClose
-        ion-item
-        (click)="onLogout()">Logout</button>
-    </ion-list>
-  </ion-content>
+    <ion-content>
+        <ion-list>
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon name="{{p.icon}}"></ion-icon>
+                {{p.title}}
+            </button>
+            <button menuClose
+                    ion-item
+                    (click)="onLogout()">
+                <ion-icon name="log-out"></ion-icon>
+                Logout
+            </button>
+        </ion-list>
+    </ion-content>
 
 </ion-menu>
 

@@ -26,6 +26,7 @@ import {QuoteComponent} from './widgets/general/quote/quote.component';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {QRCodeModule} from 'angularx-qrcode';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument(),
-        ApiCoreModule
+        ApiCoreModule,
+        QRCodeModule
     ],
     providers: [ElectronService],
     bootstrap: [AppComponent]

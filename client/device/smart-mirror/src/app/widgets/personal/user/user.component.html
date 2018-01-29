@@ -1,13 +1,20 @@
+<div class="app-device-qr-code">
+    <qrcode
+            [qrdata]="'All QR Code data goes here!'"
+            [size]="150"
+            [level]="'L'">
+    </qrcode>
+</div>
 <div class="app-user">
-  <div class="user-details">
-    <mat-card>
-      <mat-card-header>
-        <div mat-card-avatar class="user-image"></div>
-        <mat-card-title>{{ (userState | async).user.firstName }}'s</mat-card-title>
-      </mat-card-header>
-    </mat-card>
-  </div>
-  <app-todo></app-todo>
-  <app-reminder></app-reminder>
-  <app-quote></app-quote>
+    <div class="user-details">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar class="user-image"></div>
+                <mat-card-title>{{ (userState | async).user.firstName }}'s</mat-card-title>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    <app-todo></app-todo>
+    <app-reminder></app-reminder>
+    <app-quote></app-quote>
 </div>

@@ -19,11 +19,11 @@ export class TodosPage implements OnInit {
     ngOnInit() {
         this.apiUserService.userState().subscribe(
             userState => {
-                this.apiToDoService.initEventStreamByUserId(userState.user.id);
-                this.apiToDoService.getByUserId(userState.user.id);
-                this.apiToDoService.apiGetToDosForToday(userState.user.id);
-                this.apiToDoService.apiGetToDosInFuture(userState.user.id);
-                this.apiToDoService.apiGetToDosInPast(userState.user.id);
+                this.apiToDoService.initEventStreamByUserId(userState.id);
+                this.apiToDoService.getByUserId(userState.id);
+                this.apiToDoService.apiGetToDosForToday(userState.id);
+                this.apiToDoService.apiGetToDosInFuture(userState.id);
+                this.apiToDoService.apiGetToDosInPast(userState.id);
             }
         );
     }

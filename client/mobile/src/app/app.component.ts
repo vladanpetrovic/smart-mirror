@@ -16,7 +16,7 @@ export class MyApp implements OnInit {
 
     rootPage: any = 'SigninPage';
 
-    pages: Array<{ title: string, component: any }>;
+    pages: Array<{ title: string, icon: string, component: any }>;
 
     constructor(public platform: Platform,
                 public statusBar: StatusBar,
@@ -26,9 +26,10 @@ export class MyApp implements OnInit {
 
         // used for an example of ngFor and navigation
         this.pages = [
-            {title: 'Home', component: 'HomePage'},
-            {title: 'To Dos', component: 'TodosPage'},
-            {title: 'Reminders', component: 'RemindersPage'}
+            {title: 'Home', icon: 'home', component: 'HomePage'},
+            {title: 'To Dos', icon: 'checkbox', component: 'TodosPage'},
+            {title: 'Reminders', icon: 'calendar', component: 'RemindersPage'},
+            {title: 'Devices', icon: 'git-network', component: 'DevicesPage'}
         ];
 
     }

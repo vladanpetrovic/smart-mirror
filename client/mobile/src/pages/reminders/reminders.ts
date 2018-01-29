@@ -19,11 +19,11 @@ export class RemindersPage implements OnInit {
     ngOnInit() {
         this.apiUserService.userState().subscribe(
             userState => {
-                this.apiReminderService.initEventStreamByUserId(userState.user.id);
-                this.apiReminderService.getByUserId(userState.user.id);
-                this.apiReminderService.apiGetRemindersForToday(userState.user.id);
-                this.apiReminderService.apiGetRemindersInFuture(userState.user.id);
-                this.apiReminderService.apiGetRemindersInPast(userState.user.id);
+                this.apiReminderService.initEventStreamByUserId(userState.id);
+                this.apiReminderService.getByUserId(userState.id);
+                this.apiReminderService.apiGetRemindersForToday(userState.id);
+                this.apiReminderService.apiGetRemindersInFuture(userState.id);
+                this.apiReminderService.apiGetRemindersInPast(userState.id);
             }
         );
     }

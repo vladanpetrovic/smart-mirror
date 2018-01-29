@@ -4,8 +4,8 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title text-uppercase>
-            <ion-icon name="calendar"></ion-icon>
-            Reminders
+            <ion-icon name="git-network"></ion-icon>
+            Devices
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -17,7 +17,5 @@
             <ion-icon name="add"></ion-icon>
         </button>
     </ion-fab>
-    <reminder-editable-list
-            [reminders]="(reminderState | async).remindersInFuture"
-            reminderListHeader="In Future"></reminder-editable-list>
+
 </ion-content>

@@ -23,10 +23,10 @@ export class HomePage implements OnInit {
     ngOnInit() {
         this.apiUserService.userState().subscribe(
             userState => {
-                this.apiToDoService.initEventStreamByUserId(userState.user.id);
-                this.apiToDoService.apiGetToDosForToday(userState.user.id);
-                this.apiReminderService.initEventStreamByUserId(userState.user.id)
-                this.apiReminderService.apiGetRemindersForToday(userState.user.id);
+                this.apiToDoService.initEventStreamByUserId(userState.id);
+                this.apiToDoService.apiGetToDosForToday(userState.id);
+                this.apiReminderService.initEventStreamByUserId(userState.id)
+                this.apiReminderService.apiGetRemindersForToday(userState.id);
                 this.todoState = this.apiToDoService.toDoState();
                 this.reminderState = this.apiReminderService.reminderState();
             }

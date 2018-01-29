@@ -56,7 +56,7 @@ export class ToDoFormPopoverPage implements OnInit {
                     title: title,
                     category: category,
                     dateTime: dateTime,
-                    userId: userState.user.id
+                    userId: userState.id
                 } as ToDo;
 
                 let httpResponse;
