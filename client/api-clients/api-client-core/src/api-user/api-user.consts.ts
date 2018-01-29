@@ -9,3 +9,7 @@ export function getApiUsersUrl() {
 export function getApiUserByIdUrl(userId: string) {
     return getApiUsersUrl() + userId;
 }
+
+export function getApiUserByEmailUrl() {
+    return getApiUsersUrl() + 'search/findByEmail';
+}

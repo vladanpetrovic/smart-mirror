@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IonicPage, LoadingController, NavParams, ViewController} from 'ionic-angular';
-import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
+import {ApiToDoService, ApiUserService, ToDo} from 'neatlicity-api-client-core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @IonicPage()
@@ -17,6 +17,7 @@ export class ToDoFormPopoverPage implements OnInit {
     constructor(private navParams: NavParams,
                 private viewController: ViewController,
                 private loadingCtrl: LoadingController,
+                private apiUserService: ApiUserService,
                 private apiToDoService: ApiToDoService) {
     }
 
@@ -41,31 +42,34 @@ export class ToDoFormPopoverPage implements OnInit {
     }
 
     onSubmit() {
-        const loading = this.loadingCtrl.create({
-            content: (this.isEdit ? 'Editing to do...' : 'Creating to do...')
-        });
+        this.apiUserService.userState().subscribe(
+            userState => {
+                const loading = this.loadingCtrl.create({
+                    content: (this.isEdit ? 'Editing to do...' : 'Creating to do...')
+                });
 
-        const title = this.toDoForm.value.title;
-        const category = this.toDoForm.value.category;
-        const dateTime = this.toDoForm.value.dateTime;
-        const userId = '5a67f83460149b798047be46';
+                const title = this.toDoForm.value.title;
+                const category = this.toDoForm.value.category;
+                const dateTime = this.toDoForm.value.dateTime;
 
-        const toDo = {
-            title: title,
-            category: category,
-            dateTime: dateTime,
-            userId: userId
-        } as ToDo;
+                const toDo = {
+                    title: title,
+                    category: category,
+                    dateTime: dateTime,
+                    userId: userState.user.id
+                } as ToDo;
 
-        let httpResponse;
-        if (this.isEdit && this.toDoEditData != null) {
-            toDo.id = this.toDoEditData.id;
-            httpResponse = this.apiToDoService.update(toDo);
-        } else {
-            httpResponse = this.apiToDoService.create(toDo);
-        }
-        console.log(httpResponse);
-        loading.dismiss();
+                let httpResponse;
+                if (this.isEdit && this.toDoEditData != null) {
+                    toDo.id = this.toDoEditData.id;
+                    httpResponse = this.apiToDoService.update(toDo);
+                } else {
+                    httpResponse = this.apiToDoService.create(toDo);
+                }
+                console.log(httpResponse);
+                loading.dismiss();
+            }
+        );
         this.viewController.dismiss();
     }
 

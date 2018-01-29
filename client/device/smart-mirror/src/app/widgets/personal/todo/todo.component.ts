@@ -2,6 +2,10 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
+import {MatListOptionChange} from '@angular/material';
+
+class Checkbox {
+}
 
 @Component({
     selector: 'app-todo',
@@ -19,5 +23,13 @@ export class TodoComponent implements OnInit {
 
     ngOnInit() {
         this.todoState = this.apiToDoService.toDoState();
+    }
+
+    onCheck(event: MatListOptionChange, toDoId: string) {
+        const toDo = {
+            id: toDoId,
+            done: event.selected
+        } as ToDo;
+        this.apiToDoService.update(toDo);
     }
 }

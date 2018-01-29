@@ -4,9 +4,10 @@
         <mat-selection-list #todo>
             <mat-list-option
                     checkboxPosition="before"
-                    *ngFor="let task of (todoState | async).todosForToday"
-                    [selected]="task.done">
-                {{task.title}}
+                    *ngFor="let todo of (todoState | async).todosForToday"
+                    [selected]="todo.done"
+                    (selectionChange)="onCheck($event, todo.id)">
+                {{todo.title}}
             </mat-list-option>
         </mat-selection-list>
     </div>

@@ -16,7 +16,11 @@ export class ApiUserService {
     }
 
     getById(userId: string) {
-        this.store.dispatch(new fromUserActions.ApiGetUserAction(userId));
+        this.store.dispatch(new fromUserActions.ApiGetUserByIdAction(userId));
+    }
+
+    getByEmail(email: string) {
+        this.store.dispatch(new fromUserActions.ApiGetUserByEmailAction(email));
     }
 
     create(user: User) {

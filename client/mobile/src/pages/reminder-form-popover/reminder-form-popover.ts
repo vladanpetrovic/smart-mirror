@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, LoadingController, NavParams, ViewController} from 'ionic-angular';
-import {ApiReminderService, Reminder} from 'neatlicity-api-client-core';
+import {ApiReminderService, ApiUserService, Reminder} from 'neatlicity-api-client-core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @IonicPage()
@@ -17,6 +17,7 @@ export class ReminderFormPopoverPage {
     constructor(public navParams: NavParams,
                 private viewController: ViewController,
                 private loadingCtrl: LoadingController,
+                private apiUserService: ApiUserService,
                 private apiReminderService: ApiReminderService) {
     }
 
@@ -41,31 +42,35 @@ export class ReminderFormPopoverPage {
     }
 
     onSubmit() {
-        const loading = this.loadingCtrl.create({
-            content: (this.isEdit ? 'Editing reminder...' : 'Creating reminder...')
-        });
+        this.apiUserService.userState().subscribe(
+            userState => {
 
-        const title = this.reminderForm.value.title;
-        const category = this.reminderForm.value.category;
-        const dateTime = this.reminderForm.value.dateTime;
-        const userId = '5a67f83460149b798047be46';
+                const loading = this.loadingCtrl.create({
+                    content: (this.isEdit ? 'Editing reminder...' : 'Creating reminder...')
+                });
 
-        const reminder = {
-            title: title,
-            category: category,
-            dateTime: dateTime,
-            userId: userId
-        } as Reminder;
+                const title = this.reminderForm.value.title;
+                const category = this.reminderForm.value.category;
+                const dateTime = this.reminderForm.value.dateTime;
 
-        let httpResponse;
-        if(this.isEdit && this.reminderEditData != null) {
-            reminder.id = this.reminderEditData.id;
-            httpResponse = this.apiReminderService.update(reminder);
-        } else {
-            httpResponse = this.apiReminderService.create(reminder);
-        }
-        console.log(httpResponse);
-        loading.dismiss();
+                const reminder = {
+                    title: title,
+                    category: category,
+                    dateTime: dateTime,
+                    userId: userState.user.id
+                } as Reminder;
+
+                let httpResponse;
+                if (this.isEdit && this.reminderEditData != null) {
+                    reminder.id = this.reminderEditData.id;
+                    httpResponse = this.apiReminderService.update(reminder);
+                } else {
+                    httpResponse = this.apiReminderService.create(reminder);
+                }
+                console.log(httpResponse);
+                loading.dismiss();
+            }
+        );
         this.viewController.dismiss();
     }
 

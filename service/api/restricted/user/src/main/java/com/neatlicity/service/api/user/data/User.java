@@ -1,5 +1,6 @@
 package com.neatlicity.service.api.user.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,7 +31,9 @@ public class User {
     private String email;
 
     private String username;
+    @JsonIgnore
     private String password;
+    @JsonIgnore
     private boolean active;
 
 }

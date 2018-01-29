@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {IonicPage, NavController} from 'ionic-angular';
-import {ApiReminderService, ApiToDoService, Reminder, ToDo} from 'neatlicity-api-client-core';
+import {ApiReminderService, ApiToDoService, ApiUserService, Reminder, ToDo} from 'neatlicity-api-client-core';
 
 @IonicPage()
 @Component({
@@ -15,17 +15,21 @@ export class HomePage implements OnInit {
     public date: Date = new Date();
 
     constructor(public navCtrl: NavController,
+                private apiUserService: ApiUserService,
                 private apiToDoService: ApiToDoService,
                 private apiReminderService: ApiReminderService) {
     }
 
     ngOnInit() {
-        const userId = '5a67f83460149b798047be46';
-        this.apiToDoService.initEventStreamByUserId(userId);
-        this.apiToDoService.apiGetToDosForToday(userId);
-        this.apiReminderService.initEventStreamByUserId(userId)
-        this.apiReminderService.apiGetRemindersForToday(userId);
-        this.todoState = this.apiToDoService.toDoState();
-        this.reminderState = this.apiReminderService.reminderState();
+        this.apiUserService.userState().subscribe(
+            userState => {
+                this.apiToDoService.initEventStreamByUserId(userState.user.id);
+                this.apiToDoService.apiGetToDosForToday(userState.user.id);
+                this.apiReminderService.initEventStreamByUserId(userState.user.id)
+                this.apiReminderService.apiGetRemindersForToday(userState.user.id);
+                this.todoState = this.apiToDoService.toDoState();
+                this.reminderState = this.apiReminderService.reminderState();
+            }
+        );
     }
 }
