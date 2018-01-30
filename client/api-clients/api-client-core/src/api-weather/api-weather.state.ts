@@ -1,5 +1,6 @@
-import {Weather, WeatherState} from './api-weather.models';
+import {WeatherState} from './api-weather.models';
 
 export let weatherStateInitial: WeatherState = {
-    weather: new Weather(0.0, 'wi-day-sunny')
+    temperature: 0.0,
+    icon: 'wi-day-sunny'
 };

@@ -1,8 +1,8 @@
 export interface ToDoState {
-    todos: ToDo[];
-    todosForToday: ToDo[];
-    todosInFuture: ToDo[];
-    todosInPast: ToDo[];
+    listByUserId: ToDo[];
+    listForToday: ToDo[];
+    listInFuture: ToDo[];
+    listInPast: ToDo[];
 }
 
 export interface ToDoStatePayload {

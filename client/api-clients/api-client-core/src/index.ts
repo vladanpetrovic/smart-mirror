@@ -6,4 +6,5 @@ export * from './api-user/';
 export * from './api-weather/';
 export * from './shared/';
 export * from './api.consts';
+export * from './api.state';
 export {ApiCoreModule} from './api.module';

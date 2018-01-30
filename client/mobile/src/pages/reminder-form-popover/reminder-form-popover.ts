@@ -43,7 +43,7 @@ export class ReminderFormPopoverPage {
 
     onSubmit() {
         this.apiUserService.userState().subscribe(
-            userState => {
+            user => {
 
                 const loading = this.loadingCtrl.create({
                     content: (this.isEdit ? 'Editing reminder...' : 'Creating reminder...')
@@ -57,7 +57,7 @@ export class ReminderFormPopoverPage {
                     title: title,
                     category: category,
                     dateTime: dateTime,
-                    userId: userState.id
+                    userId: user.id
                 } as Reminder;
 
                 let httpResponse;

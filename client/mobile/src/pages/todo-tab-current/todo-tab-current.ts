@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
 import {Observable} from 'rxjs/Observable';
-import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
+import {ApiToDoService, ToDoState} from 'neatlicity-api-client-core';
 
 @IonicPage()
 @Component({
@@ -9,7 +9,7 @@ import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
     templateUrl: 'todo-tab-current.html',
 })
 export class TodoTabCurrentPage implements OnInit {
-    todoState: Observable<ToDo[]>;
+    todoState: Observable<ToDoState>;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,

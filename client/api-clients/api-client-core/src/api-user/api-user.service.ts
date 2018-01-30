@@ -4,11 +4,12 @@ import {Store} from '@ngrx/store';
 import * as fromUserActions from './api-user.actions';
 import {USER_STORE_NAME} from './api-user.consts';
 import {User, UserState} from './api-user.models';
+import {ApiCoreState} from "../api.state";
 
 @Injectable()
 export class ApiUserService {
 
-    constructor(private store: Store<UserState>) {
+    constructor(private store: Store<ApiCoreState>) {
     }
 
     userState() {

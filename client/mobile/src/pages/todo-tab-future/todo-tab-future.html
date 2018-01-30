@@ -18,7 +18,7 @@
         </button>
     </ion-fab>
     <todo-editable-list
-            [todos]="(todoState | async).todosInFuture"
+            [todos]="(todoState | async).listInFuture"
             toDoListHeader="Future To Dos"
             [selectable]="false"></todo-editable-list>
 </ion-content>

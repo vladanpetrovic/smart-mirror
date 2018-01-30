@@ -1,5 +1,9 @@
 export interface UserState {
-    user: User;
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    username: string;
 }
 
 export interface User {

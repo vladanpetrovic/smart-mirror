@@ -1,8 +1,8 @@
 export interface ReminderState {
-    reminders: Reminder[];
-    remindersForToday: Reminder[];
-    remindersInFuture: Reminder[];
-    remindersInPast: Reminder[];
+    listByUserId: Reminder[];
+    listForToday: Reminder[];
+    listInFuture: Reminder[];
+    listInPast: Reminder[];
 }
 
 export interface ReminderStatePayload {

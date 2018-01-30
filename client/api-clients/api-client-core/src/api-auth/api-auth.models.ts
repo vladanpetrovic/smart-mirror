@@ -1,11 +1,6 @@
 export interface AuthState {
-    auth: Auth;
-}
-
-export class Auth {
-    constructor(public token: string,
-                public authenticated: boolean) {
-    }
+    token: string;
+    authenticated: boolean;
 }
 
 export interface AuthApiResponse {

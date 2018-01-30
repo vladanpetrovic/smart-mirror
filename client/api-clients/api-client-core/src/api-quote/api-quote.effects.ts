@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 
 import {getApiEndpointUrl} from '../api.consts';
 import * as fromQuoteActions from './api-quote.actions';
-import {Quote, QuoteApiResponse} from './api-quote.models';
+import {QuoteApiResponse, QuoteState} from './api-quote.models';
 
 @Injectable()
 export class ApiQuoteEffects {
@@ -26,12 +26,13 @@ export class ApiQuoteEffects {
                 });
         })
         .map((quoteApiResponse) => {
-            const quote = new Quote(
-                quoteApiResponse.text,
-                quoteApiResponse.author);
+            const quoteState = {
+                text: quoteApiResponse.text,
+                author: quoteApiResponse.author
+            } as QuoteState;
             return {
                 type: fromQuoteActions.QUOTE_ACTION_TYPES.SET_QUOTE_STATE,
-                payload: quote
+                payload: quoteState
             };
         });
 }

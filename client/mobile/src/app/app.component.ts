@@ -4,7 +4,7 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiUserService, User} from 'neatlicity-api-client-core';
+import {ApiUserService, UserState} from 'neatlicity-api-client-core';
 
 @Component({
     templateUrl: 'app.html'
@@ -12,7 +12,7 @@ import {ApiUserService, User} from 'neatlicity-api-client-core';
 export class MyApp implements OnInit {
     @ViewChild(Nav) nav: Nav;
 
-    userState: Observable<User>;
+    userState: Observable<UserState>;
 
     rootPage: any = 'SigninPage';
 

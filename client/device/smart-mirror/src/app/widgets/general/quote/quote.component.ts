@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiQuoteService, Quote} from 'neatlicity-api-client-core';
+import {ApiQuoteService, QuoteState} from 'neatlicity-api-client-core';
 
 @Component({
     selector: 'app-quote',
@@ -9,7 +9,7 @@ import {ApiQuoteService, Quote} from 'neatlicity-api-client-core';
     styleUrls: ['./quote.component.scss']
 })
 export class QuoteComponent implements OnInit {
-    quoteState: Observable<Quote>;
+    quoteState: Observable<QuoteState>;
 
     constructor(private apiQuoteService: ApiQuoteService) {
     }

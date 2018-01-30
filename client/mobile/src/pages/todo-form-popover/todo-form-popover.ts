@@ -43,7 +43,7 @@ export class ToDoFormPopoverPage implements OnInit {
 
     onSubmit() {
         this.apiUserService.userState().subscribe(
-            userState => {
+            user => {
                 const loading = this.loadingCtrl.create({
                     content: (this.isEdit ? 'Editing to do...' : 'Creating to do...')
                 });
@@ -56,7 +56,7 @@ export class ToDoFormPopoverPage implements OnInit {
                     title: title,
                     category: category,
                     dateTime: dateTime,
-                    userId: userState.id
+                    userId: user.id
                 } as ToDo;
 
                 let httpResponse;

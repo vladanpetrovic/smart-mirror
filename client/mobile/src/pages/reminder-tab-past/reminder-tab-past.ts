@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {ApiReminderService, Reminder} from 'neatlicity-api-client-core';
+import {ApiReminderService, ReminderState} from 'neatlicity-api-client-core';
 import {Observable} from 'rxjs/Observable';
 
 @IonicPage()
@@ -9,7 +9,7 @@ import {Observable} from 'rxjs/Observable';
     templateUrl: 'reminder-tab-past.html',
 })
 export class ReminderTabPastPage implements OnInit {
-    reminderState: Observable<Reminder[]>;
+    reminderState: Observable<ReminderState>;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,

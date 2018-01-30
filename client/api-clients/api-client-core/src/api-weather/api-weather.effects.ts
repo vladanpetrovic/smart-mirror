@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 
 import {getApiEndpointUrl} from '../api.consts';
 import * as fromWeatherActions from './api-weather.actions';
-import {Weather, WeatherApiResponse} from './api-weather.models';
+import {WeatherApiResponse, WeatherState} from './api-weather.models';
 import {WEATHER_ICON_MAP} from './api-weather.consts';
 
 @Injectable()
@@ -28,12 +28,13 @@ export class ApiWeatherEffects {
         })
         .map((weatherApiResponse) => {
             const icon = weatherApiResponse.weather[0].icon;
-            const weather = new Weather(
-                weatherApiResponse.main.temp,
-                WEATHER_ICON_MAP.get(icon));
+            const weatherState = {
+                temperature: weatherApiResponse.main.temp,
+                icon: WEATHER_ICON_MAP.get(icon)
+            } as WeatherState;
             return {
                 type: fromWeatherActions.WEATHER_ACTION_TYPES.SET_WEATHER_STATE,
-                payload: weather
+                payload: weatherState
             };
         });
 }

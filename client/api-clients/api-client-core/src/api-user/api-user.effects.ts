@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import {getIdFromHateoasLink} from '../shared';
 import {getApiUsersUrl, getApiUserByIdUrl, getApiUserByEmailUrl} from './api-user.consts';
 import * as fromUserActions from './api-user.actions';
-import {User, UserApiResponse} from './api-user.models';
+import {User, UserApiResponse, UserState} from './api-user.models';
 
 @Injectable()
 export class ApiUserEffects {
@@ -30,15 +30,15 @@ export class ApiUserEffects {
                 });
         })
         .map((userApiResponse) => {
-            const user = {
+            const userState = {
                 id: getIdFromHateoasLink(userApiResponse._links.self.href),
                 firstName: userApiResponse.firstName,
                 lastName: userApiResponse.lastName,
                 email: userApiResponse.email
-            } as User;
+            } as UserState;
             return {
                 type: fromUserActions.USER_ACTION_TYPES.SET_USER_STATE,
-                payload: user
+                payload: userState
             };
         });
 

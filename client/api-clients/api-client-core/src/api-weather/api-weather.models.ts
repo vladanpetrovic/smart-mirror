@@ -1,11 +1,6 @@
 export interface WeatherState {
-    weather: Weather;
-}
-
-export class Weather {
-    constructor(public temperature: number,
-                public icon: string) {
-    }
+    temperature: number;
+    icon: string;
 }
 
 export interface WeatherApiResponse {

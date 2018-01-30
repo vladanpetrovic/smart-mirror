@@ -3,13 +3,14 @@ import {Store} from '@ngrx/store';
 
 import * as fromReminderActions from './api-reminder.actions';
 import {getReminderEventStreamByUserIdUrl, REMINDER_STORE_NAME} from './api-reminder.consts';
-import {Reminder, ReminderEventApiMessage, ReminderState} from './api-reminder.models';
+import {Reminder, ReminderState, ReminderEventApiMessage} from './api-reminder.models';
+import {ApiCoreState} from "../api.state";
 
 @Injectable()
 export class ApiReminderService {
     private eventSource;
 
-    constructor(private store: Store<ReminderState>) {
+    constructor(private store: Store<ApiCoreState>) {
     }
 
     reminderState() {

@@ -7,7 +7,7 @@ import {ReminderState, ReminderStatePayload} from './api-reminder.models';
 import {REMINDER_QUERIES} from './api-reminder.consts';
 
 export function apiReminderReducer(state = fromReminderState.reminderStateInitial,
-                                   action: fromReminderActions.ReminderActions) {
+                                   action: fromReminderActions.ReminderActions): ReminderState {
     switch (action.type) {
         case fromReminderActions.REMINDER_ACTION_TYPES.SET_REMINDERS_STATE:
             const remindersStatePayload: ReminderStatePayload = (action as fromReminderActions.SetRemindersStateAction).payload;
@@ -15,37 +15,37 @@ export function apiReminderReducer(state = fromReminderState.reminderStateInitia
                 case REMINDER_QUERIES.GET_REMINDERS_FOR_TODAY:
                     return {
                         ...state,
-                        remindersForToday: remindersStatePayload.reminders
-                    };
+                        listForToday: remindersStatePayload.reminders
+                    } as ReminderState;
                 case REMINDER_QUERIES.GET_REMINDERS_IN_FUTURE:
                     return {
                         ...state,
-                        remindersInFuture: remindersStatePayload.reminders
-                    };
+                        listInFuture: remindersStatePayload.reminders
+                    } as ReminderState;
                 case REMINDER_QUERIES.GET_REMINDERS_IN_PAST:
                     return {
                         ...state,
-                        remindersInPast: remindersStatePayload.reminders
-                    };
+                        listInPast: remindersStatePayload.reminders
+                    } as ReminderState;
                 default:
                     return {
                         ...state,
-                        reminders: remindersStatePayload.reminders
-                    };
+                        listByUserId: remindersStatePayload.reminders
+                    } as ReminderState;
             }
         case fromReminderActions.REMINDER_ACTION_TYPES.ON_REMINDER_EVENT_CHANGE:
             const reminderEvent = (action as fromReminderActions.OnReminderEventChangeAction).payload;
-            let stateReminders = state.reminders;
+            let stateReminders = state.listByUserId;
             const reminderDate = new Date(reminderEvent.reminder.dateTime);
             reminderEvent.reminder.dateTime = reminderDate.toDateString();
             const daysDiff = moment().diff(reminderDate, 'd');
             if (daysDiff === 0) {
-                stateReminders = state.remindersForToday;
+                stateReminders = state.listForToday;
             } else {
                 if (daysDiff < 0) {
-                    stateReminders = state.remindersInFuture;
+                    stateReminders = state.listInFuture;
                 } else {
-                    stateReminders = state.remindersInPast;
+                    stateReminders = state.listInPast;
                 }
             }
             switch (reminderEvent.eventType) {
@@ -83,19 +83,19 @@ export function apiReminderReducer(state = fromReminderState.reminderStateInitia
             if (daysDiff === 0) {
                 return {
                     ...state,
-                    remindersForToday: stateReminders
-                };
+                    listForToday: stateReminders
+                } as ReminderState;
             } else {
                 if (daysDiff < 0) {
                     return {
                         ...state,
-                        remindersInFuture: stateReminders
-                    };
+                        listInFuture: stateReminders
+                    } as ReminderState;
                 } else {
                     return {
                         ...state,
-                        remindersInPast: stateReminders
-                    };
+                        listInPast: stateReminders
+                    } as ReminderState;
                 }
             }
         default:

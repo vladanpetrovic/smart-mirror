@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiUserService, User} from 'neatlicity-api-client-core';
+import {ApiUserService, UserState} from 'neatlicity-api-client-core';
 
 @Component({
     selector: 'app-user',
@@ -9,7 +9,7 @@ import {ApiUserService, User} from 'neatlicity-api-client-core';
     styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-    userState: Observable<User>;
+    userState: Observable<UserState>;
 
     constructor(private apiUserService: ApiUserService) {
         this.apiUserService.getById('5a67f83460149b798047be46');

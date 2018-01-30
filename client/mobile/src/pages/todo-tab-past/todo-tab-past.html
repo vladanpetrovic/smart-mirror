@@ -11,7 +11,7 @@
 </ion-header>
 <ion-content padding>
     <todo-editable-list
-            [todos]="(todoState | async).todosInPast"
+            [todos]="(todoState | async).listInPast"
             toDoListHeader="Past To Dos"
             [disable]="true"
             [selectable]="true"></todo-editable-list>

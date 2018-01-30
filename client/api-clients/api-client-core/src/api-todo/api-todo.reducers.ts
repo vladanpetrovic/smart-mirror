@@ -7,7 +7,7 @@ import {ToDoState, ToDoStatePayload} from './api-todo.models';
 import {TODO_QUERIES} from './api-todo.consts';
 
 export function apiToDoReducer(state = fromToDoState.todoStateInitial,
-                               action: fromToDoActions.ToDoActions) {
+                               action: fromToDoActions.ToDoActions): ToDoState {
     switch (action.type) {
         case fromToDoActions.TODO_ACTION_TYPES.SET_TODOS_STATE:
             const todosStatePayload: ToDoStatePayload = (action as fromToDoActions.SetToDosStateAction).payload;
@@ -15,37 +15,37 @@ export function apiToDoReducer(state = fromToDoState.todoStateInitial,
                 case TODO_QUERIES.GET_TODOS_FOR_TODAY:
                     return {
                         ...state,
-                        todosForToday: todosStatePayload.todos
-                    };
+                        listForToday: todosStatePayload.todos
+                    } as ToDoState;
                 case TODO_QUERIES.GET_TODOS_IN_FUTURE:
                     return {
                         ...state,
-                        todosInFuture: todosStatePayload.todos
-                    };
+                        listInFuture: todosStatePayload.todos
+                    } as ToDoState;
                 case TODO_QUERIES.GET_TODOS_IN_PAST:
                     return {
                         ...state,
-                        todosInPast: todosStatePayload.todos
-                    };
+                        listInPast: todosStatePayload.todos
+                    } as ToDoState;
                 default:
                     return {
                         ...state,
-                        todos: todosStatePayload.todos
-                    };
+                        listByUserId: todosStatePayload.todos
+                    } as ToDoState;
             }
         case fromToDoActions.TODO_ACTION_TYPES.ON_TODO_EVENT_CHANGE:
             const toDoEvent = (action as fromToDoActions.OnToDoEventChangeAction).payload;
-            let stateToDos = state.todos;
+            let stateToDos = state.listByUserId;
             const toDoDate = new Date(toDoEvent.toDo.dateTime);
             toDoEvent.toDo.dateTime = toDoDate.toDateString();
             const daysDiff = moment().diff(toDoDate, 'd');
             if (daysDiff === 0) {
-                stateToDos = state.todosForToday;
+                stateToDos = state.listForToday;
             } else {
                 if (daysDiff < 0) {
-                    stateToDos = state.todosInFuture;
+                    stateToDos = state.listInFuture;
                 } else {
-                    stateToDos = state.todosInPast;
+                    stateToDos = state.listInPast;
                 }
             }
             switch (toDoEvent.eventType) {
@@ -83,19 +83,19 @@ export function apiToDoReducer(state = fromToDoState.todoStateInitial,
             if (daysDiff === 0) {
                 return {
                     ...state,
-                    todosForToday: stateToDos
-                };
+                    listForToday: stateToDos
+                } as ToDoState;
             } else {
                 if (daysDiff < 0) {
                     return {
                         ...state,
-                        todosInFuture: stateToDos
-                    };
+                        listInFuture: stateToDos
+                    } as ToDoState;
                 } else {
                     return {
                         ...state,
-                        todosInPast: stateToDos
-                    };
+                        listInPast: stateToDos
+                    } as ToDoState;
                 }
             }
         default:

@@ -3,13 +3,14 @@ import {Store} from '@ngrx/store';
 
 import * as fromToDoActions from './api-todo.actions';
 import {getToDoEventStreamByUserIdUrl, TODO_STORE_NAME} from './api-todo.consts';
-import {ToDo, ToDoEventApiMessage, ToDoState} from './api-todo.models';
+import {ToDo, ToDoState, ToDoEventApiMessage} from './api-todo.models';
+import {ApiCoreState} from "../api.state";
 
 @Injectable()
 export class ApiToDoService {
     private eventSource;
 
-    constructor(private store: Store<ToDoState>) {
+    constructor(private store: Store<ApiCoreState>) {
     }
 
     toDoState() {

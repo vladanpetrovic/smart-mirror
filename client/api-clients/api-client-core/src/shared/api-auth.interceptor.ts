@@ -5,17 +5,18 @@ import {Store} from '@ngrx/store';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/switchMap';
 
-import {Auth, AuthState} from '../api-auth';
+import {ApiCoreState} from "../api.state";
+import {AUTH_STORE_NAME, AuthState} from "../api-auth";
 
 @Injectable()
 export class ApiAuthInterceptor implements HttpInterceptor {
-    constructor(private store: Store<AuthState>) {
+    constructor(private store: Store<ApiCoreState>) {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        return this.store.select('auth')
+        return this.store.select(AUTH_STORE_NAME)
             .take(1)
-            .switchMap((auth: Auth) => {
+            .switchMap((auth: AuthState) => {
                 if (auth.token != null) {
                     const authReq = req.clone({
                         setHeaders: {

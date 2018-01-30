@@ -13,10 +13,10 @@
     <h1>Home Duties</h1>
     <h2>{{date | date:'fullDate'}}</h2>
     <todo-list
-            [todos]="(todoState | async).todosForToday"
+            [todos]="(todoState | async).listForToday"
             toDoListHeader="To Do's"></todo-list>
     <reminder-list
-            [reminders]="(reminderState | async).remindersForToday"
+            [reminders]="(reminderState | async).listForToday"
             reminderListHeader="Reminders"></reminder-list>
     <quote></quote>
 </ion-content>

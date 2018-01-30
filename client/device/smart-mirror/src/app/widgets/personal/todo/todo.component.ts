@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
+import {ApiToDoService, ToDoState, ToDo} from 'neatlicity-api-client-core';
 import {MatListOptionChange} from '@angular/material';
 
 class Checkbox {
@@ -13,7 +13,7 @@ class Checkbox {
     styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-    todoState: Observable<ToDo[]>;
+    todoState: Observable<ToDoState>;
 
     constructor(private apiToDoService: ApiToDoService) {
         const userId = '5a67f83460149b798047be46';

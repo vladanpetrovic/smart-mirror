@@ -28,7 +28,7 @@ export class SigninPage {
         this.apiAuthService.login(email, password);
         this.apiAuthService.authState().subscribe(
             authState => {
-                if(authState.auth.authenticated) {
+                if(authState.authenticated) {
                     this.apiUserService.getByEmail(email);
                     this.navCtrl.setRoot('HomePage');
                 }
