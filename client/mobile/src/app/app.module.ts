@@ -14,6 +14,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 import {ApiCoreModule} from 'neatlicity-api-client-core';
 
+import { Camera } from '@ionic-native/camera';
+
 @NgModule({
     declarations: [
         MyApp
@@ -34,6 +36,7 @@ import {ApiCoreModule} from 'neatlicity-api-client-core';
     providers: [
         StatusBar,
         SplashScreen,
+        Camera,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })
