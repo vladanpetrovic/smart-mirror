@@ -2,7 +2,7 @@ import {getApiEndpointUrl} from '../api.consts';
 
 export const REMINDER_STORE_NAME = 'reminders';
 
-export const REMINDER_EVENT_STREAM_URL = 'http://reminder-rx.api.neatlicity.local.com/event/stream/byUserId/';
+export const REMINDER_EVENT_STREAM_URL = 'http://192.168.1.100:9193/event/stream/byUserId/';
 
 export function getReminderEventStreamByUserIdUrl(userId: string) {
     return REMINDER_EVENT_STREAM_URL + userId;
