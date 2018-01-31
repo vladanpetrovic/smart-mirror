@@ -18,5 +18,5 @@ public class DeviceEvent {
     private String id;
     private DeviceEventType type;
     private Device device;
-    private String userId;
+    private String deviceId;
 }

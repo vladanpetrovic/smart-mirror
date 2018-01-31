@@ -4,12 +4,12 @@ task removeApiClientCore(type: NpmTask) {
 
 task installApiClientCore(type: NpmTask) {
     dependsOn removeApiClientCore
-    dependsOn project(':client:api-clients:api-client-core').tasks.npmPack
+    dependsOn project(':client:api-client-core').tasks.npmPack
 
     installApiClientCore.mustRunAfter removeApiClientCore
-    installApiClientCore.mustRunAfter project(':client:api-clients:api-client-core').tasks.npmPack
+    installApiClientCore.mustRunAfter project(':client:api-client-core').tasks.npmPack
 
-    args = ['install', '../../api-clients/api-client-core/neatlicity-api-client-core-0.0.1.tgz']
+    args = ['install', '../../api-client-core/neatlicity-api-client-core-0.0.1.tgz']
 }
 
 task runSmartMirrorApp(dependsOn: npmInstall, type: NpmTask) {

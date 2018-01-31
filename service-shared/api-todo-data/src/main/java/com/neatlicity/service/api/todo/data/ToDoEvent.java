@@ -18,5 +18,5 @@ public class ToDoEvent {
     private String id;
     private ToDoEventType eventType;
     private ToDo toDo;
-    private String deviceId;
+    private String userId;
 }
