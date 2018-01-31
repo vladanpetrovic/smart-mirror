@@ -1,0 +1,28 @@
+def sharedSpringProjects = [
+        project(':service-shared:api-device-data'),
+        project(':service-shared:api-reminder-data'),
+        project(':service-shared:api-todo-data')
+]
+def javaProjects = sharedSpringProjects
+
+configure(javaProjects) {
+    apply plugin: 'java'
+
+    targetCompatibility = javaLangVersion
+    sourceCompatibility = javaLangVersion
+}
+
+configure(sharedSpringProjects) {
+    repositories {
+        mavenCentral()
+        maven { url springReleaseRepo }
+    }
+
+    group = 'com.neatlicity.service'
+
+    dependencies {
+        compile 'org.projectlombok:lombok:1.16.18'
+        compile 'org.springframework.data:spring-data-mongodb:2.0.3.RELEASE'
+    }
+}
+

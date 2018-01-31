@@ -45,7 +45,7 @@
     "core-js": "2.4.1",
     "enhanced-resolve": "3.3.0",
     "hammerjs": "^2.0.8",
-    "neatlicity-api-client-core": "file:../../api-clients/api-client-core/neatlicity-api-client-core-0.0.1.tgz",
+    "neatlicity-api-client-core": "file:../../api-client-core/neatlicity-api-client-core-0.0.1.tgz",
     "rxjs": "5.5.2",
     "weathericons": "^2.1.0",
     "zone.js": "0.8.17"

@@ -1,6 +1,6 @@
 package com.neatlicity.service.api.todo.rx.web;
 
-import com.neatlicity.service.api.todo.rx.data.ToDoEvent;
+import com.neatlicity.service.api.todo.data.ToDoEvent;
 import com.neatlicity.service.api.todo.rx.data.ToDoEventRxRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

@@ -8,11 +8,7 @@ buildscript {
 }
 
 def nodeProjects = [
-        project(':client:api-clients:api-client-core'),
-        project(':client:api-clients:api-client-mobile'),
-        project(':client:api-clients:api-client-smart-mirror'),
-        project(':client:api-clients:api-client-smart-photo-frame'),
-        project(':client:api-clients:api-client-web'),
+        project(':client:api-client-core'),
         project(':client:device:smart-mirror'),
         project(':client:device:smart-photo-frame'),
         project(':client:mobile'),

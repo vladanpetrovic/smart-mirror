@@ -1,11 +1,7 @@
 package com.neatlicity.service.api.todo.rx.data;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import org.springframework.data.mongodb.repository.Tailable;
-import reactor.core.publisher.Flux;
+import com.neatlicity.service.api.data.UserEventsRepository;
+import com.neatlicity.service.api.todo.data.ToDoEvent;
 
-public interface ToDoEventRxRepository extends ReactiveMongoRepository<ToDoEvent, String> {
-
-    @Tailable
-    Flux<ToDoEvent> findByUserId(String userId);
+public interface ToDoEventRxRepository extends UserEventsRepository<ToDoEvent> {
 }

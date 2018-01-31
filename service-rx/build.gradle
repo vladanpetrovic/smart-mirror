@@ -18,8 +18,12 @@ buildscript {
 
 def apiReactiveProjects = [
         project(':service-rx:api-gateway-rx'),
+        project(':service-rx:api-rx:device-rx'),
+        project(':service-rx:api-rx:photo-rx'),
         project(':service-rx:api-rx:todo-rx'),
-        project(':service-rx:api-rx:reminder-rx')
+        project(':service-rx:api-rx:reminder-rx'),
+        project(':service-rx:api-rx-shared:autoconfigure'),
+        project(':service-rx:api-rx-shared:starter')
 ]
 configure(apiReactiveProjects) {
 

@@ -1,11 +1,7 @@
 package com.neatlicity.service.api.reminder.rx.data;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import org.springframework.data.mongodb.repository.Tailable;
-import reactor.core.publisher.Flux;
+import com.neatlicity.service.api.data.UserEventsRepository;
+import com.neatlicity.service.api.reminder.data.ReminderEvent;
 
-public interface ReminderEventRxRepository extends ReactiveMongoRepository<ReminderEvent, String> {
-
-    @Tailable
-    Flux<ReminderEvent> findByUserId(String userId);
+public interface ReminderEventRxRepository extends UserEventsRepository<ReminderEvent> {
 }

@@ -13,6 +13,9 @@ zuul:
     api-user:
       path: /api/user/**
       serviceId: api-user
+    api-device:
+      path: /api/device/**
+      serviceId: api-device
     api-todo:
       path: /api/todo/**
       serviceId: api-todo

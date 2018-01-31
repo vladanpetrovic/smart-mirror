@@ -1,0 +1,15 @@
+server:
+  port: 9096
+
+spring:
+  boot:
+    admin:
+      url: http://localhost:9999
+  data:
+    mongodb:
+      database: neatlicity
+    rest:
+      basePath: /data
+  jackson:
+    serialization:
+      writeDatesAsTimestamps: false
