@@ -1,11 +1,12 @@
-<div class="app-device-qr-code">
+<div class="app-device-qr-code" *ngIf="!authenticated">
+    <h1>Scan QR code to connect your user.</h1>
     <qrcode
-            [qrdata]="'1234567890'"
-            [size]="150"
+            [qrdata]="deviceId"
+            [size]="300"
             [level]="'L'">
     </qrcode>
 </div>
-<div class="app-user">
+<div class="app-user" *ngIf="authenticated">
     <div class="user-details">
         <mat-card>
             <mat-card-header>
@@ -16,5 +17,4 @@
     </div>
     <app-todo></app-todo>
     <app-reminder></app-reminder>
-    <app-quote></app-quote>
 </div>

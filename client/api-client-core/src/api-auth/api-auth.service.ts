@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 
 import {AuthState} from './api-auth.models';
-import {LoginAction, LogoutAction} from './api-auth.actions';
+import {LoginAction, LogoutAction, SetTokenAction} from './api-auth.actions';
 import {AUTH_STORE_NAME} from './api-auth.consts';
 import {ApiCoreState} from "../api.state";
 
@@ -22,5 +22,9 @@ export class ApiAuthService {
 
     authState() {
         return this.store.select(AUTH_STORE_NAME);
+    }
+
+    setToken(token: string) {
+        this.store.dispatch(new SetTokenAction(token));
     }
 }

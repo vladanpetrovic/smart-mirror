@@ -13,9 +13,22 @@
     <ion-fab top right edge>
         <button ion-fab
                 color="red"
-                (click)="onCreate($event)">
+                (click)="onScanAndConnect($event)">
             <ion-icon name="add"></ion-icon>
         </button>
     </ion-fab>
 
+    <ion-card *ngFor="let device of (deviceState | async).devices">
+        <ion-card-header>{{device.id}}</ion-card-header>
+        <ion-card-content></ion-card-content>
+        <ion-row>
+            <ion-col>
+                <button (click)="onDisconnect(device.id)"
+                        ion-button icon-right clear small>
+                    <ion-icon name="log-out"></ion-icon>
+                    <div>Disconnect</div>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
 </ion-content>

@@ -13,8 +13,9 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 import {ApiCoreModule} from 'neatlicity-api-client-core';
+import {ApiDeviceModule} from "../device/api-client/api-device.module";
 
-import { Camera } from '@ionic-native/camera';
+import {Camera} from '@ionic-native/camera';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { Camera } from '@ionic-native/camera';
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument(),
-        ApiCoreModule
+        ApiCoreModule,
+        ApiDeviceModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [

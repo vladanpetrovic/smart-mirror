@@ -29,6 +29,7 @@ public class User {
     @Size(max=100)
     @Indexed(unique=true)
     private String email;
+    private String photo;
 
     private String username;
     @JsonIgnore

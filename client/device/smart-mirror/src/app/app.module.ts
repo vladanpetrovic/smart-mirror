@@ -27,6 +27,7 @@ import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {QRCodeModule} from 'angularx-qrcode';
+import {ApiDeviceModule} from "./device/api-client/api-device.module";
 
 @NgModule({
     declarations: [
@@ -48,6 +49,7 @@ import {QRCodeModule} from 'angularx-qrcode';
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument(),
         ApiCoreModule,
+        ApiDeviceModule,
         QRCodeModule
     ],
     providers: [ElectronService],
