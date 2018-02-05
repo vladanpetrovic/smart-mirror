@@ -50,6 +50,9 @@ export class MyApp implements OnInit {
     openPage(page) {
         // Reset the content nav to have just this page
         // we wouldn't want the back button to show in this scenario
+        if(page.component === 'TodosPage' || page.component === 'RemindersPage') {
+            this.nav.setRoot('HomePage');
+        }
         this.nav.setRoot(page.component);
     }
 

@@ -1,6 +1,11 @@
 server:
   port: 9092
 
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:9191/uaa/user
+
 spring:
   boot:
     admin:

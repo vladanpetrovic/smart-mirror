@@ -10,6 +10,7 @@ import {getReminderIconName} from '../../shared/reminder.util';
 export class ReminderListComponent {
     @Input() reminderListHeader: string = '';
     @Input() reminders: Reminder[] = [];
+    @Input() showDateTime: boolean = true;
 
     constructor(public popoverCtrl: PopoverController,
                 public apiReminderService: ApiReminderService) {

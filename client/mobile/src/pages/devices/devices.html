@@ -12,15 +12,17 @@
 <ion-content padding>
     <ion-fab top right edge>
         <button ion-fab
-                color="red"
+                color="secondary"
                 (click)="onScanAndConnect($event)">
-            <ion-icon name="add"></ion-icon>
+            <ion-icon name="qr-scanner"></ion-icon>
         </button>
     </ion-fab>
 
+    <h6 padding *ngIf="(deviceState | async).devices.length === 0">No connected devices, scan device QR code to connect it!</h6>
+
     <ion-card *ngFor="let device of (deviceState | async).devices">
-        <ion-card-header>{{device.id}}</ion-card-header>
-        <ion-card-content></ion-card-content>
+        <ion-card-title padding>{{device.name}}</ion-card-title>
+        <ion-card-content>Device id: {{device.id}}</ion-card-content>
         <ion-row>
             <ion-col>
                 <button (click)="onDisconnect(device.id)"
@@ -31,4 +33,8 @@
             </ion-col>
         </ion-row>
     </ion-card>
+
+    <div class="bottom-logo">
+        <img [src]="'assets/img/logo.png'" />
+    </div>
 </ion-content>

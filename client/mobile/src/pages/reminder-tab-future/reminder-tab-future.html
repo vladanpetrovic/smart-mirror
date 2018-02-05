@@ -12,7 +12,7 @@
 <ion-content padding>
     <ion-fab top right edge>
         <button ion-fab
-                color="red"
+                color="secondary"
                 (click)="onCreate($event)">
             <ion-icon name="add"></ion-icon>
         </button>
@@ -20,4 +20,7 @@
     <reminder-editable-list
             [reminders]="(reminderState | async).listInFuture"
             reminderListHeader="In Future"></reminder-editable-list>
+    <div class="bottom-logo">
+        <img [src]="'assets/img/logo.png'" />
+    </div>
 </ion-content>

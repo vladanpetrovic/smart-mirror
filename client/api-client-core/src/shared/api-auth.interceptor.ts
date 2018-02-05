@@ -18,6 +18,7 @@ export class ApiAuthInterceptor implements HttpInterceptor {
             .take(1)
             .switchMap((auth: AuthState) => {
                 if (auth.token != null) {
+                    console.log('Auth header updated!');
                     const authReq = req.clone({
                         setHeaders: {
                             Authorization: `Bearer ${auth.token}`

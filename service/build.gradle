@@ -20,13 +20,13 @@ buildscript {
 
 def apiProjects = [
         project(':service:api-gateway'),
-        project(':service:api:public:quote'),
-        project(':service:api:public:weather'),
-        project(':service:api:restricted:device'),
-        project(':service:api:restricted:photo'),
-        project(':service:api:restricted:reminder'),
-        project(':service:api:restricted:todo'),
-        project(':service:api:restricted:user'),
+        project(':service:api:quote'),
+        project(':service:api:weather'),
+        project(':service:api:device'),
+        project(':service:api:photo'),
+        project(':service:api:reminder'),
+        project(':service:api:todo'),
+        project(':service:api:user'),
 
 ]
 def springBootStarterProjects = [

@@ -16,6 +16,7 @@ public class Device {
 
     @Id
     private String id;
+    private String name;
     private DeviceType type;
     private User user;
 }

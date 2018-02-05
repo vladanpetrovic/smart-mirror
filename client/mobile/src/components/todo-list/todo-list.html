@@ -6,7 +6,7 @@
     <ion-item *ngFor="let todo of todos">
         <ion-label>
             <h2>{{todo.title}}</h2>
-            <p>{{todo.dateTime | date:'EEEE, MMMM d, y, h:mm'}}</p>
+            <p *ngIf="showDateTime">{{todo.dateTime | date:'EEEE, MMMM d, y, h:mm'}}</p>
         </ion-label>
         <ion-checkbox
                 *ngIf="selectable"

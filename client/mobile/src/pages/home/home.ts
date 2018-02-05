@@ -13,7 +13,7 @@ export class HomePage implements OnInit {
     todoState: Observable<ToDoState>;
     reminderState: Observable<ReminderState>;
 
-    public date: Date = new Date();
+    public currentDate: Date = new Date();
 
     constructor(public navCtrl: NavController,
                 private apiUserService: ApiUserService,
@@ -24,12 +24,14 @@ export class HomePage implements OnInit {
     ngOnInit() {
         this.apiUserService.userState().subscribe(
             user => {
-                this.apiToDoService.initEventStreamByUserId(user.id);
-                this.apiToDoService.apiGetToDosForToday(user.id);
-                this.apiReminderService.initEventStreamByUserId(user.id)
-                this.apiReminderService.apiGetRemindersForToday(user.id);
-                this.todoState = this.apiToDoService.toDoState();
-                this.reminderState = this.apiReminderService.reminderState();
+                if(user != null) {
+                    this.apiToDoService.initEventStreamByUserId(user.id);
+                    this.apiToDoService.apiGetToDosForToday(user.id);
+                    this.apiReminderService.initEventStreamByUserId(user.id)
+                    this.apiReminderService.apiGetRemindersForToday(user.id);
+                    this.todoState = this.apiToDoService.toDoState();
+                    this.reminderState = this.apiReminderService.reminderState();
+                }
             }
         );
     }

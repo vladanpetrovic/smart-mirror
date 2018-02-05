@@ -1,6 +1,18 @@
 page-home {
+  padding-top: 30px;
 
-  h2 {
+  .homeDuties {
+    text-align: center;
+  }
+
+  .currentDate {
+    text-align: center;
     color: gray;
+  }
+
+  .logo {
+    width: 80%;
+    margin: auto;
+    display: block;
   }
 }

@@ -12,6 +12,7 @@ export class ToDoListComponent implements OnChanges {
     @Input() todos: ToDo[] = [];
     @Input() selectable: boolean = true;
     @Input() disable: boolean = false;
+    @Input() showDateTime: boolean = true;
     numOfSelected: number = 0;
 
     constructor(public popoverCtrl: PopoverController,

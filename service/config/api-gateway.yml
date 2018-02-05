@@ -6,7 +6,7 @@ spring:
 security:
   oauth2:
     resource:
-      userInfoUri: http://localhost:9191/uaa/user
+      user-info-uri: http://localhost:9191/uaa/user
 
 zuul:
   routes:

@@ -6,7 +6,7 @@
     <ion-item *ngFor="let reminder of reminders">
         <ion-label>
             <h2>{{reminder.title}}</h2>
-            <p>{{reminder.dateTime | date:'EEEE, MMMM d, y, h:mm'}}</p>
+            <p *ngIf="showDateTime">{{reminder.dateTime | date:'EEEE, MMMM d, y, h:mm'}}</p>
         </ion-label>
         <ion-icon
                 name="{{getIconName(reminder.category)}}"

@@ -10,13 +10,16 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <h1>Home Duties</h1>
-    <h2>{{date | date:'fullDate'}}</h2>
+    <img class="logo" [src]="'assets/img/logo.png'" />
+    <h1 class="homeDuties">HOME DUTIES</h1>
+    <h2 class="currentDate">{{currentDate | date:'fullDate'}}</h2>
     <todo-list
             [todos]="(todoState | async).listForToday"
-            toDoListHeader="To Do's"></todo-list>
+            toDoListHeader="To Do's"
+            [showDateTime]="false"></todo-list>
     <reminder-list
             [reminders]="(reminderState | async).listForToday"
-            reminderListHeader="Reminders"></reminder-list>
+            reminderListHeader="Reminders"
+            [showDateTime]="false"></reminder-list>
     <quote></quote>
 </ion-content>

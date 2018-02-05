@@ -19,3 +19,17 @@
   background: none transparent !important;
   opacity: 0 !important;
 }
+
+.bottom-logo {
+  position: absolute;
+  bottom: 0px;
+  width: 90%;
+  margin: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+
+  img {
+    width: 70%;
+  }
+}
