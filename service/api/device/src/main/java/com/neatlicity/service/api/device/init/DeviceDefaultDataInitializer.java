@@ -26,6 +26,7 @@ public class DeviceDefaultDataInitializer implements ApplicationRunner {
 
             Device smartMirrorDevice = Device.builder()
                     .type(DeviceType.SMART_MIRROR)
+                    .name("Smart Mirror #1")
                     .build();
             deviceRepository.save(smartMirrorDevice);
             Device smartPhotoFrameDevice = Device.builder()

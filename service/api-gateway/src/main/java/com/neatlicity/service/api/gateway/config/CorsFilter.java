@@ -1,4 +1,4 @@
-package com.neatlicity.service.api.gateway;
+package com.neatlicity.service.api.gateway.config;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -21,7 +21,7 @@ public class CorsFilter implements Filter {
         final HttpServletResponse response = (HttpServletResponse) res;
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with, authorization");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Authorization, Content-Type, Accept");
         response.setHeader("Access-Control-Max-Age", "3600");
         if ("OPTIONS".equalsIgnoreCase(((HttpServletRequest) req).getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);

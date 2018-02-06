@@ -35,7 +35,7 @@ def springBootStarterProjects = [
 ]
 def springCloudProjects = apiProjects + springBootStarterProjects + [
         project(':service:cloud:auth'),
-        project(':service:cloud:circuit-breaker'),
+        project(':service:cloud:circuit-breaker-dashboard'),
         project(':service:cloud:config'),
         project(':service:cloud:discovery'),
         project(':service:cloud:tracing'),

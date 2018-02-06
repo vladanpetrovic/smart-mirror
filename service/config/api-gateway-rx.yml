@@ -16,8 +16,12 @@ spring:
       - id: api-todo-rx
         uri: lb://api-todo-rx
         predicates:
-        - Path=/tood-rx/**
+        - Path=/api-todo-rx
       - id: api-reminder-rx
         uri: lb://api-reminder-rx
         predicates:
-        - Path=/reminder-rx/**
+        - Path=/api-reminder-rx
+      - id: api-device-rx
+        uri: lb://api-device-rx
+        predicates:
+        - Path=/api-device-rx
