@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
-import {ApiToDoService, ToDoState, ToDo} from 'neatlicity-api-client-core';
+import {ApiToDoService, ToDoState, ToDo, ApiUserService} from 'neatlicity-api-client-core';
 import {MatListOptionChange} from '@angular/material';
 
 class Checkbox {
@@ -15,10 +15,18 @@ class Checkbox {
 export class TodoComponent implements OnInit {
     todoState: Observable<ToDoState>;
 
-    constructor(private apiToDoService: ApiToDoService) {
-        const userId = '5a67f83460149b798047be46';
-        this.apiToDoService.initEventStreamByUserId(userId)
-        this.apiToDoService.apiGetToDosForToday(userId);
+    constructor(private apiUserService: ApiUserService,
+                private apiToDoService: ApiToDoService) {
+        this.apiUserService.userState().subscribe(
+            userState => {
+                if(userState != null) {
+                    this.apiToDoService.initEventStreamByUserId(userState.id)
+                    this.apiToDoService.apiGetToDosForToday(userState.id);
+                }
+            },
+            error => console.log(error),
+            () => console.log('finished')
+        );
     }
 
     ngOnInit() {

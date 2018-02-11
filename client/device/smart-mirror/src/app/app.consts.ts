@@ -1,1 +1,1 @@
-export const DEVICE_ID = '5a7900206e86c74b4b65b065';
+export const DEVICE_ID = '5a7f809f150999068e31a701';
