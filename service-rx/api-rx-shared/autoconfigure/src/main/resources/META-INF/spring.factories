@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.neatlicity.service.api.autoconfigure.ApiRxAutoConfiguration
