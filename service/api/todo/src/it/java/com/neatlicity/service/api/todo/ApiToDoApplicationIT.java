@@ -27,12 +27,14 @@ public class ApiToDoApplicationIT {
 
     @Test
     public void contextLoads() {
-        stubFor(get("/user").willReturn(okJson("{\"username\":\"john\",\"authorities\":[{\"authority\":\"ROLE_USER\"}]}")));
+        stubFor(get("/user").willReturn(okJson("{\"username\":\"john\"," +
+                "\"authorities\":[{\"authority\":\"ROLE_USER\"}]}")));
 
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.AUTHORIZATION, "Bearer xyz123");
 
-        final ResponseEntity<String> dataResponse = this.rest.exchange("/todos", HttpMethod.GET, new HttpEntity<>(headers), String.class);
+        final ResponseEntity<String> dataResponse = this.rest.exchange("/todos",
+                HttpMethod.GET, new HttpEntity<>(headers), String.class);
         assertEquals(dataResponse.getStatusCode(), HttpStatus.OK);
         assertTrue(dataResponse.getBody().contains("Make your bed"));
         assertTrue(dataResponse.getBody().contains("Develop neatlicity clients and services"));

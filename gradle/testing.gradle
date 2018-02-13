@@ -19,6 +19,7 @@ integrationTest {
         printTestResult(desc, result)
     }
 }
+integrationTest.mustRunAfter(test)
 
 smokeTest {
     afterTest { desc, result ->
