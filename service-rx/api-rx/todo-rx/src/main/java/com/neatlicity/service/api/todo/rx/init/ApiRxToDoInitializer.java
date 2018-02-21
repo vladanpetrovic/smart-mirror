@@ -1,6 +1,6 @@
 package com.neatlicity.service.api.todo.rx.init;
 
-import com.neatlicity.service.api.todo.data.ToDo;
+import com.neatlicity.service.api.todo.data.ToDoEvent;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
@@ -17,8 +17,8 @@ public class ApiRxToDoInitializer implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        if (!mongoTemplate.collectionExists(ToDo.class)) {
-            mongoTemplate.createCollection(ToDo.class, CollectionOptions.empty().capped().size(100000L));
+        if (!mongoTemplate.collectionExists(ToDoEvent.class)) {
+            mongoTemplate.createCollection(ToDoEvent.class, CollectionOptions.empty().capped().size(100000L));
         }
     }
 }

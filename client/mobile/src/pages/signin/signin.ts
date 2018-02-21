@@ -13,8 +13,8 @@ import {ApiAuthService, ApiUserService, User} from 'neatlicity-api-client-core';
 export class SigninPage {
     userState: Observable<User>;
 
-    userEmail: string = 'vladan@test.com';
-    userPassword: string = 'pass123';
+    userEmail: string = '';
+    userPassword: string = '';
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,

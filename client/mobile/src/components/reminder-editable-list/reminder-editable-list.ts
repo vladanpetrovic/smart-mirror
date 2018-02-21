@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ReminderListComponent} from '../reminder-list/reminder-list';
 import {Reminder} from 'neatlicity-api-client-core';
+import {showBottomToastMsg} from "../../shared/message.util";
 
 @Component({
     selector: 'reminder-editable-list',
@@ -14,7 +15,16 @@ export class ReminderEditableListComponent extends ReminderListComponent {
     }
 
     onDelete(event: MouseEvent, reminderId: string) {
-        this.apiReminderService.delete(reminderId);
+        this.apiReminderService
+            .delete(reminderId)
+            .subscribe(
+                response => {
+                    showBottomToastMsg(this.toastCtrl, 'Reminder deleted.');
+                }, err => {
+                    if(err.error != undefined && err.error.cause != undefined) {
+                        showBottomToastMsg(this.toastCtrl, err.error.cause.message);
+                    }
+                }
+            );
     }
-
 }

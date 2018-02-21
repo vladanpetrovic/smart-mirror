@@ -1,6 +1,6 @@
 package com.neatlicity.service.api.reminder.rx.init;
 
-import com.neatlicity.service.api.reminder.data.Reminder;
+import com.neatlicity.service.api.reminder.data.ReminderEvent;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
@@ -18,8 +18,8 @@ public class ApiRxReminderInitializer implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        if (!mongoTemplate.collectionExists(Reminder.class)) {
-            mongoTemplate.createCollection(Reminder.class, CollectionOptions.empty().capped().size(100000L));
+        if (!mongoTemplate.collectionExists(ReminderEvent.class)) {
+            mongoTemplate.createCollection(ReminderEvent.class, CollectionOptions.empty().capped().size(100000L));
         }
     }
 }

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {IonicPage, LoadingController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavParams, ToastController, ViewController} from 'ionic-angular';
 import {ApiToDoService, ApiUserService, ToDo} from 'neatlicity-api-client-core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {showBottomToastMsg} from "../../shared/message.util";
 
 @IonicPage()
 @Component({
@@ -17,6 +18,7 @@ export class ToDoFormPopoverPage implements OnInit {
     constructor(private navParams: NavParams,
                 private viewController: ViewController,
                 private loadingCtrl: LoadingController,
+                private toastCtrl: ToastController,
                 private apiUserService: ApiUserService,
                 private apiToDoService: ApiToDoService) {
     }
@@ -59,14 +61,32 @@ export class ToDoFormPopoverPage implements OnInit {
                     userId: user.id
                 } as ToDo;
 
-                let httpResponse;
                 if (this.isEdit && this.toDoEditData != null) {
                     toDo.id = this.toDoEditData.id;
-                    httpResponse = this.apiToDoService.update(toDo);
+                    this.apiToDoService
+                        .update(toDo)
+                        .subscribe(
+                            response => {
+                                showBottomToastMsg(this.toastCtrl, 'ToDo \'' + toDo.title + '\' updated.');
+                            }, err => {
+                                if(err.error != undefined && err.error.cause != undefined) {
+                                    showBottomToastMsg(this.toastCtrl, err.error.cause.message);
+                                }
+                            }
+                        );
                 } else {
-                    httpResponse = this.apiToDoService.create(toDo);
+                    this.apiToDoService
+                        .create(toDo)
+                        .subscribe(
+                            response => {
+                                showBottomToastMsg(this.toastCtrl, 'ToDo \'' + toDo.title + '\' created.');
+                            }, err => {
+                                if(err.error != undefined && err.error.cause != undefined) {
+                                    showBottomToastMsg(this.toastCtrl, err.error.cause.message);
+                                }
+                            }
+                        );
                 }
-                console.log(httpResponse);
                 loading.dismiss();
             }
         );

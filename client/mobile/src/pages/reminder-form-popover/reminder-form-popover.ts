@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {IonicPage, LoadingController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavParams, ToastController, ViewController} from 'ionic-angular';
 import {ApiReminderService, ApiUserService, Reminder} from 'neatlicity-api-client-core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {showBottomToastMsg} from "../../shared/message.util";
 
 @IonicPage()
 @Component({
@@ -17,6 +18,7 @@ export class ReminderFormPopoverPage {
     constructor(public navParams: NavParams,
                 private viewController: ViewController,
                 private loadingCtrl: LoadingController,
+                private toastCtrl: ToastController,
                 private apiUserService: ApiUserService,
                 private apiReminderService: ApiReminderService) {
     }
@@ -60,14 +62,34 @@ export class ReminderFormPopoverPage {
                     userId: user.id
                 } as Reminder;
 
-                let httpResponse;
                 if (this.isEdit && this.reminderEditData != null) {
                     reminder.id = this.reminderEditData.id;
-                    httpResponse = this.apiReminderService.update(reminder);
+                    this.apiReminderService
+                        .update(reminder)
+                        .subscribe(
+                            response => {
+                                showBottomToastMsg(this.toastCtrl,
+                                    'Reminder \'' + reminder.title + '\' updated.');
+                            }, err => {
+                                if(err.error != undefined && err.error.cause != undefined) {
+                                    showBottomToastMsg(this.toastCtrl, err.error.cause.message);
+                                }
+                            }
+                        );
                 } else {
-                    httpResponse = this.apiReminderService.create(reminder);
+                    this.apiReminderService
+                        .create(reminder)
+                        .subscribe(
+                            response => {
+                                showBottomToastMsg(this.toastCtrl,
+                                    'Reminder \'' + reminder.title + '\' created.');
+                            }, err => {
+                                if(err.error != undefined && err.error.cause != undefined) {
+                                    showBottomToastMsg(this.toastCtrl, err.error.cause.message);
+                                }
+                            }
+                        );
                 }
-                console.log(httpResponse);
                 loading.dismiss();
             }
         );

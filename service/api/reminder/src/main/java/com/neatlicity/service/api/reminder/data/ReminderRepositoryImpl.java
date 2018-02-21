@@ -19,7 +19,8 @@ public class ReminderRepositoryImpl implements ReminderRepositoryCustom {
     @Override
     public List<Reminder> getByUserIdAndForToday(String userId) {
         Criteria publishedDateCriteria = Criteria
-                .where("dateTime")
+                .where("userId").is(userId)
+                .and("dateTime")
                 .gte(Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()))
                 .lte(Date.from(LocalDate.now().plusDays(1)
                         .atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
@@ -30,7 +31,8 @@ public class ReminderRepositoryImpl implements ReminderRepositoryCustom {
     @Override
     public List<Reminder> getByUserIdAndInPast(String userId) {
         Criteria publishedDateCriteria = Criteria
-                .where("dateTime")
+                .where("userId").is(userId)
+                .and("dateTime")
                 .lte(Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
         Query query = new Query(publishedDateCriteria);
         return mongoTemplate.find(query, Reminder.class);
@@ -39,7 +41,8 @@ public class ReminderRepositoryImpl implements ReminderRepositoryCustom {
     @Override
     public List<Reminder> getByUserIdAndInFuture(String userId) {
         Criteria publishedDateCriteria = Criteria
-                .where("dateTime")
+                .where("userId").is(userId)
+                .and("dateTime")
                 .gte(Date.from(LocalDate.now().plusDays(2)
                         .atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
         Query query = new Query(publishedDateCriteria);

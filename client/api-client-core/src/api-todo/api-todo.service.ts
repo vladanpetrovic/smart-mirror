@@ -1,16 +1,24 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 
 import * as fromToDoActions from './api-todo.actions';
-import {getToDoEventStreamByUserIdUrl, TODO_STORE_NAME} from './api-todo.consts';
+import {
+    getApiToDoByIdUrl,
+    getApiToDosUrl,
+    getToDoEventStreamByUserIdUrl,
+    TODO_STORE_NAME
+} from './api-todo.consts';
 import {ToDo, ToDoState, ToDoEventApiMessage} from './api-todo.models';
 import {ApiCoreState} from "../api.state";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 
 @Injectable()
 export class ApiToDoService {
     private eventSource;
 
-    constructor(private store: Store<ApiCoreState>) {
+    constructor(private store: Store<ApiCoreState>,
+                private httpClient: HttpClient) {
     }
 
     toDoState() {
@@ -34,15 +42,27 @@ export class ApiToDoService {
     }
 
     create(toDo: ToDo) {
-        return this.store.dispatch(new fromToDoActions.ApiCreateToDoAction(toDo));
+        return this.httpClient.post<any>(
+            getApiToDosUrl(), toDo, {
+                observe: 'response',
+                responseType: 'json'
+            });
     }
 
     update(toDo: ToDo) {
-        return this.store.dispatch(new fromToDoActions.ApiUpdateToDoAction(toDo));
+        return this.httpClient.patch<any>(
+            getApiToDoByIdUrl(toDo.id), toDo, {
+                observe: 'response',
+                responseType: 'json'
+            });
     }
 
     delete(toDoId: string) {
-        return this.store.dispatch(new fromToDoActions.ApiDeleteToDoAction(toDoId));
+        return this.httpClient.delete<any>(
+            getApiToDoByIdUrl(toDoId), {
+                observe: 'response',
+                responseType: 'json'
+            });
     }
 
     initEventStreamByUserId(userId: string) {

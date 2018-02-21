@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {ApiToDoService, ToDo} from 'neatlicity-api-client-core';
-import {Checkbox, PopoverController} from 'ionic-angular';
+import {Checkbox, PopoverController, ToastController} from 'ionic-angular';
 import {getToDoIconName} from '../../shared/todo.util';
 
 @Component({
@@ -16,6 +16,7 @@ export class ToDoListComponent implements OnChanges {
     numOfSelected: number = 0;
 
     constructor(public popoverCtrl: PopoverController,
+                public toastCtrl: ToastController,
                 public apiToDoService: ApiToDoService) {
     }
 

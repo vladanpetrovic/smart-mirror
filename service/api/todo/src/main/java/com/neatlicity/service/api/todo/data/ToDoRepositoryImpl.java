@@ -19,7 +19,8 @@ public class ToDoRepositoryImpl implements ToDoRepositoryCustom {
     @Override
     public List<ToDo> getByUserIdAndForToday(String userId) {
         Criteria publishedDateCriteria = Criteria
-                .where("dateTime")
+                .where("userId").is(userId)
+                .and("dateTime")
                 .gte(Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()))
                 .lte(Date.from(LocalDate.now().plusDays(1)
                         .atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
@@ -30,7 +31,8 @@ public class ToDoRepositoryImpl implements ToDoRepositoryCustom {
     @Override
     public List<ToDo> getByUserIdAndInPast(String userId) {
         Criteria publishedDateCriteria = Criteria
-                .where("dateTime")
+                .where("userId").is(userId)
+                .and("dateTime")
                 .lte(Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
         Query query = new Query(publishedDateCriteria);
         return mongoTemplate.find(query, ToDo.class);
@@ -39,7 +41,8 @@ public class ToDoRepositoryImpl implements ToDoRepositoryCustom {
     @Override
     public List<ToDo> getByUserIdAndInFuture(String userId) {
         Criteria publishedDateCriteria = Criteria
-                .where("dateTime")
+                .where("userId").is(userId)
+                .and("dateTime")
                 .gte(Date.from(LocalDate.now().plusDays(2)
                         .atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
         Query query = new Query(publishedDateCriteria);

@@ -1,7 +1,7 @@
 <ion-list>
     <ion-list-header no-lines>{{toDoListHeader | uppercase}} ({{numOfSelected}} / {{todos.length}})</ion-list-header>
     <ion-item *ngIf="todos.length === 0">
-        <ion-label>No entries, create one!</ion-label>
+        <ion-label>No entries</ion-label>
     </ion-item>
     <ion-item *ngFor="let todo of todos">
         <ion-label>

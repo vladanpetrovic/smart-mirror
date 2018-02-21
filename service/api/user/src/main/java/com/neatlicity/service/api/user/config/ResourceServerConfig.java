@@ -1,4 +1,4 @@
-package com.neatlicity.service.api.gateway.config;
+package com.neatlicity.service.api.user.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,9 +13,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http
                 .anonymous().and()
                 .authorizeRequests()
-                .antMatchers("/api/quote/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/user/data/users/").permitAll()
-                .antMatchers("/api/weather/**").permitAll()
-                .antMatchers("/api/**").authenticated();
+                .antMatchers(HttpMethod.POST, "/data/users/").permitAll()
+                .antMatchers("/data/**").authenticated();
     }
 }

@@ -1,16 +1,24 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 
 import * as fromReminderActions from './api-reminder.actions';
-import {getReminderEventStreamByUserIdUrl, REMINDER_STORE_NAME} from './api-reminder.consts';
+import {
+    getApiReminderByIdUrl,
+    getApiRemindersUrl,
+    getReminderEventStreamByUserIdUrl,
+    REMINDER_STORE_NAME
+} from './api-reminder.consts';
 import {Reminder, ReminderState, ReminderEventApiMessage} from './api-reminder.models';
 import {ApiCoreState} from "../api.state";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 
 @Injectable()
 export class ApiReminderService {
     private eventSource;
 
-    constructor(private store: Store<ApiCoreState>) {
+    constructor(private store: Store<ApiCoreState>,
+                private httpClient: HttpClient) {
     }
 
     reminderState() {
@@ -34,15 +42,27 @@ export class ApiReminderService {
     }
 
     create(reminder: Reminder) {
-        return this.store.dispatch(new fromReminderActions.ApiCreateReminderAction(reminder));
+        return this.httpClient.post<any>(
+            getApiRemindersUrl(), reminder, {
+                observe: 'response',
+                responseType: 'json'
+            });
     }
 
     update(reminder: Reminder) {
-        return this.store.dispatch(new fromReminderActions.ApiUpdateReminderAction(reminder));
+        return this.httpClient.patch<any>(
+            getApiReminderByIdUrl(reminder.id), reminder, {
+                observe: 'response',
+                responseType: 'json'
+            });
     }
 
     delete(reminderId: string) {
-        return this.store.dispatch(new fromReminderActions.ApiDeleteReminderAction(reminderId));
+        return this.httpClient.delete<any>(
+            getApiReminderByIdUrl(reminderId), {
+                observe: 'response',
+                responseType: 'json'
+            });
     }
 
     initEventStreamByUserId(userId: string) {

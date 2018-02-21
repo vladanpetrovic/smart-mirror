@@ -1,6 +1,7 @@
 package com.neatlicity.service.api.device.rx.init;
 
 import com.neatlicity.service.api.device.data.Device;
+import com.neatlicity.service.api.device.data.DeviceEvent;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
@@ -17,8 +18,8 @@ public class ApiRxDeviceInitializer implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        if (!mongoTemplate.collectionExists(Device.class)) {
-            mongoTemplate.createCollection(Device.class, CollectionOptions.empty().capped().size(100000L));
+        if (!mongoTemplate.collectionExists(DeviceEvent.class)) {
+            mongoTemplate.createCollection(DeviceEvent.class, CollectionOptions.empty().capped().size(100000L));
         }
     }
 }

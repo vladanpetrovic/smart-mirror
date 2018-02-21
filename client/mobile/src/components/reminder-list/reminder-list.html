@@ -1,7 +1,7 @@
 <ion-list>
     <ion-list-header no-lines>{{reminderListHeader | uppercase}}</ion-list-header>
     <ion-item *ngIf="reminders.length === 0">
-        <ion-label>No entries, create one!</ion-label>
+        <ion-label>No entries</ion-label>
     </ion-item>
     <ion-item *ngFor="let reminder of reminders">
         <ion-label>
